@@ -288,9 +288,10 @@ function buildFront(mat, add, parent) {
     const ev = key === 'date' ? 'E3' : ['mars', 'jupiter', 'saturn'].includes(key) ? 'E4' : 'E3';
     if (key === 'sun') {
       const ball = new THREE.Mesh(new THREE.SphereGeometry(2.2, 24, 16), mat.gold); ball.position.set(0, r, 1.2); grp.add(ball);
-      const ptr = new THREE.Mesh(new THREE.BoxGeometry(0.9, FRONT.zodiac[1] - r, 0.4), mat.gold); ptr.position.set(0, (r + FRONT.zodiac[1]) / 2, 0.6); grp.add(ptr);
+      const ptr = new THREE.Mesh(new THREE.BoxGeometry(1.3, FRONT.zodiac[1] - r, 0.45), mat.gold); ptr.position.set(0, (r + FRONT.zodiac[1]) / 2, 0.6); grp.add(ptr);
     } else if (key === 'date') {
-      const ptr = new THREE.Mesh(new THREE.BoxGeometry(0.9, FRONT.calendar[1] - r, 0.4), mat.bronzeDark); ptr.position.set(0, (r + FRONT.calendar[1]) / 2, 1.4); grp.add(ptr);
+      const ptr = new THREE.Mesh(new THREE.BoxGeometry(1.5, FRONT.calendar[1] - r, 0.5), mat.bronzeDark); ptr.position.set(0, (r + FRONT.calendar[1]) / 2, 1.4); grp.add(ptr);
+      const tip = new THREE.Mesh(new THREE.ConeGeometry(1.6, 3.2, 3), mat.bronzeDark); tip.position.set(0, FRONT.calendar[1] + 1.2, 1.4); grp.add(tip);
     } else {
       const bead = new THREE.Mesh(new THREE.SphereGeometry(1.7, 20, 14), mat.stones[key]); bead.position.set(0, r, 1.2); grp.add(bead);
     }

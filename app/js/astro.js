@@ -44,9 +44,10 @@ export function calendarName(jd) { return jd < 2299160.5 ? t('julian') : t('greg
 const EG_EPOCH = 1448638;
 export const EG_MONTHS = ['Thoth', 'Phaophi', 'Athyr', 'Choiak', 'Tybi', 'Mechir', 'Phamenoth', 'Pharmuthi', 'Pachon', 'Payni', 'Epiphi', 'Mesore', 'Epagomenai'];
 export function egyptianDate(jd) {
-  const n = Math.floor(jd + 0.5) - EG_EPOCH;
-  const doy = ((n % 365) + 365) % 365;
-  return { doy, month: Math.floor(doy / 30), day: (doy % 30) + 1 };
+  const x = jd + 0.5 - EG_EPOCH;
+  const frac = ((x % 365) + 365) % 365;   // stetiger Tag im Jahr (0 … 365)
+  const doy = Math.floor(frac);
+  return { doy, frac, month: Math.floor(doy / 30), day: (doy % 30) + 1 };
 }
 
 // Mittlere Bahnelemente (Meeus / Standish), tropisch, Grad. T in julianischen Jahrhunderten ab J2000.

@@ -237,7 +237,11 @@ function updateMechanism() {
   F.rings.mercury.rotation.z = -st.planets.mercury * D2R; F.rings.venus.rotation.z = -st.planets.venus * D2R;
   F.rings.mars.rotation.z = -st.planets.mars * D2R; F.rings.jupiter.rotation.z = -st.planets.jupiter * D2R; F.rings.saturn.rotation.z = -st.planets.saturn * D2R;
   F.rings.sun.rotation.z = -st.sunTrue * D2R; F.rings.date.rotation.z = -st.sunMean * D2R;
-  F.calendar.rotation.z = -st.sunMean * D2R + ((st.egyptian.doy + 0.5) / 365) * TAU;
+  // Kalenderring: dreht NICHT mit der Kurbel. Er steckt mit einem Stift in einem der 354 Löcher und wurde
+  // von Hand umgesteckt, weil das ägyptische Jahr (365 d) dem Sonnenjahr davonläuft (≈ 1 Loch alle 4 Jahre).
+  const HOLE = TAU / 354;
+  const ideal = -st.sunMean * D2R + (st.egyptian.frac / 365) * TAU;
+  F.calendar.rotation.z = Math.round(ideal / HOLE) * HOLE;
   F.moon.rotation.z = -st.moonTrue * D2R; F.moonBall.rotation.y = st.elong * D2R - Math.PI;
   F.dragon.rotation.z = -st.node * D2R;
   // Rückseite
