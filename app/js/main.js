@@ -3,7 +3,7 @@ import { OrbitControls } from '../vendor/addons/OrbitControls.js';
 import { RoomEnvironment } from '../vendor/addons/RoomEnvironment.js';
 import { ASSEMBLIES, GEARS } from './generated/data.js';
 import { stateAt, gearAngles, START_JD, EPOCH, RATES } from './kinematics.js';
-import { PLACE } from './layout.js';
+import { PLACE, pitchR } from './layout.js';
 import { buildMechanism, makeMaterials, refreshDeviceText } from './build3d.js';
 import { t, td, lang, deviceLang, setLang, setDeviceLang, onLangChange, SITE_LANGS, DEVICE_LANGS, partText } from './i18n.js';
 import { julianDay, formatDate, calendarName, realSky, nextEclipses, angDiff, zodiacLabel, EG_MONTHS, TROPICAL_YEAR } from './astro.js';
@@ -150,6 +150,8 @@ canvas.addEventListener('pointerup', (e) => {
   showInfo(hits[0]?.object.userData);
 });
 let infoShown = null;
+const GEAR_BY_ID = Object.fromEntries(GEARS.gears.map((g) => [g.id, g]));
+const fmtNum = (x, d) => x.toLocaleString(lang === 'en' ? 'en-GB' : lang === 'el' ? 'el-GR' : 'de-DE', { minimumFractionDigits: d, maximumFractionDigits: d });
 function showInfo(u) {
   const el = $('#infocard'); infoShown = u || null;
   if (!u) { el.hidden = true; return; }
@@ -157,6 +159,13 @@ function showInfo(u) {
   if (u.kind === 'gear') {
     label = `${u.id} · ${u.teeth ?? '?'} ${t('teeth')}`;
     func = td('gears', u.id, 'function', u.func); note = u.note ? td('gears', u.id, 'note', u.note) : '';
+    const ms = GEAR_BY_ID[u.id]?.measured;
+    if (ms) {
+      const f = (x) => fmtNum(x, 1);
+      const mid = ms.rIn != null ? (ms.rIn + ms.rOut) / 2 : null;
+      note += `${note ? '<br>' : ''}${t('measured', { tip: f(ms.tip), err: f(ms.tipErr), count: ms.count, lim: ms.limits === 'definitiv' ? t('definite') : ms.limits })}`
+        + (mid != null && u.id !== 'a1' ? ` ${t('measuredModel', { mid: f(mid), model: f(pitchR(u.id)) })}` : '');
+    }
   } else { const pt = partText(u.id) || [u.label ?? u.id, u.func]; label = pt[0]; func = pt[1]; }
   const asm = u.assembly ? `${u.assembly} · ${nameOf(u.assembly)}` : '';
   const ev = u.evidence ? `<span class="ev ev-${u.evidence}">${u.evidence}</span>${eviText(u.evidence)}` : '';
@@ -174,8 +183,8 @@ const step = () => +$('#speed').value;
 $('#stepBack').addEventListener('click', () => setJd(jd - step()));
 $('#stepFwd').addEventListener('click', () => setJd(jd + step()));
 
-// Kurbel: 1 Umdrehung = 48/224 Jahr ≈ 78,3 Tage
-const DAYS_PER_CRANK = TROPICAL_YEAR * 48 / 224;
+// Kurbel: 1 Umdrehung = a1/b1 = 48/223 Jahr ≈ 78,6 Tage (Zähnezahlen nach Freeth 2006)
+const DAYS_PER_CRANK = TROPICAL_YEAR * 48 / 223;
 {
   const el = $('#crank'); const svg = el.querySelector('svg'); let last = null;
   svg.querySelector('.crank-ticks').innerHTML = Array.from({ length: 24 }, (_, i) => { const a = i / 24 * TAU; return `<line x1="${Math.sin(a) * 49}" y1="${-Math.cos(a) * 49}" x2="${Math.sin(a) * 54}" y2="${-Math.cos(a) * 54}"/>`; }).join('');
@@ -332,4 +341,4 @@ const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').mat
 if (!seenIntro && !reduceMotion && !location.hash.includes('nointro')) playIntro();
 requestAnimationFrame(frame);
 $('#loading').classList.add('done');
-window.__app = { intro, playIntro, finishTween() { if (tween) { camera.position.copy(tween.to); tween = null; } controls.update(); invalidate(); }, setJd, setView, M, camera, controls, get jd() { return jd; }, RATES };
+window.__app = { intro, playIntro, showInfo, finishTween() { if (tween) { camera.position.copy(tween.to); tween = null; } controls.update(); invalidate(); }, setJd, setView, M, camera, controls, get jd() { return jd; }, RATES };

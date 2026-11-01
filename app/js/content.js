@@ -82,6 +82,8 @@ export function renderLinks(el) {
   const L = [
     ['https://en.wikipedia.org/wiki/Antikythera_mechanism', 'link.wiki', 'link.wikiSub', ''],
     ['https://www.dpma.de/dpma/veroeffentlichungen/meilensteine/computer-pioniere/antikytera-mechanismus/index.html', 'link.dpma', 'link.dpmaSub', ''],
+    ['https://doi.org/10.1038/nature05357', 'link.f06', 'link.f06Sub', ''],
+    ['https://doi.org/10.1038/s41598-021-84310-w', 'link.f21', 'link.f21Sub', ''],
     ['https://atlas.geschichte.fm/map', 'link.atlas', 'link.atlasSub', 'thanks'],
   ];
   el.innerHTML = L.map(([u, a, b, c]) => `<a class="${c}" href="${u}" target="_blank" rel="noopener"><b>${esc(t(a))}</b><span>${esc(t(b))}</span></a>`).join('');
@@ -103,7 +105,7 @@ export function renderResearch(eviEl, papersEl, srcEl) {
   eviEl.innerHTML = Object.entries(GEARS.meta.evidenzklassen).map(([k, v]) => `<div><span class="ev ev-${k}">${k}</span>${esc(td('evidence', k, null, v))} <span class="tagline">(${counts[k] || 0} ${t('gears')})</span></div>`).join('');
   papersEl.innerHTML = PAPERS.papers.map((p, i) => {
     const tr = lang === 'de' ? {} : I18N[lang]?.papers?.[i] ?? {}; const f = (k) => esc(tr[k] ?? p[k]);
-    return `<article class="paper"><div class="h"><span>${p.jahr} · ${esc(p.autor)}</span><span class="lvl lvl-${p.level}">${esc(t(`lvl.${p.level}`))}</span></div><b>${f('titel')}</b><dl><dt>${t('done')}</dt><dd>${f('gemacht')}</dd><dt>${t('result')}</dt><dd>${f('ergebnis')}</dd><dt>${t('why')}</dt><dd>${f('warum')}</dd><dt>${t('certainty')}</dt><dd>${f('sicherheit')}</dd></dl></article>`;
+    return `<article class="paper"><div class="h"><span>${p.jahr} · ${esc(p.autor)}</span><span class="lvl lvl-${p.level}">${esc(t(`lvl.${p.level}`))}</span></div><b>${f('titel')}</b><dl><dt>${t('done')}</dt><dd>${f('gemacht')}</dd><dt>${t('result')}</dt><dd>${f('ergebnis')}</dd><dt>${t('why')}</dt><dd>${f('warum')}</dd><dt>${t('certainty')}</dt><dd>${f('sicherheit')}</dd></dl>${p.url ? `<a class="paper-link" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(t('toArticle'))}</a>` : ''}</article>`;
   }).join('');
   srcEl.innerHTML = SOURCES.sources.map((s) => `<li>${esc(s.autoren || '')}${s.autoren ? ' ' : ''}(${s.jahr ?? 'o. J.'}): ${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.titel)}</a>` : esc(s.titel)}${s.ort ? `. ${esc(s.ort)}` : ''}</li>`).join('');
 }

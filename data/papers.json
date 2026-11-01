@@ -24,11 +24,12 @@
    "jahr": 2006,
    "autor": "Freeth et al.",
    "titel": "Decoding the ancient Greek astronomical calculator (Nature)",
-   "gemacht": "Computertomografie aller Fragmente und Oberflächenscans.",
+   "gemacht": "Computertomografie aller Fragmente und Oberflächenscans. Im Zusatzmaterial: Zähnezahlen mit Unsicherheiten und die gemessenen Radien aller erhaltenen Räder.",
    "ergebnis": "Rückseite entschlüsselt: Saros-Finsternisspirale, Stift-Schlitz-Mond, Zähnezahlen.",
    "warum": "Grundlage aller heutigen Modelle. Die Rückseite dieser App beruht darauf.",
    "sicherheit": "hoch - direkte Messung",
-   "level": "belegt"
+   "level": "belegt",
+   "url": "https://doi.org/10.1038/nature05357"
   },
   {
    "jahr": 2008,
@@ -38,7 +39,8 @@
    "ergebnis": "Korinthische Monatsnamen und eine Anzeige für die grossen Spiele.",
    "warum": "Erste Spur zur Herkunft.",
    "sicherheit": "hoch",
-   "level": "belegt"
+   "level": "belegt",
+   "url": "https://doi.org/10.1038/nature07130"
   },
   {
    "jahr": 2014,
@@ -48,7 +50,8 @@
    "ergebnis": "Die Skala startet am besten im Frühjahr 205 v. Chr.",
    "warum": "Rückt das Gerät in die Zeit kurz nach Archimedes.",
    "sicherheit": "Startdatum der Skala, nicht das Baujahr",
-   "level": "belegt"
+   "level": "belegt",
+   "url": "https://ri.conicet.gov.ar/handle/11336/98820"
   },
   {
    "jahr": 2017,
@@ -58,7 +61,8 @@
    "ergebnis": "Kalender passt zu Epirus, nicht zu Syrakus. Eine Anzeige nennt die Halieia von Rhodos.",
    "warum": "Spricht für Bau auf Rhodos, vielleicht für einen Kunden aus Epirus.",
    "sicherheit": "gut begründete Hypothese",
-   "level": "hypothese"
+   "level": "hypothese",
+   "url": "https://ascsa.edu.gr/publications/hesperia/article/86/1/129-203"
   },
   {
    "jahr": 2017,
@@ -88,7 +92,8 @@
    "ergebnis": "Komplettes Frontgetriebe mit geteilten Rädern, Planeten als Ringe mit Edelsteinmarkern.",
    "warum": "Erstes Modell, das zu allen Indizien passt. Die Front dieser App beruht darauf.",
    "sicherheit": "plausibel, ausdrücklich keine Kopie des Originals",
-   "level": "modell"
+   "level": "modell",
+   "url": "https://doi.org/10.1038/s41598-021-84310-w"
   },
   {
    "jahr": 2022,
@@ -108,7 +113,8 @@
    "ergebnis": "354 oder 355 Löcher auf 77,1 mm Radius. 365 ist nicht plausibel.",
    "warum": "Der Kalenderring folgte wohl dem Mondjahr.",
    "sicherheit": "hoch (statistisch)",
-   "level": "belegt"
+   "level": "belegt",
+   "url": "https://eprints.gla.ac.uk/329337"
   },
   {
    "jahr": 2025,
@@ -118,7 +124,8 @@
    "ergebnis": "Dreieckszähne allein funktionieren. Mit den Messfehlern blockiert das Getriebe meist früh.",
    "warum": "Entweder war das Gerät schwer zu bedienen, oder Korrosion verfälscht die Messungen. Kein Beleg für ein Spielzeug.",
    "sicherheit": "Preprint, nicht begutachtet",
-   "level": "hypothese"
+   "level": "hypothese",
+   "url": "https://arxiv.org/abs/2504.00327"
   }
  ]
 }

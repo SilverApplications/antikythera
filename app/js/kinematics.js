@@ -16,8 +16,8 @@ export const RATES = {
   metonic: R('b2', 'l1') * R('l2', 'm1') * R('m2', 'n1'),              // 5/19
 };
 RATES.anomaly = RATES.moonSidereal - RATES.apsides;
-RATES.olympiad = RATES.metonic * R('n2', 'o1');                         // 1/4
-RATES.callippic = RATES.metonic * R('n3', 'p1') * R('p2', 'q1');        // 1/76
+RATES.olympiad = RATES.metonic * R('n3', 'o1');                         // 1/4
+RATES.callippic = RATES.metonic * R('n2', 'p1') * R('p2', 'q1');        // 1/76
 RATES.saros = RATES.apsides * R('e4', 'f1') * R('f2', 'g1');            // 940/4237
 RATES.exeligmos = RATES.saros * R('g2', 'h1') * R('h2', 'i1');          // 235/12711
 RATES.synodic = RATES.moonSidereal - 1;                                 // 235/19
@@ -33,7 +33,7 @@ RATES.syn = {
 
 // --- Parameter, die nicht aus Zähnezahlen folgen (Evidenz E3/E4) ----------------
 export const PARAMS = {
-  pinRadius: 9.6, pinOffset: 1.1,                 // mm, Stift-Schlitz Mond (Freeth 2006, Näherung)
+  pinRadius: 9.6, pinOffset: 1.1,                 // mm, Stift-Schlitz Mond (Freeth 2006: Achsversatz k1/k2 ca. 1,1 mm)
   sunEcc: 1 / 24, sunApogee: 65.5,                // Hipparch: Exzentrizität und Apogäum
   // Epizykel/Deferent-Verhältnis: hier moderne große Halbachsen (Freeth 2021 nutzt antike Werte)
   a: { mercury: 0.387, venus: 0.723, mars: 1.524, jupiter: 5.203, saturn: 9.537 },
@@ -141,8 +141,8 @@ export function gearAngles(state) {
   ang.l = -b * R('b2', 'l1');
   ang.m = -ang.l * R('l2', 'm1');
   ang.n = -ang.m * R('m2', 'n1');
-  ang.o = -ang.n * R('n2', 'o1');
-  ang.p = -ang.n * R('n3', 'p1');
+  ang.o = -ang.n * R('n3', 'o1');
+  ang.p = -ang.n * R('n2', 'p1');
   ang.q = -ang.p * R('p2', 'q1');
   ang.e3 = -ang.m * R('m3', 'e3');            // e3+e4 (Träger)
   ang.f = -ang.e3 * R('e4', 'f1');

@@ -156,6 +156,8 @@ input[type=range] { accent-color: var(--p300); width: 100%; }
 .paper b { display: block; color: var(--w); margin: 4px 0 6px; font-weight: 500; }
 .paper dl { margin: 0; display: grid; grid-template-columns: 88px 1fr; gap: 3px 8px; font-size: 13px; line-height: 1.4; }
 .paper dt { color: var(--s300); }
+.paper .paper-link { display: inline-block; margin-top: 8px; font-size: 13px; color: var(--p300); text-decoration: none; }
+.paper .paper-link:hover { text-decoration: underline; }
 .paper dd { margin: 0; }
 .lvl { font-size: 11px; padding: 1px 6px; border-radius: 3px; border: 1px solid var(--g500); }
 .lvl-belegt { border-color: var(--p300); color: var(--p300); }

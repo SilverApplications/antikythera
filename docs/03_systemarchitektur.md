@@ -18,7 +18,7 @@ AM-000  Antikythera-Mechanismus (Gesamtsystem)
 ├─ AM-200  Antrieb
 │   ├─ AM-210  Handkurbel + Welle                           E4
 │   ├─ AM-220  Kronrad a1 (48)                              E1
-│   └─ AM-230  Hauptantriebsrad b1 (224) + b2 (64)          E1
+│   └─ AM-230  Hauptantriebsrad b1 (223) + b2 (64)          E1
 ├─ AM-300  Kosmos-Getriebe (Front, auf b1)
 │   ├─ AM-310  Innere Planeten (Festrad 51)
 │   │   ├─ AM-311  Merkur 72+89 ~ 40 ~ 20 ⊕                E3
@@ -37,8 +37,8 @@ AM-000  Antikythera-Mechanismus (Gesamtsystem)
 │   └─ AM-440  Mondphase: Kronrad ma1 + Kugel, mittl. Sonne b0  E1/E3
 ├─ AM-500  Kalendergetriebe (Rückseite oben)
 │   ├─ AM-510  Metonisch b2~l1+l2~m1+m2~n1                  E1/E2
-│   ├─ AM-520  Spiele n2~o1                                 E2/E1
-│   └─ AM-530  Kallipp n3~p1+p2~q1                          E2
+│   ├─ AM-520  Spiele n3~o1                                 E2/E1
+│   └─ AM-530  Kallipp n2~p1+p2~q1                          E2
 ├─ AM-600  Finsternisgetriebe (Rückseite unten)
 │   ├─ AM-610  Saros m3~e3+e4~f1+f2~g1                      E2/E1
 │   └─ AM-620  Exeligmos g2~h1+h2~i1                        E1

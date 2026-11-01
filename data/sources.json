@@ -6,7 +6,8 @@
    "jahr": 2006,
    "titel": "Decoding the ancient Greek astronomical calculator known as the Antikythera Mechanism",
    "ort": "Nature 444, 587-591",
-   "nutzen": "Rueckseiten-Getriebe, Zaehnezahlen"
+   "nutzen": "Rückseiten-Getriebe; Supplementary Notes 3: Zähnezahlen mit Grenzen und gemessene Radien (Grundlage der Radgrößen im Modell)",
+   "url": "https://doi.org/10.1038/nature05357"
   },
   {
    "id": "freeth2008",
@@ -14,7 +15,8 @@
    "jahr": 2008,
    "titel": "Calendars with Olympiad display and eclipse prediction on the Antikythera Mechanism",
    "ort": "Nature 454, 614-617",
-   "nutzen": "Kalender, Spiele"
+   "nutzen": "Kalender, Spiele",
+   "url": "https://doi.org/10.1038/nature07130"
   },
   {
    "id": "freeth2021",
@@ -22,7 +24,7 @@
    "jahr": 2021,
    "titel": "A Model of the Cosmos in the ancient Greek Antikythera Mechanism",
    "ort": "Scientific Reports 11, 5821",
-   "url": "https://discovery.ucl.ac.uk/id/eprint/10124374/",
+   "url": "https://doi.org/10.1038/s41598-021-84310-w",
    "lizenz": "CC BY 4.0",
    "nutzen": "Kosmos-Getriebe Front"
   },

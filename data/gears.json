@@ -1,7 +1,7 @@
 {
  "meta": {
   "title": "Antikythera-Mechanismus - Zahnraddaten",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "stand": "2026-11-01",
   "basisModell": "Freeth et al. 2006 (Nature) + Freeth et al. 2008 (Nature) für die Rückseite; Freeth et al. 2021 (Scientific Reports) für den Kosmos an der Front",
   "einheiten": {
@@ -15,13 +15,13 @@
   },
   "geometrie": {
    "zahnform": "Dreieckszähne (annähernd gleichseitig), keine Evolventenverzahnung",
-   "modulStandard_mm": 0.5,
    "modulB1_mm": 0.58,
    "mittlereTeilung_mm": 1.6,
    "mittlereRadstaerke_mm": 1.4,
    "mittlererLuftspalt_mm": 1.2,
    "zahnhoehe_mm": 1.1,
-   "hinweis": "Radien vorerst aus Modul x Zähnezahl / 2 abgeleitet (Näherung). TODO: durch gemessene Radien aus Freeth et al. 2021, Supplementary Table S8 ersetzen."
+   "hinweis": "Radien je Eingriffspaar aus den CT-Messungen von Freeth et al. 2006 (Supplementary Notes 3, Feld \"measured\") gemittelt; Modul variiert dadurch zwischen ca. 0,42 und 0,58 mm. Räder ohne Messung: Modul 0,5 mm.",
+   "modulOhneMessung_mm": 0.5
   },
   "evidenzklassen": {
    "E1": "erhalten - physisch vorhanden, Zähnezahl per Röntgen-CT bestimmt",
@@ -42,11 +42,18 @@
    "meshes": [
     "b1"
    ],
-   "function": "Kronrad (Planrad) am Eingang, quer zur Hauptebene; von der Kurbel angetrieben"
+   "function": "Kronrad (Planrad) am Eingang, quer zur Hauptebene; von der Kurbel angetrieben",
+   "measured": {
+    "tip": 13.6,
+    "tipErr": 0.2,
+    "count": "48",
+    "limits": "definitiv",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "b1",
-   "teeth": 224,
+   "teeth": 223,
    "type": "spur",
    "assembly": "AM-200",
    "evidence": "E1",
@@ -56,7 +63,16 @@
     "a1"
    ],
    "function": "Hauptantriebsrad (Main Drive Wheel), 4 Speichen, ca. 13 cm; 1 Umdrehung = 1 Jahr; trägt an der Front die Kosmos-Getriebe",
-   "note": "Zähnezahl gemessen 223-226 (Freeth 2006: 223-224). 224 ist Konvention; für Übersetzungen irrelevant, da b1 Referenz ist."
+   "note": "Zähnezahl: Freeth 2006 Bestwert 223 (Grenzen 223/224, CT); Karakalos 223-226, Wright 223. Für die Übersetzungen unerheblich, da b1 die Referenz (1 Jahr) ist.",
+   "measured": {
+    "tip": 64.9,
+    "tipErr": 1.1,
+    "rIn": 63.8,
+    "rOut": 65.0,
+    "count": "223",
+    "limits": "223/224",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "b2",
@@ -70,7 +86,16 @@
     "c1",
     "l1"
    ],
-   "function": "Verteiler hinter b1: startet Mond- und Kalenderzug"
+   "function": "Verteiler hinter b1: startet Mond- und Kalenderzug",
+   "measured": {
+    "tip": 15.5,
+    "tipErr": 0.2,
+    "rIn": 14.9,
+    "rOut": 15.7,
+    "count": "64",
+    "limits": "64-66",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "b3",
@@ -83,7 +108,16 @@
    "meshes": [
     "e1"
    ],
-   "function": "Mondausgang (Hohlwelle zur Front, Mondzeiger)"
+   "function": "Mondausgang (Hohlwelle zur Front, Mondzeiger)",
+   "measured": {
+    "tip": 8.6,
+    "tipErr": 0.2,
+    "rIn": 8.2,
+    "rOut": 9.3,
+    "count": "32",
+    "limits": "definitiv",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "c1",
@@ -96,7 +130,16 @@
    "meshes": [
     "b2"
    ],
-   "function": "Mondzug Stufe 1"
+   "function": "Mondzug Stufe 1",
+   "measured": {
+    "tip": 10.3,
+    "tipErr": 0.3,
+    "rIn": 9.4,
+    "rOut": 10.3,
+    "count": "38",
+    "limits": "38/39",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "c2",
@@ -109,7 +152,16 @@
    "meshes": [
     "d1"
    ],
-   "function": "Mondzug Stufe 2"
+   "function": "Mondzug Stufe 2",
+   "measured": {
+    "tip": 11.3,
+    "tipErr": 0.4,
+    "rIn": 10.5,
+    "rOut": 11.0,
+    "count": "47/48",
+    "limits": "47-49",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "d1",
@@ -122,7 +174,16 @@
    "meshes": [
     "c2"
    ],
-   "function": "Mondzug Stufe 2"
+   "function": "Mondzug Stufe 2",
+   "measured": {
+    "tip": 5.6,
+    "tipErr": 0.3,
+    "rIn": 5.1,
+    "rOut": 5.8,
+    "count": "24",
+    "limits": "definitiv",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "d2",
@@ -135,7 +196,16 @@
    "meshes": [
     "e2"
    ],
-   "function": "Mondzug Stufe 3 (127 = Primzahl, halbe 254 siderische Monate)"
+   "function": "Mondzug Stufe 3 (127 = Primzahl, halbe 254 siderische Monate)",
+   "measured": {
+    "tip": 31.6,
+    "tipErr": 0.2,
+    "rIn": 30.6,
+    "rOut": 31.7,
+    "count": "127",
+    "limits": "definitiv",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "e2",
@@ -148,7 +218,16 @@
    "meshes": [
     "d2"
    ],
-   "function": "siderischer Monat"
+   "function": "siderischer Monat",
+   "measured": {
+    "tip": 7.8,
+    "tipErr": 0.2,
+    "rIn": 7.1,
+    "rOut": 7.8,
+    "count": "32",
+    "limits": "definitiv",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "e5",
@@ -161,7 +240,17 @@
    "meshes": [
     "k1"
    ],
-   "function": "treibt das Epizykel-Paar k1/k2"
+   "function": "treibt das Epizykel-Paar k1/k2",
+   "measured": {
+    "tip": 13.4,
+    "tipErr": 0.2,
+    "rIn": 12.2,
+    "rOut": 13.1,
+    "count": "52",
+    "limits": "50-52",
+    "src": "freeth2006-suppl"
+   },
+   "note": "CT-Bestwert 52 (Grenzen 50-52); das Modell nutzt wie Freeth 2006 im Text 50 = k1, sonst stimmt die Mondanomalie nicht."
   },
   {
    "id": "e3",
@@ -174,7 +263,16 @@
    "meshes": [
     "m3"
    ],
-   "function": "Größtes Rad der Rückseite (Saros: 223 Monate); dient zugleich als Träger für k1/k2 (Apsidendrehung ca. 8,88 Jahre)"
+   "function": "Größtes Rad der Rückseite (Saros: 223 Monate); dient zugleich als Träger für k1/k2 (Apsidendrehung ca. 8,88 Jahre)",
+   "measured": {
+    "tip": 52.6,
+    "tipErr": 0.3,
+    "rIn": 51.5,
+    "rOut": 52.4,
+    "count": "220-225",
+    "limits": "217-235",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "e4",
@@ -187,7 +285,16 @@
    "meshes": [
     "f1"
    ],
-   "function": "Saros-Zug weiter zur Saros-Spirale"
+   "function": "Saros-Zug weiter zur Saros-Spirale",
+   "measured": {
+    "tip": 50.2,
+    "tipErr": 0.3,
+    "rIn": 49.1,
+    "rOut": 49.9,
+    "count": "187-191",
+    "limits": "180-192",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "k1",
@@ -201,7 +308,16 @@
     "e5"
    ],
    "function": "trägt den Stift (pin) der Stift-Schlitz-Kopplung",
-   "note": "Achsabstand k1/k2 ca. 1,1 mm -> erzeugt die ungleichförmige Mondgeschwindigkeit (Hipparch'sche Mondtheorie)"
+   "note": "Achsabstand k1/k2 ca. 1,1 mm -> erzeugt die ungleichförmige Mondgeschwindigkeit (Hipparch'sche Mondtheorie)",
+   "measured": {
+    "tip": 13.5,
+    "tipErr": 0.3,
+    "rIn": 12.6,
+    "rOut": 13.3,
+    "count": "49/50",
+    "limits": "48-51",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "k2",
@@ -214,7 +330,16 @@
    "meshes": [
     "e6"
    ],
-   "function": "trägt den Schlitz (slot)"
+   "function": "trägt den Schlitz (slot)",
+   "measured": {
+    "tip": 14.0,
+    "tipErr": 0.2,
+    "rIn": 13.1,
+    "rOut": 14.0,
+    "count": "50",
+    "limits": "48-52",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "e6",
@@ -227,7 +352,16 @@
    "meshes": [
     "k2"
    ],
-   "function": "Rückführung der variablen Mondbewegung"
+   "function": "Rückführung der variablen Mondbewegung",
+   "measured": {
+    "tip": 13.9,
+    "tipErr": 0.2,
+    "rIn": 12.9,
+    "rOut": 13.9,
+    "count": "50",
+    "limits": "49/50",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "e1",
@@ -240,7 +374,16 @@
    "meshes": [
     "b3"
    ],
-   "function": "Übergabe an Mondausgang b3"
+   "function": "Übergabe an Mondausgang b3",
+   "measured": {
+    "tip": 9.4,
+    "tipErr": 0.3,
+    "rIn": 8.6,
+    "rOut": 9.7,
+    "count": "32",
+    "limits": "definitiv",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "f1",
@@ -253,7 +396,16 @@
    "meshes": [
     "e4"
    ],
-   "function": "Saros-Zug"
+   "function": "Saros-Zug",
+   "measured": {
+    "tip": 14.0,
+    "tipErr": 0.2,
+    "rIn": 13.6,
+    "rOut": 14.6,
+    "count": "53",
+    "limits": "53/54",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "f2",
@@ -266,7 +418,16 @@
    "meshes": [
     "g1"
    ],
-   "function": "Saros-Zug"
+   "function": "Saros-Zug",
+   "measured": {
+    "tip": 8.3,
+    "tipErr": 0.3,
+    "rIn": 7.4,
+    "rOut": 8.2,
+    "count": "30",
+    "limits": "definitiv",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "g1",
@@ -279,7 +440,16 @@
    "meshes": [
     "f2"
    ],
-   "function": "Saros-Zeiger (4 Windungen = 223 Monate)"
+   "function": "Saros-Zeiger (4 Windungen = 223 Monate)",
+   "measured": {
+    "tip": 14.2,
+    "tipErr": 0.3,
+    "rIn": 13.4,
+    "rOut": 14.4,
+    "count": "54",
+    "limits": "54-56",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "g2",
@@ -292,7 +462,16 @@
    "meshes": [
     "h1"
    ],
-   "function": "Abzweig Exeligmos"
+   "function": "Abzweig Exeligmos",
+   "measured": {
+    "tip": 4.9,
+    "tipErr": 0.1,
+    "rIn": 4.1,
+    "rOut": 4.9,
+    "count": "20",
+    "limits": "definitiv",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "h1",
@@ -305,7 +484,16 @@
    "meshes": [
     "g2"
    ],
-   "function": "Exeligmos-Zug"
+   "function": "Exeligmos-Zug",
+   "measured": {
+    "tip": 14.0,
+    "tipErr": 0.1,
+    "rIn": 13.0,
+    "rOut": 13.7,
+    "count": "60-64",
+    "limits": "60-64",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "h2",
@@ -318,7 +506,16 @@
    "meshes": [
     "i1"
    ],
-   "function": "Exeligmos-Zug"
+   "function": "Exeligmos-Zug",
+   "measured": {
+    "tip": 3.9,
+    "tipErr": 0.2,
+    "rIn": 3.0,
+    "rOut": 3.8,
+    "count": "15",
+    "limits": "definitiv",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "i1",
@@ -331,7 +528,16 @@
    "meshes": [
     "h2"
    ],
-   "function": "Exeligmos-Zeiger (3 Saros = 54 Jahre)"
+   "function": "Exeligmos-Zeiger (3 Saros = 54 Jahre)",
+   "measured": {
+    "tip": 13.4,
+    "tipErr": 0.3,
+    "rIn": 12.6,
+    "rOut": 13.2,
+    "count": "60",
+    "limits": "59-62",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "l1",
@@ -344,7 +550,16 @@
    "meshes": [
     "b2"
    ],
-   "function": "Kalenderzug Stufe 1"
+   "function": "Kalenderzug Stufe 1",
+   "measured": {
+    "tip": 9.1,
+    "tipErr": 0.2,
+    "rIn": 8.3,
+    "rOut": 9.0,
+    "count": "38",
+    "limits": "definitiv",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "l2",
@@ -357,7 +572,16 @@
    "meshes": [
     "m1"
    ],
-   "function": "Kalenderzug Stufe 2"
+   "function": "Kalenderzug Stufe 2",
+   "measured": {
+    "tip": 13.1,
+    "tipErr": 0.4,
+    "rIn": 12.5,
+    "rOut": 13.3,
+    "count": "53",
+    "limits": "definitiv",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "m1",
@@ -370,7 +594,16 @@
    "meshes": [
     "l2"
    ],
-   "function": "Verteiler Kalender/Saros"
+   "function": "Verteiler Kalender/Saros",
+   "measured": {
+    "tip": 24.5,
+    "tipErr": 0.5,
+    "rIn": 23.6,
+    "rOut": 24.7,
+    "count": "96/97",
+    "limits": "96-99",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "m2",
@@ -383,7 +616,16 @@
    "meshes": [
     "n1"
    ],
-   "function": "Kalenderzug Stufe 3"
+   "function": "Kalenderzug Stufe 3",
+   "measured": {
+    "tip": 4.4,
+    "tipErr": 0.3,
+    "rIn": 3.7,
+    "rOut": 4.0,
+    "count": "15",
+    "limits": "definitiv",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "m3",
@@ -413,6 +655,20 @@
   },
   {
    "id": "n2",
+   "teeth": 15,
+   "type": "spur",
+   "assembly": "AM-500",
+   "evidence": "E2",
+   "fragment": null,
+   "arbor": "N",
+   "meshes": [
+    "p1"
+   ],
+   "function": "Abzweig Kallippischer Zyklus",
+   "note": "Benennung wie in der Literatur: n2 (15) treibt p1 (Freeth 2006, Spinellis 2008)."
+  },
+  {
+   "id": "n3",
    "teeth": 57,
    "type": "spur",
    "assembly": "AM-500",
@@ -425,19 +681,6 @@
    "function": "Abzweig Spiele-Anzeige (Olympiade)"
   },
   {
-   "id": "n3",
-   "teeth": 15,
-   "type": "spur",
-   "assembly": "AM-500",
-   "evidence": "E2",
-   "fragment": null,
-   "arbor": "N",
-   "meshes": [
-    "p1"
-   ],
-   "function": "Abzweig Kallippischer Zyklus"
-  },
-  {
    "id": "o1",
    "teeth": 60,
    "type": "spur",
@@ -446,9 +689,19 @@
    "fragment": "B",
    "arbor": "O",
    "meshes": [
-    "n2"
+    "n3"
    ],
-   "function": "Spiele-Zeiger (4 Jahre), einziger gegen den Uhrzeigersinn laufender Zeiger"
+   "function": "Spiele-Zeiger (4 Jahre), einziger gegen den Uhrzeigersinn laufender Zeiger",
+   "measured": {
+    "tip": 13.3,
+    "tipErr": 0.1,
+    "rIn": 12.2,
+    "rOut": 12.8,
+    "count": "60",
+    "limits": "57-61",
+    "src": "freeth2006-suppl"
+   },
+   "note": "CT-Bestwert 60 (Grenzen 57-61). Freeth 2006 ordnete o1 noch dem Kallipp-Zug zu; seit Freeth 2008 treibt es die Spiele-Anzeige."
   },
   {
    "id": "p1",
@@ -459,7 +712,7 @@
    "fragment": null,
    "arbor": "P",
    "meshes": [
-    "n3"
+    "n2"
    ],
    "function": "Kallipp-Zug"
   },
@@ -491,7 +744,7 @@
   },
   {
    "id": "ma1",
-   "teeth": null,
+   "teeth": 20,
    "type": "contrate",
    "assembly": "AM-400",
    "evidence": "E1",
@@ -501,7 +754,14 @@
     "b0"
    ],
    "function": "Kronrad der Mondphasen-Kugel (dreht die halb schwarz/halb helle Kugel, ca. 6 mm)",
-   "note": "TODO: Zähnezahl aus Literatur nachtragen"
+   "note": "20 Zähne, Spitzenradius 5,3 mm (Freeth 2006, Suppl. Notes 3; dort als \"q1\" bezeichnet, Fragment C).",
+   "measured": {
+    "tip": 5.3,
+    "tipErr": 0.2,
+    "count": "20",
+    "limits": "definitiv",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "b0",
@@ -580,7 +840,16 @@
     "V-26"
    ],
    "function": "Venus Epizykel; trägt Stift für den Schlitz-Folger",
-   "note": "Physisch erhalten (Fragment D, nur 3 Zähne fehlen). Rolle als Venus-Epizykel ist Interpretation (E3)."
+   "note": "Physisch erhalten (Fragment D, nur 3 Zähne fehlen). Rolle als Venus-Epizykel ist Interpretation (E3).",
+   "measured": {
+    "tip": 16.4,
+    "tipErr": 0.2,
+    "rIn": 15.9,
+    "rOut": 16.9,
+    "count": "63",
+    "limits": "definitiv",
+    "src": "freeth2006-suppl"
+   }
   },
   {
    "id": "Me-72",
@@ -988,7 +1257,7 @@
      "n1"
     ],
     [
-     "n2",
+     "n3",
      "o1"
     ]
    ],
@@ -1013,7 +1282,7 @@
      "n1"
     ],
     [
-     "n3",
+     "n2",
      "p1"
     ],
     [

@@ -54,7 +54,7 @@ After editing anything in `data/`: `python3 tools/build_data.py`.
 
 ## Known limitations
 
-- Axle **directions** are schematic until the measured coordinates (Freeth et al. 2021, Supplementary Table S8) are added; distances are exact.
+- Gear **sizes and centre distances** follow the CT measurements in the supplementary notes of Freeth et al. 2006 (one common module per meshing pair, fitted to the measured radii; all within ±0.7 mm). The **directions** between the axles are schematic: axle coordinates are not published as numbers.
 - Planetary pin-and-slot followers are not yet modelled as geometry; the planets' positions are computed with the equivalent epicycle model.
 - Month names per cell of the Metonic spiral and the Saros eclipse glyphs are not yet included.
 

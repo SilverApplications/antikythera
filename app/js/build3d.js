@@ -1,7 +1,7 @@
 // Prozedurale 3D-Geometrie: Zahnräder mit Dreieckszähnen, Platten, Zifferblätter, Gehäuse.
 import * as THREE from '../vendor/three.module.min.js';
 import { GEARS } from './generated/data.js';
-import { PLACE, ARBORS, BACK, PLATE, FRONT, A1, pitchR, MODULE, MODULE_B1 } from './layout.js';
+import { PLACE, ARBORS, BACK, PLATE, FRONT, A1, pitchR, moduleOf } from './layout.js';
 import { deviceText } from './i18n.js';
 import { patinaTextures, oliveWood, engravedTexture, engraveStroke, engraveText } from './patina.js';
 
@@ -118,7 +118,7 @@ export function buildMechanism(mat) {
   for (const [id, pl] of Object.entries(PLACE)) {
     const g = GEAR[id]; if (!g) continue;
     const teeth = g.teeth ?? 40;
-    const m = id === 'b1' ? MODULE_B1 : MODULE;
+    const m = moduleOf(id);
     const mesh = new THREE.Mesh(spurGeometry(teeth, m), mat.bronze);
     const holder = new THREE.Group(); holder.add(mesh);
     holder.position.set(pl.at[0], pl.at[1], pl.z);
@@ -130,7 +130,7 @@ export function buildMechanism(mat) {
 
   // Kronrad a1 (Antrieb) + Kurbel (spekulativ)
   {
-    const [ring, disk] = crownGeometry(48, MODULE_B1);
+    const [ring, disk] = crownGeometry(48, moduleOf('a1'));
     const a1 = new THREE.Group();
     a1.add(new THREE.Mesh(ring, mat.bronze), new THREE.Mesh(disk, mat.bronze));
     a1.rotation.y = -Math.PI / 2; // Zahnseite zeigt Richtung b1 (-x)

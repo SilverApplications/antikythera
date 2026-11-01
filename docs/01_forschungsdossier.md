@@ -45,8 +45,8 @@ Alle Züge sind in `data/gears.json` hinterlegt und mit `tools/verify_gearing.py
 | Mond siderisch | b2~c1+c2~d1+d2~e2+e5~k1⊕k2~e6+e1~b3 | 254/19 | 27,32 d | 27,32 d |
 | Synodischer Monat | Differenz Mond – Sonne | 235/19 | 29,530 d | 29,531 d |
 | Metonisch | b2~l1+l2~m1+m2~n1 | 5/19 | 19 J. / 5 Windungen | – |
-| Spiele | …+n2~o1 | 1/4 | 4 Jahre | – |
-| Kallipp | …+n3~p1+p2~q1 | 1/76 | 76 Jahre | – |
+| Spiele | …+n3~o1 | 1/4 | 4 Jahre | – |
+| Kallipp | …+n2~p1+p2~q1 | 1/76 | 76 Jahre | – |
 | Saros | …m1+m3~e3+e4~f1+f2~g1 | 940/4237 | 223 Monate / 4 Windungen | Abw. −0,001 % |
 | Exeligmos | …+g2~h1+h2~i1 | 235/12711 | 54 Jahre | Abw. −0,001 % |
 | Merkur | 51~72+89~40~20⊕ | 1513/480 | 115,87 d | 115,88 d |
@@ -72,7 +72,7 @@ Legende: `~` kämmt, `+` gleiche Welle, `⊕` Stift-Schlitz-Kopplung.
 | E3 rekonstruiert | Freeth 2021 Kosmos (inkl. mittlere Sonne b0) | 28 |
 | E4 spekulativ | Drachenzeiger, Kurbel, Gehäusedetails, Marker Mars/Jupiter/Saturn | 4 Räder + Bauteile |
 
-Summe 69 Räder – deckt sich mit der Gesamtzahl im Paper. Offen: Zähnezahl von ma1 und b0; Abgleich der Zuordnung mit Supplement S8.
+Summe 69 Räder – deckt sich mit der Gesamtzahl im Paper. Offen: Zähnezahl von b0. (ma1 = 20 Zähne, Freeth 2006 Suppl. Notes 3, dort „q1“; Benennung n2/n3 an die Literatur angepasst, siehe docs/08.)
 
 ## 5. Kontroversen, die wir in der App zeigen sollten
 
@@ -83,8 +83,8 @@ Summe 69 Räder – deckt sich mit der Gesamtzahl im Paper. Offen: Zähnezahl vo
 5. **Planeten-Getriebe:** Fast vollständig verloren. Freeth 2021 passt zu allen Indizien, ist aber ausdrücklich kein Replikat.
 
 ## 6. Datenlücken / TODO
-- Gemessene Radien und Positionen aller Achsen (Supplement S8, Freeth 2021) → für originalgetreue Achsabstände.
-- Zähnezahl ma1 (Mondphasen-Kronrad).
+- ~~Gemessene Radien~~ → erledigt mit Freeth 2006, Supplementary Notes 3 (siehe docs/08). Offen: **Koordinaten** der Achsen (nicht als Zahlen veröffentlicht; ggf. aus CT-Abbildungen ablesen).
+- ~~Zähnezahl ma1~~ → 20 (Freeth 2006).
 - Exakte Geometrie Front-/Rückplatte, Spiralabstände, Zellenradien.
 - Parapegma- und Inschriftentexte (neue Edition Iversen in Arbeit, siehe MPIWG-Vortrag Feb. 2026).
 - 2025er Grabungsergebnisse (Abschlusskampagne).

@@ -1,11 +1,36 @@
-// Achslagen und Ebenen. Die Abstände folgen exakt aus Zähnezahl x Modul (Eingriffsbedingung).
-// Die Richtungen sind SCHEMATISCH gewählt, bis die gemessenen Koordinaten aus
-// Freeth et al. 2021 (Supplement S8) eingepflegt sind.
+// Achslagen und Ebenen.
+// Radien: aus den CT-Messungen von Freeth et al. 2006 (Supplementary Notes 3). Für jedes
+// Eingriffspaar wird ein gemeinsamer Modul so gewählt, dass die Teilkreise am besten zu den
+// gemessenen Radien passen (Mitte zwischen Fuß- und Kopfkreis). Damit stimmen Größe und
+// Achsabstand mit dem Original überein, und die Zähne greifen trotzdem sauber ineinander.
+// Räder ohne Messung (verlorene Räder, Kosmos-Getriebe) erhalten Modul 0,5 mm.
+// Die RICHTUNGEN zwischen den Achsen sind weiterhin schematisch: Koordinaten der Achsen
+// sind in den Supplements nicht als Zahlen veröffentlicht.
 import { GEARS } from './generated/data.js';
 
-export const MODULE = 0.5, MODULE_B1 = 0.58;
+export const MODULE = 0.5;
 const Z = Object.fromEntries(GEARS.gears.map((g) => [g.id, g.teeth]));
-export const pitchR = (id) => (Z[id] ?? 20) * (id === 'b1' || id === 'a1' ? MODULE_B1 : MODULE) / 2;
+const MEAS = Object.fromEntries(GEARS.gears.filter((g) => g.measured?.rIn != null)
+  .map((g) => [g.id, (g.measured.rIn + g.measured.rOut) / 2]));
+const MESH_GROUPS = [
+  ['a1', 'b1'], ['b2', 'c1', 'l1'], ['c2', 'd1'], ['d2', 'e2'], ['e5', 'k1'], ['k2', 'e6'], ['e1', 'b3'],
+  ['l2', 'm1'], ['m2', 'n1'], ['m3', 'e3'], ['e4', 'f1'], ['f2', 'g1'], ['g2', 'h1'], ['h2', 'i1'],
+  ['n3', 'o1'], ['n2', 'p1'], ['p2', 'q1'],
+  ['V-34', 'V-26', 'r1'], // Venus: r1 aus Fragment D ist gemessen
+];
+const MOD = {};
+for (const grp of MESH_GROUPS) {
+  let zr = 0, zz = 0;
+  for (const id of grp) if (MEAS[id] != null) { zr += Z[id] * MEAS[id]; zz += Z[id] ** 2; }
+  for (const id of grp) MOD[id] = zz ? (2 * zr) / zz : MODULE;
+}
+// Stift-Schlitz: Achse K' von k2 liegt ca. 1,1 mm weiter außen als K (Freeth 2006).
+// Der Modul von k2/e6 folgt daraus (ergibt 0,534 mm, gemessen 0,54 ± 0,02 mm).
+export const PIN_OFFSET = 1.1;
+MOD.k2 = MOD.e6 = ((Z.e5 + Z.k1) * MOD.e5 / 2 + PIN_OFFSET) * 2 / (Z.k2 + Z.e6);
+export const moduleOf = (id) => MOD[id] ?? MODULE;
+export const MODULE_B1 = moduleOf('b1');
+export const pitchR = (id) => (Z[id] ?? 20) * moduleOf(id) / 2;
 const d = (a, b) => pitchR(a) + pitchR(b);
 const deg = Math.PI / 180;
 
@@ -19,16 +44,19 @@ function circ(A, ra, B, rb, side) {
 }
 
 // --- Feste Wellen (Gestell) --------------------------------------------------
-const B = [0, 0], E = [0, -16], N = [0, 62], G = [0, -90];
+// B-E folgt aus dem Eingriff e1~b3 (gemessene Radien 9,15 + 8,75 mm).
+// N (Metonisch) so, dass m3~e3 und m2~n1 erreichbar sind; G (Saros) 150 mm darunter.
+const B = [0, 0], E = [0, -d('e1', 'b3')];
+const N = [0, E[1] + 0.97 * (d('e3', 'm3') + d('m2', 'n1'))], G = [0, N[1] - 150];
 const M = circ(E, d('e3', 'm3'), N, d('m2', 'n1'), -1);
 const L = circ(B, d('b2', 'l1'), M, d('l2', 'm1'), -1);
-const C = polar(B, d('b2', 'c1'), 210);
+const C = polar(B, d('b2', 'c1'), 180);
 const D = circ(C, d('c2', 'd1'), E, d('d2', 'e2'), 1);
 const F = circ(E, d('e4', 'f1'), G, d('f2', 'g1'), 1);
 const H = polar(G, d('g2', 'h1'), -60);
 const I = polar(H, d('h2', 'i1'), -120);
-const O = polar(N, d('n2', 'o1'), 20);
-const P = polar(N, d('n3', 'p1'), 160);
+const O = polar(N, d('n3', 'o1'), 20);
+const P = polar(N, d('n2', 'p1'), 160);
 const Q = polar(P, d('p2', 'q1'), 200);
 
 export const ARBORS = { B, E, N, G, M, L, C, D, F, H, I, O, P, Q };
@@ -53,10 +81,10 @@ export const PLACE = {
   e6: { at: E, z: -14.5, arbor: 'e6' }, e1: { at: E, z: -5, arbor: 'e6' },
   e3: { at: E, z: -17, arbor: 'e3' }, e4: { at: E, z: -19.5, arbor: 'e3' },
   k1: { frame: 'e3', at: [d('e5', 'k1'), 0], z: -12.5, arbor: 'k1' },
-  k2: { frame: 'e3', at: [d('e5', 'k1') + 1.1, 0], z: -14.5, arbor: 'k2' },
+  k2: { frame: 'e3', at: [d('e5', 'k1') + PIN_OFFSET, 0], z: -14.5, arbor: 'k2' },
   l1: { at: L, z: -2.5, arbor: 'l' }, l2: { at: L, z: -22, arbor: 'l' },
   m1: { at: M, z: -22, arbor: 'm' }, m2: { at: M, z: -24.5, arbor: 'm' }, m3: { at: M, z: -17, arbor: 'm' },
-  n1: { at: N, z: -24.5, arbor: 'n' }, n2: { at: N, z: -27, arbor: 'n' }, n3: { at: N, z: -29.5, arbor: 'n' },
+  n1: { at: N, z: -24.5, arbor: 'n' }, n3: { at: N, z: -27, arbor: 'n' }, n2: { at: N, z: -29.5, arbor: 'n' },
   o1: { at: O, z: -27, arbor: 'o' },
   p1: { at: P, z: -29.5, arbor: 'p' }, p2: { at: P, z: -31, arbor: 'p' }, q1: { at: Q, z: -31, arbor: 'q' },
   f1: { at: F, z: -19.5, arbor: 'f' }, f2: { at: F, z: -24.5, arbor: 'f' },
