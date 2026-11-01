@@ -304,8 +304,9 @@ export function buildMechanism(mat) {
 
   // ------------------------------------------------ Unterplatte (fest) mit Festrad 56, Rohrbündel
   {
-    const sp = S.sub, hw = sp.w / 2, hh = sp.h / 2;
-    const geos = [plateGeo([[-hw, -hh], [hw, -hh], [hw, hh], [-hw, hh]], sp.t, [[0, 0, sp.bore]]).translate(0, 0, sp.z0)];
+    // Runde Scheibe, etwas größer als die Öffnung der Frontplatte (r 60): verdeckt das Getriebe hinter den Ringen
+    const sp = S.sub;
+    const geos = [disc(sp.r, sp.t, sp.bore, 96).translate(0, 0, sp.z0)];
     const hubG = disc(6.5, sp.z0 - Ly.CPF.z1, sp.bore, 32); hubG.translate(0, 0, Ly.CPF.z1); geos.push(hubG);
     for (let i = 0; i < 4; i++) { const a = i * TAU / 4 + 0.785; geos.push(cylZ(0.5, Ly.CPF.c, sp.z0 + sp.t + 0.2, 8).translate(Math.cos(a) * 5.4, Math.sin(a) * 5.4, 0)); }
     part(fixed, geos, mat.plate, { id: 'subplate', assembly: 'AM-155', evidence: 'E3' });

@@ -131,7 +131,7 @@ export const STRUCT = {
   longP: { len: 32.0, shoulder: 27.5, at: [15, 105, 195, 285].map((a) => polar(B, PILLAR_R, a)) }, // je mittig zwischen zwei Speichen
   strap: { z0: strap0, t: 1.6, w: 25.3, axis: SHORT_AXIS, r: 61, hole: 2.4 },
   cp: { z0: cp0, t: 2.0, r: 61, hole: 3.9 },
-  sub: { z0: 33.5, t: 1.5, w: 26, h: 152, bore: 4.1 },      // Unterplatte: feststehender Steg hinter der Frontplatte
+  sub: { z0: 33.5, t: 1.5, r: 62, bore: 4.1 },             // Unterplatte: feste runde Scheibe hinter der Frontplatte, schließt deren Öffnung
   dplate: { along: [8.2, 31.5], t: 1.0 },                   // D-Platte 25,3 mm breit (Fragment D), an den Strap gelötet
   steg: { r: 31.8, w: 4 },                                  // mittlere Sonne: Steg vom Block auf Speiche D zur Mitte
   bracketC: 46.2,                                           // Halter der Welle 44+34 auf Speiche C (Fig. S12)

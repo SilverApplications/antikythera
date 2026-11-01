@@ -17,7 +17,7 @@ export function setDeviceLang(l) { deviceLang = l; store.set('ak-device', l); li
 
 const UI = {
   de: {
-    version: 'Rekonstruktion v0.8.2 · Forschungsstand 11/2026', siteLang: 'Sprache', deviceLang: 'Beschriftung am Gerät',
+    version: 'Rekonstruktion v0.8.3 · Forschungsstand 11/2026', siteLang: 'Sprache', deviceLang: 'Beschriftung am Gerät',
     'view.front': 'Front', 'view.back': 'Rückseite', 'view.gears': 'Getriebe', 'view.explode': 'Explosion',
     definite: 'eindeutig', measured: 'Zähne laut CT (Freeth et al. 2006): {count} (Grenzen: {lim}).', measured21: 'Gemessen (Freeth et al. 2021, Tab. S8): Teilkreis {pitch} mm, Stärke {thick} mm, Modul {mod}. Im Modell: {model} mm.',
     schematic: 'Achslagen schematisch', schematicTitle: 'Radgrößen und Achsabstände nach CT-Messung (Freeth et al. 2021, Tab. S8), Kosmos-Lager nach den Speichen von b1; Richtungen zwischen den Achsen hinter b1 schematisch',
@@ -48,7 +48,7 @@ const UI = {
     'lvl.belegt': 'belegt', 'lvl.modell': 'Modell', 'lvl.hypothese': 'Hypothese', 'lvl.historisch': 'historisch',
   },
   en: {
-    version: 'Reconstruction v0.8.2 · research as of 11/2026', siteLang: 'Language', deviceLang: 'Lettering on the device',
+    version: 'Reconstruction v0.8.3 · research as of 11/2026', siteLang: 'Language', deviceLang: 'Lettering on the device',
     'view.front': 'Front', 'view.back': 'Back', 'view.gears': 'Gearing', 'view.explode': 'Exploded',
     definite: 'unambiguous', measured: 'Teeth from CT (Freeth et al. 2006): {count} (limits: {lim}).', measured21: 'Measured (Freeth et al. 2021, Table S8): pitch radius {pitch} mm, thickness {thick} mm, module {mod}. In the model: {model} mm.',
     schematic: 'Axle positions schematic', schematicTitle: 'Gear sizes and centre distances from CT measurements (Freeth et al. 2021, Table S8), cosmos bearings from the spokes of b1; directions between the axles behind b1 schematic',
@@ -79,7 +79,7 @@ const UI = {
     'lvl.belegt': 'established', 'lvl.modell': 'model', 'lvl.hypothese': 'hypothesis', 'lvl.historisch': 'historical',
   },
   el: {
-    version: 'Ανακατασκευή v0.8.2 · ερευνητικά δεδομένα 11/2026', siteLang: 'Γλώσσα', deviceLang: 'Επιγραφές στη συσκευή',
+    version: 'Ανακατασκευή v0.8.3 · ερευνητικά δεδομένα 11/2026', siteLang: 'Γλώσσα', deviceLang: 'Επιγραφές στη συσκευή',
     'view.front': 'Εμπρός', 'view.back': 'Πίσω', 'view.gears': 'Γρανάζια', 'view.explode': 'Ανάπτυξη',
     definite: 'σαφής', measured: 'Δόντια κατά CT (Freeth et al. 2006): {count} (όρια: {lim}).', measured21: 'Μέτρηση (Freeth et al. 2021, πίν. S8): ακτίνα αρχικού κύκλου {pitch} mm, πάχος {thick} mm, μέτρο {mod}. Στο μοντέλο: {model} mm.',
     schematic: 'Θέσεις αξόνων σχηματικές', schematicTitle: 'Μεγέθη τροχών και αποστάσεις αξόνων από μετρήσεις CT (Freeth et al. 2021, πίν. S8), έδρανα του Κόσμου από τις ακτίνες του b1· οι κατευθύνσεις μεταξύ των αξόνων πίσω από τον b1 σχηματικές',
@@ -198,7 +198,7 @@ export const PARTS = {
     'dplate': ['D-Platte', 'Kleine Platte aus Fragment D (25,3 mm breit, 1,0 mm), an die Rückseite des Straps gelötet. Lager für die Venus-Räder 26 und 63 (Freeth 2021, S5.4).'],
     'steg': ['Steg der mittleren Sonne', 'Schmale Brücke vom durchbohrten Block auf Speiche D über die Festräder zur Mitte. Sie bringt die mittlere Sonne (Drehung von b1) über ein Rohr nach vorn zur Mondphasen-Anzeige (Freeth 2021, S6.2.6). Block mit Stiftloch belegt, Steg erschlossen.'],
     'bracketC': ['Halter auf Speiche C', 'Stützt die lange Welle der Venus-Räder 44 + 34. Passt zur erhöhten Fläche mit Niet auf Speiche C, 46,2 mm von der Mitte (Freeth 2021, Fig. S12).'],
-    'subplate': ['Unterplatte', 'Feststehende Platte hinter der Frontplatte. Das Festrad 56 ist daran genietet, und sie ist Lager für das ganze Rohrbündel (Freeth 2021, S6.3). Form hier schematisch als Steg.'],
+    'subplate': ['Unterplatte', 'Feststehende Platte hinter der Frontplatte. Das Festrad 56 ist daran genietet, und sie ist Lager für das ganze Rohrbündel (Freeth 2021, S6.3). Hier als runde Scheibe, die die Öffnung der Frontplatte hinter den Ringen schließt (Form schematisch).'],
     'arbor-c': ['Welle (auf b1)', 'Welle eines Epizykel-Rads. Sie sitzt in einem Lager auf einer Speiche von b1, am Strap, an der D-Platte oder in der Kreisplatte.'],
     'follower-Me': ['Merkur-Folger', 'Arm mit Schlitz auf der Mittelachse. Der Stift der Merkur-Scheibe läuft im Schlitz; so entsteht die ungleichmäßige Bewegung des Planeten. Der Folger dreht das Merkur-Rohr (Freeth 2021).'],
     'follower-Ve': ['Venus-Folger', 'Arm mit Schlitz auf der Mittelachse. Der Stift der Venus-Scheibe läuft im Schlitz; so entsteht die ungleichmäßige Bewegung des Planeten. Der Folger dreht das Venus-Rohr (Freeth 2021).'],
@@ -258,7 +258,7 @@ export const PARTS = {
     'dplate': ['D-plate', 'Small plate from fragment D (25.3 mm wide, 1.0 mm), soldered to the back of the Strap. Bearing for the Venus gears 26 and 63 (Freeth 2021, S5.4).'],
     'steg': ['Mean Sun bar', 'Narrow bridge from the pierced block on spoke D over the fixed gears to the centre. Via a tube it carries the mean Sun (rotation of b1) forward to the lunar phase display (Freeth 2021, S6.2.6). Block with pin hole attested, bar inferred.'],
     'bracketC': ['Bracket on spoke C', 'Supports the long arbor of the Venus gears 44 + 34. Matches the raised area with a rivet on spoke C, 46.2 mm from the centre (Freeth 2021, Fig. S12).'],
-    'subplate': ['Sub-plate', 'Fixed plate behind the front plate. The fixed gear 56 is riveted to it, and it is the bearing for the whole tube system (Freeth 2021, S6.3). Shape shown schematically as a bar.'],
+    'subplate': ['Sub-plate', 'Fixed plate behind the front plate. The fixed gear 56 is riveted to it, and it is the bearing for the whole tube system (Freeth 2021, S6.3). Shown as a round disk closing the opening of the front plate behind the rings (shape schematic).'],
     'arbor-c': ['Arbor (on b1)', 'Arbor of an epicyclic gear, borne on a spoke of b1, on the Strap, on the D-plate or in the circular plate.'],
     'follower-Me': ['Mercury follower', 'Slotted arm on the central axis. The pin of the Mercury disk runs in the slot, producing the planet’s variable motion. The follower turns the Mercury tube (Freeth 2021).'],
     'follower-Ve': ['Venus follower', 'Slotted arm on the central axis. The pin of the Venus disk runs in the slot, producing the planet’s variable motion. The follower turns the Venus tube (Freeth 2021).'],
@@ -318,7 +318,7 @@ export const PARTS = {
     'dplate': ['Πλάκα D', 'Μικρή πλάκα από το θραύσμα D (πλάτος 25,3 mm, 1,0 mm), κολλημένη στην πίσω πλευρά της ταινίας. Έδρανο για τους τροχούς 26 και 63 της Αφροδίτης (Freeth 2021, S5.4).'],
     'steg': ['Γέφυρα του μέσου Ήλιου', 'Στενή γέφυρα από τον διάτρητο τάκο στην ακτίνα D πάνω από τους σταθερούς τροχούς ως το κέντρο. Μέσω σωλήνα φέρνει τον μέσο Ήλιο (περιστροφή του b1) μπροστά στην ένδειξη φάσεων της Σελήνης (Freeth 2021, S6.2.6). Ο τάκος σώζεται, η γέφυρα συνάγεται.'],
     'bracketC': ['Βραχίονας στην ακτίνα C', 'Στηρίζει τον μακρύ άξονα των τροχών 44 + 34 της Αφροδίτης. Ταιριάζει με την υπερυψωμένη επιφάνεια με καρφί στην ακτίνα C, 46,2 mm από το κέντρο (Freeth 2021, Εικ. S12).'],
-    'subplate': ['Υποπλάκα', 'Σταθερή πλάκα πίσω από την εμπρόσθια πλάκα. Ο σταθερός τροχός 56 είναι καρφωμένος πάνω της και αποτελεί έδρανο για όλη τη δέσμη σωλήνων (Freeth 2021, S6.3). Το σχήμα εδώ σχηματικά ως δοκός.'],
+    'subplate': ['Υποπλάκα', 'Σταθερή πλάκα πίσω από την εμπρόσθια πλάκα. Ο σταθερός τροχός 56 είναι καρφωμένος πάνω της και αποτελεί έδρανο για όλη τη δέσμη σωλήνων (Freeth 2021, S6.3). Εδώ ως στρογγυλός δίσκος που κλείνει το άνοιγμα της εμπρόσθιας πλάκας πίσω από τους δακτυλίους (σχήμα σχηματικό).'],
     'arbor-c': ['Άξονας (στο b1)', 'Άξονας επικυκλικού τροχού, εδρασμένος σε ακτίνα του b1, στην ταινία, στην πλάκα D ή στην κυκλική πλάκα.'],
     'follower-Me': ['Ακόλουθος του Ερμή', 'Βραχίονας με σχισμή στον κεντρικό άξονα. Η περόνη του δίσκου του Ερμή κινείται στη σχισμή και δίνει την ανώμαλη κίνηση του πλανήτη. Ο ακόλουθος περιστρέφει τον σωλήνα του Ερμή (Freeth 2021).'],
     'follower-Ve': ['Ακόλουθος της Αφροδίτης', 'Βραχίονας με σχισμή στον κεντρικό άξονα. Η περόνη του δίσκου της Αφροδίτης κινείται στη σχισμή και δίνει την ανώμαλη κίνηση του πλανήτη. Ο ακόλουθος περιστρέφει τον σωλήνα της Αφροδίτης (Freeth 2021).'],

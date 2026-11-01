@@ -92,7 +92,7 @@ Umgesetzt wurde alles, was sich nicht widerspricht (Entscheidung November 2026).
 | Stift-Schlitz der äußeren Planeten | Schlitzrad fest im Gestell | g5 (Stift) und g6 (Schlitz) exzentrisch auf der CP, g7 auf dem Ausgangsrohr; Modul der Paare 0,44 mm, damit sie auf die CP passen | E3 |
 | D-Platte, Scheiben, Folger | fehlten | D-Platte am Strap; Venus-Scheibe (r 21,5 mm) an 63 genietet, Merkur-Scheibe an 20; Stifte laufen in Schlitz-Folgern auf der Mittelachse | D-Platte, Venus-Scheibe E1, Rest E3 |
 | Steg, Halter Speiche C | fehlten | Steg vom Block auf Speiche D zur Mitte; Halter der Welle 44 + 34 auf Speiche C (46,2 mm) | Block, Fläche E1, Form E3 |
-| Unterplatte, Festrohr, Rohrbündel | 56 schwebte | Unterplatte (als Steg) mit genietetem 56 und Lager; Festrohr durch b1 an der Hauptplatte; 10 koaxiale Rohre | E3 |
+| Unterplatte, Festrohr, Rohrbündel | 56 schwebte | Unterplatte (runde Scheibe r 62 mm hinter der Frontplatte, verdeckt das Getriebe) mit genietetem 56 und Lager; Festrohr durch b1 an der Hauptplatte; 10 koaxiale Rohre | E3 |
 | Front | z = 30 mm, Gehäuse ca. 77 mm tief | Front bei z = 35 mm, Gehäuse ca. 103 mm tief (Ring-Arme, Mondphasen-Getriebe) | E3 |
 | Spiralzeiger | fester Zeiger mit Läufer | Schiebezeiger: Stift an der Spitze in der Nut, Stange gleitet durch die Nabe | E2 |
 | Daumenriegel, Einstellmarke, Parapegma | fehlten | 4 Daumenriegel (Lage schematisch); radiale Marke bei Waage 17,7°; 2 Parapegma-Platten mit je 2 Spalten (Tierkreis-Viertel, Text angedeutet) | E1 (Lage teils E3) |
