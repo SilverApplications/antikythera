@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Antikythera-Mechanismus · 3D-Rekonstruktion</title>
+<meta name="description" content="Interaktive 3D-Rekonstruktion des Antikythera-Mechanismus nach aktuellem Forschungsstand.">
+<meta name="theme-color" content="#15181B">
+<meta property="og:title" content="Antikythera-Mechanismus · 3D-Rekonstruktion">
+<meta property="og:description" content="Interaktive 3D-Rekonstruktion des Antikythera-Mechanismus nach aktuellem Forschungsstand. Ein Hobbyprojekt von SILVER APPLICATIONS.">
+<meta property="og:image" content="https://silverapplications.com/apps/antikythera/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="wordmark">SILVER APPLICATIONS</span><span class="sep">/</span><span class="app">Antikythera</span></div>
+  <div class="top-right"><span class="ver mono" data-i18n="version"></span><select id="siteLang" class="langsel mono" aria-label="Sprache / Language / Γλώσσα"></select></div>
+</header>
+
+<main class="layout">
+  <section class="stage" id="stage">
+    <canvas id="c" aria-label="3D-Ansicht des Mechanismus"></canvas>
+    <div class="hud-top">
+      <div class="views" role="group" aria-label="Ansichten">
+        <button data-view="front" class="chip" data-i18n="view.front"></button>
+        <button data-view="back" class="chip" data-i18n="view.back"></button>
+        <button data-view="gears" class="chip" data-i18n="view.gears"></button>
+        <button data-view="explode" class="chip" data-i18n="view.explode"></button>
+      </div>
+      <div class="badge-schematic mono" data-i18n="schematic" data-i18n-title="schematicTitle"></div>
+    </div>
+    <div class="infocard" id="infocard" hidden></div>
+    <div class="intro" id="intro" hidden>
+      <div class="intro-fade"></div>
+      <p class="intro-caption"></p>
+      <span class="intro-tag mono"></span>
+      <button type="button" class="intro-skip chip"></button>
+    </div>
+    <div class="timebar">
+      <div class="date-block">
+        <div class="date mono" id="dateLabel">–</div>
+        <div class="date-sub mono" id="dateSub">–</div>
+      </div>
+      <div class="crank" id="crank" data-i18n-title="crankTitle">
+        <svg viewBox="-60 -60 120 120" aria-hidden="true">
+          <circle r="56" class="crank-ring"/>
+          <g class="crank-ticks"></g>
+          <g id="crankArm"><line x1="0" y1="0" x2="0" y2="-40"/><circle cx="0" cy="-40" r="13" class="crank-knob"/></g>
+          <circle r="7" class="crank-hub"/>
+        </svg>
+        <span class="mono" data-i18n="crank"></span>
+      </div>
+      <div class="controls">
+        <div class="ctrl-group">
+          <button class="icon" id="stepBack" data-i18n-title="stepBack">◀</button>
+          <button class="icon play" id="play" data-i18n-title="play">▶</button>
+          <button class="icon" id="stepFwd" data-i18n-title="stepFwd">▶︎▏</button>
+        </div>
+        <select id="speed" class="mono" data-i18n-aria="speed">
+          <option value="1" data-i18n="sp.1"></option>
+          <option value="7" data-i18n="sp.7"></option>
+          <option value="30" selected data-i18n="sp.30"></option>
+          <option value="365.2422" data-i18n="sp.365"></option>
+          <option value="6585.32" data-i18n="sp.saros"></option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <aside class="panel" id="panel">
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-tab="model" class="active" data-i18n="tab.model"></button>
+      <button role="tab" data-tab="dials" data-i18n="tab.dials"></button>
+      <button role="tab" data-tab="map" data-i18n="tab.map"></button>
+      <button role="tab" data-tab="time" data-i18n="tab.time"></button>
+      <button role="tab" data-tab="research" data-i18n="tab.research"></button>
+    </nav>
+
+    <div class="tabpane active" id="tab-model">
+      <h2 data-i18n="tools"></h2>
+      <label class="slider"><span data-i18n="explode"></span> <input type="range" id="explode" min="0" max="1" step="0.01" value="0"></label>
+      <label class="slider"><span data-i18n="section"></span> <input type="range" id="section" min="-100" max="100" step="1" value="100"></label>
+      <label class="toggle"><input type="checkbox" id="evidence"> <span data-i18n="evidence"></span></label>
+      <label class="toggle"><input type="checkbox" id="ghosts"> <span data-i18n="ghosts"></span></label>
+      <label class="slider"><span data-i18n="deviceLang"></span> <select id="deviceLang" class="langsel"></select></label>
+      <div class="legend" id="legend"></div>
+      <h2 data-i18n="assemblies"></h2>
+      <div class="tree" id="tree"></div>
+    </div>
+
+    <div class="tabpane" id="tab-dials">
+      <h2 data-i18n="setDate"></h2>
+      <form class="dateform" id="dateForm">
+        <input id="fDay" type="number" min="1" max="31" value="28" aria-label="Tag">
+        <input id="fMonth" type="number" min="1" max="12" value="4" aria-label="Monat">
+        <input id="fYear" type="number" min="1" max="3000" value="205" aria-label="Jahr">
+        <select id="fEra" aria-label="Ära"><option value="bc" data-i18n="bc"></option><option value="ad" data-i18n="ad"></option></select>
+        <button type="submit" class="chip" data-i18n="go"></button>
+      </form>
+      <div class="presets" id="presets"></div>
+      <h2 data-i18n="frontH"></h2>
+      <table class="readout mono" id="readFront"></table>
+      <p class="hint" data-i18n="deltaHint"></p>
+      <h2 data-i18n="backH"></h2>
+      <table class="readout mono" id="readBack"></table>
+      <h2 data-i18n="eclH"></h2>
+      <table class="readout mono" id="readEcl"></table>
+    </div>
+
+    <div class="tabpane" id="tab-map">
+      <h2 data-i18n="mapH"></h2>
+      <div class="mapwrap"><div class="map" id="map"></div><div class="mapctl"><button type="button" id="mapIn" aria-label="+">+</button><button type="button" id="mapOut" aria-label="−">−</button><button type="button" id="mapReset" aria-label="Reset">⟲</button></div></div>
+      <p class="hint" data-i18n="mapNav"></p>
+      <div class="maplist" id="maplist"></div>
+      <div class="maplegend" id="maplegend"></div>
+      <p class="hint" data-i18n="mapHint"></p>
+    </div>
+
+    <div class="tabpane" id="tab-time">
+      <h2 data-i18n="timeH"></h2>
+      <div class="timeline" id="timeline"></div>
+    </div>
+
+    <div class="tabpane" id="tab-research">
+      <h2 data-i18n="sureH"></h2>
+      <div class="evi" id="evi"></div>
+      <h2 data-i18n="papersH"></h2>
+      <div class="papers" id="papers"></div>
+      <h2 data-i18n="moreH"></h2>
+      <div class="links" id="links"></div>
+      <h2 data-i18n="sourcesH"></h2>
+      <ol class="sources" id="sources"></ol>
+      <p class="hint" data-i18n="swHint"></p>
+    </div>
+    <footer class="appfoot">
+      <p class="disclaimer" data-i18n="disclaimer"></p>
+      <nav class="legal"><a href="https://silverapplications.com/" target="_blank" rel="noopener">SILVER APPLICATIONS</a> · <a href="https://silverapplications.com/impressum/" target="_blank" rel="noopener" data-i18n="imprint"></a> · <a href="https://silverapplications.com/datenschutz/" target="_blank" rel="noopener" data-i18n="privacy"></a> · <button type="button" class="linkbtn" id="replayIntro" data-i18n="replayIntro"></button></nav>
+    </footer>
+  </aside>
+</main>
+<div class="loading" id="loading"><span class="mono" data-i18n="loading">…</span></div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+{
+ "papers": [
+  {
+   "jahr": 1974,
+   "autor": "Derek de Solla Price",
+   "titel": "Gears from the Greeks",
+   "gemacht": "Erste Röntgen- und Gammastrahlenbilder (mit C. Karakalos).",
+   "ergebnis": "Erstes Gesamtmodell, Kalender- und Mondzug erkannt.",
+   "warum": "Machte den Mechanismus weltbekannt als Computer der Antike.",
+   "sicherheit": "Viele Details später korrigiert",
+   "level": "historisch"
+  },
+  {
+   "jahr": 2002,
+   "autor": "Michael Wright",
+   "titel": "Mechanische Rekonstruktionen",
+   "gemacht": "Baute funktionsfähige Modelle aus Messing.",
+   "ergebnis": "Planetenanzeigen mechanisch machbar, Mondphasen-Kugel.",
+   "warum": "Bewies die Baubarkeit mit antiken Mitteln.",
+   "sicherheit": "Modell, teils überholt",
+   "level": "modell"
+  },
+  {
+   "jahr": 2006,
+   "autor": "Freeth et al.",
+   "titel": "Decoding the ancient Greek astronomical calculator (Nature)",
+   "gemacht": "Computertomografie aller Fragmente und Oberflächenscans.",
+   "ergebnis": "Rückseite entschlüsselt: Saros-Finsternisspirale, Stift-Schlitz-Mond, Zähnezahlen.",
+   "warum": "Grundlage aller heutigen Modelle. Die Rückseite dieser App beruht darauf.",
+   "sicherheit": "hoch - direkte Messung",
+   "level": "belegt"
+  },
+  {
+   "jahr": 2008,
+   "autor": "Freeth, Jones, Steele, Bitsakis",
+   "titel": "Calendars with Olympiad display (Nature)",
+   "gemacht": "Inschriften auf den Spiralen gelesen.",
+   "ergebnis": "Korinthische Monatsnamen und eine Anzeige für die grossen Spiele.",
+   "warum": "Erste Spur zur Herkunft.",
+   "sicherheit": "hoch",
+   "level": "belegt"
+  },
+  {
+   "jahr": 2014,
+   "autor": "Carman & Evans",
+   "titel": "On the epoch of the Antikythera mechanism",
+   "gemacht": "Finsternis-Zeichen wie ein Sieb gegen alle möglichen Jahre geprüft.",
+   "ergebnis": "Die Skala startet am besten im Frühjahr 205 v. Chr.",
+   "warum": "Rückt das Gerät in die Zeit kurz nach Archimedes.",
+   "sicherheit": "Startdatum der Skala, nicht das Baujahr",
+   "level": "belegt"
+  },
+  {
+   "jahr": 2017,
+   "autor": "Paul Iversen",
+   "titel": "The Calendar on the Antikythera Mechanism",
+   "gemacht": "Monatsnamen mit allen bekannten korinthischen Kalendern verglichen.",
+   "ergebnis": "Kalender passt zu Epirus, nicht zu Syrakus. Eine Anzeige nennt die Halieia von Rhodos.",
+   "warum": "Spricht für Bau auf Rhodos, vielleicht für einen Kunden aus Epirus.",
+   "sicherheit": "gut begründete Hypothese",
+   "level": "hypothese"
+  },
+  {
+   "jahr": 2017,
+   "autor": "Alexander Jones",
+   "titel": "A Portable Cosmos (Buch)",
+   "gemacht": "Gesamtdarstellung des Forschungsstands.",
+   "ergebnis": "Lesbare Zusammenfassung für alle Bereiche.",
+   "warum": "Beste Einstiegslektüre.",
+   "sicherheit": "Überblick",
+   "level": "belegt"
+  },
+  {
+   "jahr": 2020,
+   "autor": "Budiselic et al.",
+   "titel": "Löcher unter dem Kalenderring",
+   "gemacht": "Uhrmacher Chris Budiselic vermass die Lochreihe auf neuen Röntgenbildern.",
+   "ergebnis": "Wahrscheinlich etwa 354 Löcher statt 365.",
+   "warum": "Zeigt, dass auch Handwerker-Forscher echte Beiträge liefern.",
+   "sicherheit": "Messung, bestätigt 2024",
+   "level": "belegt"
+  },
+  {
+   "jahr": 2021,
+   "autor": "Freeth et al. (UCL)",
+   "titel": "A Model of the Cosmos (Scientific Reports)",
+   "gemacht": "Neu gelesene Zahlen für Venus (462) und Saturn (442), Spuren auf dem Hauptrad und das rätselhafte 63er-Rad kombiniert.",
+   "ergebnis": "Komplettes Frontgetriebe mit geteilten Rädern, Planeten als Ringe mit Edelsteinmarkern.",
+   "warum": "Erstes Modell, das zu allen Indizien passt. Die Front dieser App beruht darauf.",
+   "sicherheit": "plausibel, ausdrücklich keine Kopie des Originals",
+   "level": "modell"
+  },
+  {
+   "jahr": 2022,
+   "autor": "Voulgaris et al.",
+   "titel": "Kalibrierdatum",
+   "gemacht": "Alternative Auswertung der Saros-Spirale.",
+   "ergebnis": "Startdatum 23. Dezember 178 v. Chr.",
+   "warum": "Zeigt, wie unsicher die Datierung noch ist.",
+   "sicherheit": "Minderheitsposition",
+   "level": "hypothese"
+  },
+  {
+   "jahr": 2024,
+   "autor": "Woan & Bayley (Glasgow)",
+   "titel": "An improved calendar ring hole-count",
+   "gemacht": "Statistik aus der Gravitationswellen-Forschung auf die Lochmessungen angewendet.",
+   "ergebnis": "354 oder 355 Löcher auf 77,1 mm Radius. 365 ist nicht plausibel.",
+   "warum": "Der Kalenderring folgte wohl dem Mondjahr.",
+   "sicherheit": "hoch (statistisch)",
+   "level": "belegt"
+  },
+  {
+   "jahr": 2025,
+   "autor": "Szigety & Arenas",
+   "titel": "Hätte das Getriebe geklemmt?",
+   "gemacht": "Computersimulation mit Dreieckszähnen und gemessenen Teilungsfehlern.",
+   "ergebnis": "Dreieckszähne allein funktionieren. Mit den Messfehlern blockiert das Getriebe meist früh.",
+   "warum": "Entweder war das Gerät schwer zu bedienen, oder Korrosion verfälscht die Messungen. Kein Beleg für ein Spielzeug.",
+   "sicherheit": "Preprint, nicht begutachtet",
+   "level": "hypothese"
+  }
+ ]
+}

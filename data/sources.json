@@ -1,0 +1,138 @@
+{
+ "sources": [
+  {
+   "id": "freeth2006",
+   "autoren": "Freeth, T., Bitsakis, Y., Moussas, X. et al.",
+   "jahr": 2006,
+   "titel": "Decoding the ancient Greek astronomical calculator known as the Antikythera Mechanism",
+   "ort": "Nature 444, 587-591",
+   "nutzen": "Rueckseiten-Getriebe, Zaehnezahlen"
+  },
+  {
+   "id": "freeth2008",
+   "autoren": "Freeth, T., Jones, A., Steele, J. M., Bitsakis, Y.",
+   "jahr": 2008,
+   "titel": "Calendars with Olympiad display and eclipse prediction on the Antikythera Mechanism",
+   "ort": "Nature 454, 614-617",
+   "nutzen": "Kalender, Spiele"
+  },
+  {
+   "id": "freeth2021",
+   "autoren": "Freeth, T., Higgon, D., Dacanalis, A., MacDonald, L., Georgakopoulou, M., Wojcik, A.",
+   "jahr": 2021,
+   "titel": "A Model of the Cosmos in the ancient Greek Antikythera Mechanism",
+   "ort": "Scientific Reports 11, 5821",
+   "url": "https://discovery.ucl.ac.uk/id/eprint/10124374/",
+   "lizenz": "CC BY 4.0",
+   "nutzen": "Kosmos-Getriebe Front"
+  },
+  {
+   "id": "carman2014",
+   "autoren": "Carman, C. C., Evans, J.",
+   "jahr": 2014,
+   "titel": "On the epoch of the Antikythera mechanism and its eclipse predictor",
+   "ort": "Archive for History of Exact Sciences 68, 693-774",
+   "url": "https://ri.conicet.gov.ar/handle/11336/98820",
+   "nutzen": "Datierung 205 v. Chr."
+  },
+  {
+   "id": "iversen2017",
+   "autoren": "Iversen, P. A.",
+   "jahr": 2017,
+   "titel": "The Calendar on the Antikythera Mechanism and the Corinthian Family of Calendars",
+   "ort": "Hesperia 86(1), 129-203",
+   "url": "https://ascsa.edu.gr/publications/hesperia/article/86/1/129-203",
+   "nutzen": "Herkunft, Kalender, Spiele"
+  },
+  {
+   "id": "jones2017",
+   "autoren": "Jones, A.",
+   "jahr": 2017,
+   "titel": "A Portable Cosmos",
+   "ort": "Oxford University Press",
+   "nutzen": "Gesamtdarstellung"
+  },
+  {
+   "id": "jones2020",
+   "autoren": "Jones, A.",
+   "jahr": 2020,
+   "titel": "The Epoch Dates of the Antikythera Mechanism",
+   "ort": "ISAW Papers 17",
+   "url": "https://archive.nyu.edu/jspui/bitstream/2451/61000/2/Jones%202020%20Epoch%20dates%20of%20the%20Antikythera%20Mechanism%20ISAW%20Papers%2017.pdf",
+   "nutzen": "Datierung"
+  },
+  {
+   "id": "evans2010",
+   "autoren": "Evans, J., Carman, C. C., Thorndike, A. S.",
+   "jahr": 2010,
+   "titel": "Solar anomaly and planetary displays in the Antikythera Mechanism",
+   "ort": "Journal for the History of Astronomy",
+   "url": "https://webspace.pugetsound.edu/facultypages/jcevans/Evans%20Carman%20Thorndike.pdf",
+   "nutzen": "Modul 0,5 / 0,58 mm"
+  },
+  {
+   "id": "voulgaris2021",
+   "autoren": "Voulgaris, A. et al.",
+   "jahr": 2021,
+   "titel": "The Draconic gearing of the Antikythera Mechanism",
+   "ort": "arXiv 2104.06181",
+   "url": "https://arxiv.org/pdf/2104.06181",
+   "nutzen": "b1 Zaehnezahl-Messungen"
+  },
+  {
+   "id": "woan2024",
+   "autoren": "Woan, G., Bayley, J.",
+   "jahr": 2024,
+   "titel": "An improved calendar ring hole-count for the Antikythera mechanism",
+   "ort": "Horological Journal, July 2024, 282-287",
+   "url": "https://eprints.gla.ac.uk/329337",
+   "nutzen": "354 Loecher, r = 77,1 mm"
+  },
+  {
+   "id": "szigety2025",
+   "autoren": "Szigety, E. G., Arenas, G. F.",
+   "jahr": 2025,
+   "titel": "The Impact of Triangular-Toothed Gears on the Functionality of the Antikythera Mechanism",
+   "ort": "arXiv 2504.00327 (Preprint)",
+   "url": "https://arxiv.org/abs/2504.00327",
+   "nutzen": "Funktionskritik"
+  },
+  {
+   "id": "spinellis2008",
+   "autoren": "Spinellis, D.",
+   "jahr": 2008,
+   "titel": "The Antikythera Mechanism: A Computer Science Perspective",
+   "ort": "IEEE Computer",
+   "url": "https://www2.dmst.aueb.gr/dds/pubs/jrnl/2008-Computer-Antikythera/html/Spi08d.pdf",
+   "nutzen": "Simulationslogik"
+  },
+  {
+   "id": "ylfeid",
+   "autoren": "ylfeid (GitHub)",
+   "jahr": 2026,
+   "titel": "antikythera - Browser-Modell mit 69 Raedern",
+   "url": "https://github.com/ylfeid/antikythera",
+   "lizenz": "MIT",
+   "nutzen": "Gegencheck Zuege/Radien"
+  },
+  {
+   "id": "wiki",
+   "titel": "Antikythera mechanism (Wikipedia EN)",
+   "url": "https://en.wikipedia.org/wiki/Antikythera_mechanism",
+   "nutzen": "Uebersicht, Fragmentmasse"
+  },
+  {
+   "id": "esag2024",
+   "titel": "Exceptional excavation season in Antikythera (Uni Genf)",
+   "url": "https://www.unige.ch/medias/en/2024/campagne-de-fouille-exceptionnelle-anticythere",
+   "nutzen": "Grabungen 2021-2025"
+  },
+  {
+   "id": "esag2025",
+   "titel": "Antikythera: a part of the ancient ship brought to the surface (Uni Genf, 2025)",
+   "jahr": 2025,
+   "url": "https://www.unige.ch/medias/en/2025/anticythere-une-portion-du-navire-antique-remonte-la-surface",
+   "nutzen": "Rumpfteile, Holzarten"
+  }
+ ]
+}

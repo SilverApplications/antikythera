@@ -1,0 +1,187 @@
+{
+ "meta": {
+  "hinweis": "Koordinaten WGS84, gerundet. 'genauigkeit' gibt an, wie exakt der Punkt ist. 'evidenz' wie sicher die Zuordnung zum Mechanismus ist.",
+  "evidenzSkala": {
+   "gesichert": "belegt",
+   "diskutiert": "ernsthafte Hypothese in Fachliteratur",
+   "kontext": "Hintergrund, kein direkter Bezug"
+  }
+ },
+ "locations": [
+  {
+   "id": "wreck",
+   "name": "Wrack von Antikythera (Kap Glyfadia)",
+   "lat": 35.889,
+   "lon": 23.304,
+   "genauigkeit": "ca. ±1 km (Fundplatz in 45-55 m Tiefe vor der Nordostküste)",
+   "kategorie": "Fundort",
+   "evidenz": "gesichert",
+   "text": "Fundort des Mechanismus. Römerzeitliches Handelsschiff, gesunken ca. 70-60 v. Chr. 1900 von Schwammtauchern aus Symi entdeckt, 1900/01 geborgen. 2021-2025 neue Grabungen (Schweizer Archäologische Schule, Ephorie für Unterwasseraltertümer): Teile des Schiffsrumpfs gefunden."
+  },
+  {
+   "id": "athens-nam",
+   "name": "Archäologisches Nationalmuseum Athen",
+   "lat": 37.989,
+   "lon": 23.7323,
+   "genauigkeit": "exakt",
+   "kategorie": "Aufbewahrung",
+   "evidenz": "gesichert",
+   "text": "Hier liegen alle 82 Fragmente sowie Rekonstruktionen."
+  },
+  {
+   "id": "rhodes",
+   "name": "Rhodos",
+   "lat": 36.434,
+   "lon": 28.217,
+   "genauigkeit": "Stadt",
+   "kategorie": "Herkunft",
+   "evidenz": "diskutiert",
+   "text": "Favorit vieler Forscher: Auf der Spiele-Anzeige stehen die Halieia von Rhodos; Rhodos war Zentrum der Astronomie (Hipparch arbeitete dort, später Poseidonios' Schule). Iversen 2017: Bau auf Rhodos, evtl. für einen Kunden aus Epirus."
+  },
+  {
+   "id": "epirus-dodona",
+   "name": "Dodona (Epirus)",
+   "lat": 39.546,
+   "lon": 20.788,
+   "genauigkeit": "Heiligtum",
+   "kategorie": "Herkunft/Nutzer",
+   "evidenz": "diskutiert",
+   "text": "Die Naa-Spiele von Dodona stehen auf der Spiele-Anzeige. Monatsnamen passen zum Kalender von Epirus."
+  },
+  {
+   "id": "ambracia",
+   "name": "Ambrakia (heute Arta)",
+   "lat": 39.16,
+   "lon": 20.985,
+   "genauigkeit": "Stadt",
+   "kategorie": "Kalender",
+   "evidenz": "diskutiert",
+   "text": "Korinthische Kolonie; Epirus hat den korinthischen Kalender vermutlich von hier übernommen (Iversen 2017)."
+  },
+  {
+   "id": "corinth",
+   "name": "Korinth",
+   "lat": 37.906,
+   "lon": 22.88,
+   "genauigkeit": "Stadt",
+   "kategorie": "Kalender",
+   "evidenz": "diskutiert",
+   "text": "Der Kalender auf der Metonischen Spirale gehört zur korinthischen Kalenderfamilie (Freeth et al. 2008, bestätigt 2017)."
+  },
+  {
+   "id": "syracuse",
+   "name": "Syrakus",
+   "lat": 37.075,
+   "lon": 15.286,
+   "genauigkeit": "Stadt",
+   "kategorie": "Herkunft",
+   "evidenz": "diskutiert",
+   "text": "Heimat des Archimedes; 2008 als mögliche Herkunft genannt. Iversen 2017 argumentiert, der Kalender könne NICHT der von Syrakus sein."
+  },
+  {
+   "id": "pergamon",
+   "name": "Pergamon",
+   "lat": 39.132,
+   "lon": 27.184,
+   "genauigkeit": "Stadt",
+   "kategorie": "Schiffsroute",
+   "evidenz": "diskutiert",
+   "text": "Münzfunde (Cousteau 1976) deuten auf Herkunft der Ladung aus dem Osten."
+  },
+  {
+   "id": "kos",
+   "name": "Kos",
+   "lat": 36.893,
+   "lon": 27.288,
+   "genauigkeit": "Insel",
+   "kategorie": "Schiffsroute",
+   "evidenz": "gesichert",
+   "text": "Koische Amphoren sind auf dem Wrack sehr häufig (Grabung 2024) - Hinweis auf die Route durch die Ostägäis."
+  },
+  {
+   "id": "rome",
+   "name": "Rom (vermutetes Ziel)",
+   "lat": 41.893,
+   "lon": 12.483,
+   "genauigkeit": "Stadt",
+   "kategorie": "Schiffsroute",
+   "evidenz": "diskutiert",
+   "text": "Das Schiff war wahrscheinlich mit Luxusgütern (Statuen, Glas, Schmuck) auf dem Weg nach Italien/Rom."
+  },
+  {
+   "id": "olympia",
+   "name": "Olympia",
+   "lat": 37.638,
+   "lon": 21.63,
+   "genauigkeit": "Heiligtum",
+   "kategorie": "Spiele-Anzeige",
+   "evidenz": "gesichert",
+   "text": "Olympische Spiele - auf der Spiele-Anzeige."
+  },
+  {
+   "id": "delphi",
+   "name": "Delphi",
+   "lat": 38.482,
+   "lon": 22.501,
+   "genauigkeit": "Heiligtum",
+   "kategorie": "Spiele-Anzeige",
+   "evidenz": "gesichert",
+   "text": "Pythische Spiele - auf der Spiele-Anzeige."
+  },
+  {
+   "id": "isthmia",
+   "name": "Isthmia",
+   "lat": 37.916,
+   "lon": 22.993,
+   "genauigkeit": "Heiligtum",
+   "kategorie": "Spiele-Anzeige",
+   "evidenz": "gesichert",
+   "text": "Isthmische Spiele - zweimal auf der Spiele-Anzeige."
+  },
+  {
+   "id": "nemea",
+   "name": "Nemea",
+   "lat": 37.809,
+   "lon": 22.711,
+   "genauigkeit": "Heiligtum",
+   "kategorie": "Spiele-Anzeige",
+   "evidenz": "gesichert",
+   "text": "Nemeische Spiele - zweimal auf der Spiele-Anzeige."
+  },
+  {
+   "id": "babylon",
+   "name": "Babylon",
+   "lat": 32.536,
+   "lon": 44.421,
+   "genauigkeit": "Stadt",
+   "kategorie": "Wissensquelle",
+   "evidenz": "kontext",
+   "text": "Ursprung der Zyklen (Saros, Metonischer Zyklus, Planetenperioden), die im Mechanismus stecken."
+  },
+  {
+   "id": "alexandria",
+   "name": "Alexandria",
+   "lat": 31.2,
+   "lon": 29.918,
+   "genauigkeit": "Stadt",
+   "kategorie": "Wissensquelle",
+   "evidenz": "kontext",
+   "text": "Wissenschaftszentrum der hellenistischen Welt; der Kalenderring trägt ägyptische Monatsnamen."
+  }
+ ],
+ "routes": [
+  {
+   "id": "ship-route",
+   "name": "Vermutete Schiffsroute",
+   "evidenz": "diskutiert",
+   "points": [
+    "pergamon",
+    "kos",
+    "rhodes",
+    "wreck",
+    "rome"
+   ],
+   "text": "Ostägäis / Kleinasien -> Antikythera -> Italien. Reihenfolge der Häfen unbekannt."
+  }
+ ]
+}

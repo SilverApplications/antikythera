@@ -1,0 +1,213 @@
+{
+ "meta": {
+  "hinweis": "Baugruppenbaum (Produktstruktur). Räder verweisen über gears[].assembly hierher."
+ },
+ "assemblies": [
+  {
+   "id": "AM-000",
+   "parent": null,
+   "name": "Antikythera-Mechanismus"
+  },
+  {
+   "id": "AM-100",
+   "parent": "AM-000",
+   "name": "Gehäuse & Tragstruktur"
+  },
+  {
+   "id": "AM-110",
+   "parent": "AM-100",
+   "name": "Holzkasten mit Rahmen",
+   "evidence": "E4"
+  },
+  {
+   "id": "AM-120",
+   "parent": "AM-100",
+   "name": "Frontplatte",
+   "evidence": "E1"
+  },
+  {
+   "id": "AM-130",
+   "parent": "AM-100",
+   "name": "Rückplatte",
+   "evidence": "E1"
+  },
+  {
+   "id": "AM-140",
+   "parent": "AM-100",
+   "name": "Deckel mit Inschriften",
+   "evidence": "E1"
+  },
+  {
+   "id": "AM-150",
+   "parent": "AM-100",
+   "name": "Mittelplatte, Säulen, Kreisplatte, Strap",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-160",
+   "parent": "AM-100",
+   "name": "Verbindungselemente",
+   "evidence": "E4"
+  },
+  {
+   "id": "AM-200",
+   "parent": "AM-000",
+   "name": "Antrieb"
+  },
+  {
+   "id": "AM-210",
+   "parent": "AM-200",
+   "name": "Handkurbel",
+   "evidence": "E4"
+  },
+  {
+   "id": "AM-300",
+   "parent": "AM-000",
+   "name": "Kosmos-Getriebe (Front)"
+  },
+  {
+   "id": "AM-310",
+   "parent": "AM-300",
+   "name": "Innere Planeten (Festrad 51)",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-311",
+   "parent": "AM-310",
+   "name": "Merkur",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-312",
+   "parent": "AM-310",
+   "name": "Venus",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-320",
+   "parent": "AM-300",
+   "name": "Sonne & äußere Planeten (Festrad 56)",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-321",
+   "parent": "AM-320",
+   "name": "Wahre Sonne",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-322",
+   "parent": "AM-320",
+   "name": "Mars",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-323",
+   "parent": "AM-320",
+   "name": "Jupiter",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-324",
+   "parent": "AM-320",
+   "name": "Saturn",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-330",
+   "parent": "AM-300",
+   "name": "Drachenzeiger (Mondknoten)",
+   "evidence": "E4"
+  },
+  {
+   "id": "AM-340",
+   "parent": "AM-300",
+   "name": "Ausgangsrohre (9 koaxial)",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-400",
+   "parent": "AM-000",
+   "name": "Mondgetriebe"
+  },
+  {
+   "id": "AM-500",
+   "parent": "AM-000",
+   "name": "Kalendergetriebe (Metonisch, Spiele, Kallipp)"
+  },
+  {
+   "id": "AM-600",
+   "parent": "AM-000",
+   "name": "Finsternisgetriebe (Saros, Exeligmos)"
+  },
+  {
+   "id": "AM-700",
+   "parent": "AM-000",
+   "name": "Frontanzeige"
+  },
+  {
+   "id": "AM-710",
+   "parent": "AM-700",
+   "name": "Zodiak-Skala",
+   "evidence": "E1"
+  },
+  {
+   "id": "AM-720",
+   "parent": "AM-700",
+   "name": "Kalenderring (354 Löcher)",
+   "evidence": "E1"
+  },
+  {
+   "id": "AM-730",
+   "parent": "AM-700",
+   "name": "Planetenringe + Marker",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-740",
+   "parent": "AM-700",
+   "name": "Mondzeiger + Phasenkugel",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-750",
+   "parent": "AM-700",
+   "name": "Datumszeiger",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-800",
+   "parent": "AM-000",
+   "name": "Rückanzeige"
+  },
+  {
+   "id": "AM-810",
+   "parent": "AM-800",
+   "name": "Metonische Spirale",
+   "evidence": "E1"
+  },
+  {
+   "id": "AM-820",
+   "parent": "AM-800",
+   "name": "Saros-Spirale",
+   "evidence": "E1"
+  },
+  {
+   "id": "AM-830",
+   "parent": "AM-800",
+   "name": "Nebenzifferblätter",
+   "evidence": "E1"
+  },
+  {
+   "id": "AM-840",
+   "parent": "AM-800",
+   "name": "Spiralzeiger mit Läufer",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-900",
+   "parent": "AM-000",
+   "name": "Inschriften / Bedienungsanleitung"
+  }
+ ]
+}

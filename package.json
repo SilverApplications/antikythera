@@ -1,0 +1,13 @@
+{
+  "name": "antikythera-mechanism-3d",
+  "version": "0.4.0",
+  "private": true,
+  "type": "module",
+  "description": "Interactive 3D reconstruction of the Antikythera Mechanism – a hobby project by SILVER APPLICATIONS.",
+  "scripts": {
+    "test": "node --test test/*.test.mjs && python3 tools/verify_gearing.py",
+    "build:data": "python3 tools/build_data.py",
+    "serve": "cd app && python3 -m http.server 8765"
+  },
+  "license": "MIT"
+}

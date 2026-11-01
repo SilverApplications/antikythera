@@ -1,0 +1,1230 @@
+{
+ "meta": {
+  "title": "Antikythera-Mechanismus - Zahnraddaten",
+  "version": "0.1.0",
+  "stand": "2026-11-01",
+  "basisModell": "Freeth et al. 2006 (Nature) + Freeth et al. 2008 (Nature) für die Rückseite; Freeth et al. 2021 (Scientific Reports) für den Kosmos an der Front",
+  "einheiten": {
+   "laenge": "mm",
+   "zeit": "Jahre (1 Umdrehung b1 = 1 Jahr)"
+  },
+  "notation": {
+   "~": "kämmt mit",
+   "+": "sitzt auf derselben Welle/Achse",
+   "⊕": "Stift-Schlitz-Kopplung (pin-and-slot)"
+  },
+  "geometrie": {
+   "zahnform": "Dreieckszähne (annähernd gleichseitig), keine Evolventenverzahnung",
+   "modulStandard_mm": 0.5,
+   "modulB1_mm": 0.58,
+   "mittlereTeilung_mm": 1.6,
+   "mittlereRadstaerke_mm": 1.4,
+   "mittlererLuftspalt_mm": 1.2,
+   "zahnhoehe_mm": 1.1,
+   "hinweis": "Radien vorerst aus Modul x Zähnezahl / 2 abgeleitet (Näherung). TODO: durch gemessene Radien aus Freeth et al. 2021, Supplementary Table S8 ersetzen."
+  },
+  "evidenzklassen": {
+   "E1": "erhalten - physisch vorhanden, Zähnezahl per Röntgen-CT bestimmt",
+   "E2": "erschlossen - verloren, aber durch erhaltene Anzeigen zwingend gefordert (Übersetzung eindeutig)",
+   "E3": "rekonstruiert - Modell nach aktuellem Forschungsstand (Freeth 2021), plausibel, nicht bewiesen",
+   "E4": "spekulativ - keine direkte Evidenz, von uns bzw. Forschern ergänzt; epochengerecht gestaltet"
+  }
+ },
+ "gears": [
+  {
+   "id": "a1",
+   "teeth": 48,
+   "type": "contrate",
+   "assembly": "AM-200",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "A-input",
+   "meshes": [
+    "b1"
+   ],
+   "function": "Kronrad (Planrad) am Eingang, quer zur Hauptebene; von der Kurbel angetrieben"
+  },
+  {
+   "id": "b1",
+   "teeth": 224,
+   "type": "spur",
+   "assembly": "AM-200",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "B",
+   "meshes": [
+    "a1"
+   ],
+   "function": "Hauptantriebsrad (Main Drive Wheel), 4 Speichen, ca. 13 cm; 1 Umdrehung = 1 Jahr; trägt an der Front die Kosmos-Getriebe",
+   "note": "Zähnezahl gemessen 223-226 (Freeth 2006: 223-224). 224 ist Konvention; für Übersetzungen irrelevant, da b1 Referenz ist."
+  },
+  {
+   "id": "b2",
+   "teeth": 64,
+   "type": "spur",
+   "assembly": "AM-200",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "B",
+   "meshes": [
+    "c1",
+    "l1"
+   ],
+   "function": "Verteiler hinter b1: startet Mond- und Kalenderzug"
+  },
+  {
+   "id": "b3",
+   "teeth": 32,
+   "type": "spur",
+   "assembly": "AM-400",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "B-moon-tube",
+   "meshes": [
+    "e1"
+   ],
+   "function": "Mondausgang (Hohlwelle zur Front, Mondzeiger)"
+  },
+  {
+   "id": "c1",
+   "teeth": 38,
+   "type": "spur",
+   "assembly": "AM-400",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "C",
+   "meshes": [
+    "b2"
+   ],
+   "function": "Mondzug Stufe 1"
+  },
+  {
+   "id": "c2",
+   "teeth": 48,
+   "type": "spur",
+   "assembly": "AM-400",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "C",
+   "meshes": [
+    "d1"
+   ],
+   "function": "Mondzug Stufe 2"
+  },
+  {
+   "id": "d1",
+   "teeth": 24,
+   "type": "spur",
+   "assembly": "AM-400",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "D",
+   "meshes": [
+    "c2"
+   ],
+   "function": "Mondzug Stufe 2"
+  },
+  {
+   "id": "d2",
+   "teeth": 127,
+   "type": "spur",
+   "assembly": "AM-400",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "D",
+   "meshes": [
+    "e2"
+   ],
+   "function": "Mondzug Stufe 3 (127 = Primzahl, halbe 254 siderische Monate)"
+  },
+  {
+   "id": "e2",
+   "teeth": 32,
+   "type": "spur",
+   "assembly": "AM-400",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "E-inner",
+   "meshes": [
+    "d2"
+   ],
+   "function": "siderischer Monat"
+  },
+  {
+   "id": "e5",
+   "teeth": 50,
+   "type": "spur",
+   "assembly": "AM-400",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "E-inner",
+   "meshes": [
+    "k1"
+   ],
+   "function": "treibt das Epizykel-Paar k1/k2"
+  },
+  {
+   "id": "e3",
+   "teeth": 223,
+   "type": "spur",
+   "assembly": "AM-600",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "E-carrier",
+   "meshes": [
+    "m3"
+   ],
+   "function": "Größtes Rad der Rückseite (Saros: 223 Monate); dient zugleich als Träger für k1/k2 (Apsidendrehung ca. 8,88 Jahre)"
+  },
+  {
+   "id": "e4",
+   "teeth": 188,
+   "type": "spur",
+   "assembly": "AM-600",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "E-carrier",
+   "meshes": [
+    "f1"
+   ],
+   "function": "Saros-Zug weiter zur Saros-Spirale"
+  },
+  {
+   "id": "k1",
+   "teeth": 50,
+   "type": "spur",
+   "assembly": "AM-400",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "K1-on-e3",
+   "meshes": [
+    "e5"
+   ],
+   "function": "trägt den Stift (pin) der Stift-Schlitz-Kopplung",
+   "note": "Achsabstand k1/k2 ca. 1,1 mm -> erzeugt die ungleichförmige Mondgeschwindigkeit (Hipparch'sche Mondtheorie)"
+  },
+  {
+   "id": "k2",
+   "teeth": 50,
+   "type": "spur",
+   "assembly": "AM-400",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "K2-on-e3",
+   "meshes": [
+    "e6"
+   ],
+   "function": "trägt den Schlitz (slot)"
+  },
+  {
+   "id": "e6",
+   "teeth": 50,
+   "type": "spur",
+   "assembly": "AM-400",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "E-outer-tube",
+   "meshes": [
+    "k2"
+   ],
+   "function": "Rückführung der variablen Mondbewegung"
+  },
+  {
+   "id": "e1",
+   "teeth": 32,
+   "type": "spur",
+   "assembly": "AM-400",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "E-outer-tube",
+   "meshes": [
+    "b3"
+   ],
+   "function": "Übergabe an Mondausgang b3"
+  },
+  {
+   "id": "f1",
+   "teeth": 53,
+   "type": "spur",
+   "assembly": "AM-600",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "F",
+   "meshes": [
+    "e4"
+   ],
+   "function": "Saros-Zug"
+  },
+  {
+   "id": "f2",
+   "teeth": 30,
+   "type": "spur",
+   "assembly": "AM-600",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "F",
+   "meshes": [
+    "g1"
+   ],
+   "function": "Saros-Zug"
+  },
+  {
+   "id": "g1",
+   "teeth": 54,
+   "type": "spur",
+   "assembly": "AM-600",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "G",
+   "meshes": [
+    "f2"
+   ],
+   "function": "Saros-Zeiger (4 Windungen = 223 Monate)"
+  },
+  {
+   "id": "g2",
+   "teeth": 20,
+   "type": "spur",
+   "assembly": "AM-600",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "G",
+   "meshes": [
+    "h1"
+   ],
+   "function": "Abzweig Exeligmos"
+  },
+  {
+   "id": "h1",
+   "teeth": 60,
+   "type": "spur",
+   "assembly": "AM-600",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "H",
+   "meshes": [
+    "g2"
+   ],
+   "function": "Exeligmos-Zug"
+  },
+  {
+   "id": "h2",
+   "teeth": 15,
+   "type": "spur",
+   "assembly": "AM-600",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "H",
+   "meshes": [
+    "i1"
+   ],
+   "function": "Exeligmos-Zug"
+  },
+  {
+   "id": "i1",
+   "teeth": 60,
+   "type": "spur",
+   "assembly": "AM-600",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "I",
+   "meshes": [
+    "h2"
+   ],
+   "function": "Exeligmos-Zeiger (3 Saros = 54 Jahre)"
+  },
+  {
+   "id": "l1",
+   "teeth": 38,
+   "type": "spur",
+   "assembly": "AM-500",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "L",
+   "meshes": [
+    "b2"
+   ],
+   "function": "Kalenderzug Stufe 1"
+  },
+  {
+   "id": "l2",
+   "teeth": 53,
+   "type": "spur",
+   "assembly": "AM-500",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "L",
+   "meshes": [
+    "m1"
+   ],
+   "function": "Kalenderzug Stufe 2"
+  },
+  {
+   "id": "m1",
+   "teeth": 96,
+   "type": "spur",
+   "assembly": "AM-500",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "M",
+   "meshes": [
+    "l2"
+   ],
+   "function": "Verteiler Kalender/Saros"
+  },
+  {
+   "id": "m2",
+   "teeth": 15,
+   "type": "spur",
+   "assembly": "AM-500",
+   "evidence": "E1",
+   "fragment": "A",
+   "arbor": "M",
+   "meshes": [
+    "n1"
+   ],
+   "function": "Kalenderzug Stufe 3"
+  },
+  {
+   "id": "m3",
+   "teeth": 27,
+   "type": "spur",
+   "assembly": "AM-600",
+   "evidence": "E2",
+   "fragment": null,
+   "arbor": "M",
+   "meshes": [
+    "e3"
+   ],
+   "function": "Abzweig zum Saros-Zug (verloren, durch Saros-Anzeige gefordert)"
+  },
+  {
+   "id": "n1",
+   "teeth": 53,
+   "type": "spur",
+   "assembly": "AM-500",
+   "evidence": "E2",
+   "fragment": null,
+   "arbor": "N",
+   "meshes": [
+    "m2"
+   ],
+   "function": "Metonischer Zeiger (5 Windungen = 19 Jahre = 235 Monate)"
+  },
+  {
+   "id": "n2",
+   "teeth": 57,
+   "type": "spur",
+   "assembly": "AM-500",
+   "evidence": "E2",
+   "fragment": null,
+   "arbor": "N",
+   "meshes": [
+    "o1"
+   ],
+   "function": "Abzweig Spiele-Anzeige (Olympiade)"
+  },
+  {
+   "id": "n3",
+   "teeth": 15,
+   "type": "spur",
+   "assembly": "AM-500",
+   "evidence": "E2",
+   "fragment": null,
+   "arbor": "N",
+   "meshes": [
+    "p1"
+   ],
+   "function": "Abzweig Kallippischer Zyklus"
+  },
+  {
+   "id": "o1",
+   "teeth": 60,
+   "type": "spur",
+   "assembly": "AM-500",
+   "evidence": "E1",
+   "fragment": "B",
+   "arbor": "O",
+   "meshes": [
+    "n2"
+   ],
+   "function": "Spiele-Zeiger (4 Jahre), einziger gegen den Uhrzeigersinn laufender Zeiger"
+  },
+  {
+   "id": "p1",
+   "teeth": 60,
+   "type": "spur",
+   "assembly": "AM-500",
+   "evidence": "E2",
+   "fragment": null,
+   "arbor": "P",
+   "meshes": [
+    "n3"
+   ],
+   "function": "Kallipp-Zug"
+  },
+  {
+   "id": "p2",
+   "teeth": 12,
+   "type": "spur",
+   "assembly": "AM-500",
+   "evidence": "E2",
+   "fragment": null,
+   "arbor": "P",
+   "meshes": [
+    "q1"
+   ],
+   "function": "Kallipp-Zug"
+  },
+  {
+   "id": "q1",
+   "teeth": 60,
+   "type": "spur",
+   "assembly": "AM-500",
+   "evidence": "E2",
+   "fragment": null,
+   "arbor": "Q",
+   "meshes": [
+    "p2"
+   ],
+   "function": "Kallipp-Zeiger (76 Jahre)"
+  },
+  {
+   "id": "ma1",
+   "teeth": null,
+   "type": "contrate",
+   "assembly": "AM-400",
+   "evidence": "E1",
+   "fragment": "C",
+   "arbor": "Moon-phase",
+   "meshes": [
+    "b0"
+   ],
+   "function": "Kronrad der Mondphasen-Kugel (dreht die halb schwarz/halb helle Kugel, ca. 6 mm)",
+   "note": "TODO: Zähnezahl aus Literatur nachtragen"
+  },
+  {
+   "id": "b0",
+   "teeth": null,
+   "type": "spur",
+   "assembly": "AM-400",
+   "evidence": "E3",
+   "fragment": null,
+   "arbor": "Mean-sun-tube",
+   "meshes": [
+    "ma1"
+   ],
+   "function": "Mittlere Sonne als Referenz für die Mondphase (Differenz Mond - Sonne)",
+   "note": "laut Freeth 2021 an Block auf Speiche D befestigt"
+  },
+  {
+   "id": "V-51",
+   "teeth": 51,
+   "type": "spur",
+   "assembly": "AM-310",
+   "evidence": "E3",
+   "fixed": true,
+   "mount": "b1",
+   "meshes": [
+    "V-44",
+    "Me-72"
+   ],
+   "function": "Feststehendes Zentralrad, gemeinsam für Merkur und Venus"
+  },
+  {
+   "id": "V-44",
+   "teeth": 44,
+   "type": "spur",
+   "assembly": "AM-312",
+   "evidence": "E3",
+   "mount": "b1-spoke",
+   "meshes": [
+    "V-51"
+   ],
+   "function": "Venus Stufe 1"
+  },
+  {
+   "id": "V-34",
+   "teeth": 34,
+   "type": "spur",
+   "assembly": "AM-312",
+   "evidence": "E3",
+   "mount": "b1-spoke",
+   "meshes": [
+    "V-26"
+   ],
+   "function": "Venus Stufe 1 (gleiche Welle wie 44)"
+  },
+  {
+   "id": "V-26",
+   "teeth": 26,
+   "type": "spur",
+   "assembly": "AM-312",
+   "evidence": "E3",
+   "mount": "D-plate",
+   "meshes": [
+    "V-34",
+    "r1"
+   ],
+   "function": "Venus Zwischenrad (Idler)"
+  },
+  {
+   "id": "r1",
+   "teeth": 63,
+   "type": "spur",
+   "assembly": "AM-312",
+   "evidence": "E1",
+   "fragment": "D",
+   "mount": "D-plate",
+   "meshes": [
+    "V-26"
+   ],
+   "function": "Venus Epizykel; trägt Stift für den Schlitz-Folger",
+   "note": "Physisch erhalten (Fragment D, nur 3 Zähne fehlen). Rolle als Venus-Epizykel ist Interpretation (E3)."
+  },
+  {
+   "id": "Me-72",
+   "teeth": 72,
+   "type": "spur",
+   "assembly": "AM-311",
+   "evidence": "E3",
+   "mount": "b1-spoke",
+   "meshes": [
+    "V-51"
+   ],
+   "function": "Merkur Stufe 1"
+  },
+  {
+   "id": "Me-89",
+   "teeth": 89,
+   "type": "spur",
+   "assembly": "AM-311",
+   "evidence": "E3",
+   "mount": "b1-spoke",
+   "meshes": [
+    "Me-40"
+   ],
+   "function": "Merkur Stufe 1 (gleiche Welle wie 72; 89 = Primfaktor aus 1513 = 17 x 89)"
+  },
+  {
+   "id": "Me-40",
+   "teeth": 40,
+   "type": "spur",
+   "assembly": "AM-311",
+   "evidence": "E3",
+   "mount": "strap",
+   "meshes": [
+    "Me-89",
+    "Me-20"
+   ],
+   "function": "Merkur Zwischenrad"
+  },
+  {
+   "id": "Me-20",
+   "teeth": 20,
+   "type": "spur",
+   "assembly": "AM-311",
+   "evidence": "E3",
+   "mount": "strap",
+   "meshes": [
+    "Me-40"
+   ],
+   "function": "Merkur Epizykel mit Stift"
+  },
+  {
+   "id": "CP-56",
+   "teeth": 56,
+   "type": "spur",
+   "assembly": "AM-320",
+   "evidence": "E3",
+   "fixed": true,
+   "mount": "circular-plate",
+   "meshes": [
+    "S-52",
+    "MJ-64"
+   ],
+   "function": "Feststehendes Zentralrad auf der Kreisplatte, gemeinsam für Wahre Sonne, Mars, Jupiter, Saturn"
+  },
+  {
+   "id": "S-52",
+   "teeth": 52,
+   "type": "spur",
+   "assembly": "AM-321",
+   "evidence": "E3",
+   "meshes": [
+    "CP-56",
+    "S-56"
+   ],
+   "function": "Zwischenrad Wahre Sonne; zugleich auf gemeinsamer Welle mit Saturn 61"
+  },
+  {
+   "id": "S-56",
+   "teeth": 56,
+   "type": "spur",
+   "assembly": "AM-321",
+   "evidence": "E3",
+   "meshes": [
+    "S-52"
+   ],
+   "function": "Sonnen-Epizykel (steht raumfest) mit Stift -> Schlitz-Folger erzeugt die Sonnenanomalie"
+  },
+  {
+   "id": "MJ-64",
+   "teeth": 64,
+   "type": "spur",
+   "assembly": "AM-322",
+   "evidence": "E3",
+   "meshes": [
+    "CP-56"
+   ],
+   "function": "Gemeinsames Rad Mars/Jupiter"
+  },
+  {
+   "id": "Ma-38",
+   "teeth": 38,
+   "type": "spur",
+   "assembly": "AM-322",
+   "evidence": "E3",
+   "meshes": [
+    "Ma-40"
+   ],
+   "function": "Mars (gleiche Welle wie 64)"
+  },
+  {
+   "id": "Ma-40",
+   "teeth": 40,
+   "type": "spur",
+   "assembly": "AM-322",
+   "evidence": "E3",
+   "meshes": [
+    "Ma-38",
+    "Ma-71"
+   ],
+   "function": "Mars Zwischenrad"
+  },
+  {
+   "id": "Ma-71",
+   "teeth": 71,
+   "type": "spur",
+   "assembly": "AM-322",
+   "evidence": "E3",
+   "meshes": [
+    "Ma-40"
+   ],
+   "function": "Mars Epizykel mit Stift (71 = Primfaktor aus 284)"
+  },
+  {
+   "id": "Ma-80a",
+   "teeth": 80,
+   "type": "spur",
+   "assembly": "AM-322",
+   "evidence": "E3",
+   "meshes": [
+    "Ma-80b"
+   ],
+   "function": "Mars Ausgang (Schlitz-Folger)"
+  },
+  {
+   "id": "Ma-80b",
+   "teeth": 80,
+   "type": "spur",
+   "assembly": "AM-322",
+   "evidence": "E3",
+   "meshes": [
+    "Ma-80a"
+   ],
+   "function": "Mars Ausgang zum Ring"
+  },
+  {
+   "id": "Ju-45",
+   "teeth": 45,
+   "type": "spur",
+   "assembly": "AM-323",
+   "evidence": "E3",
+   "meshes": [
+    "Ju-40"
+   ],
+   "function": "Jupiter (gleiche Welle wie 64)"
+  },
+  {
+   "id": "Ju-40",
+   "teeth": 40,
+   "type": "spur",
+   "assembly": "AM-323",
+   "evidence": "E3",
+   "meshes": [
+    "Ju-45",
+    "Ju-43"
+   ],
+   "function": "Jupiter Zwischenrad"
+  },
+  {
+   "id": "Ju-43",
+   "teeth": 43,
+   "type": "spur",
+   "assembly": "AM-323",
+   "evidence": "E3",
+   "meshes": [
+    "Ju-40"
+   ],
+   "function": "Jupiter Epizykel mit Stift (43 = Primfaktor aus 344)"
+  },
+  {
+   "id": "Ju-65a",
+   "teeth": 65,
+   "type": "spur",
+   "assembly": "AM-323",
+   "evidence": "E3",
+   "meshes": [
+    "Ju-65b"
+   ],
+   "function": "Jupiter Ausgang (Schlitz-Folger)"
+  },
+  {
+   "id": "Ju-65b",
+   "teeth": 65,
+   "type": "spur",
+   "assembly": "AM-323",
+   "evidence": "E3",
+   "meshes": [
+    "Ju-65a"
+   ],
+   "function": "Jupiter Ausgang zum Ring"
+  },
+  {
+   "id": "Sa-61",
+   "teeth": 61,
+   "type": "spur",
+   "assembly": "AM-324",
+   "evidence": "E3",
+   "meshes": [
+    "Sa-40"
+   ],
+   "function": "Saturn (gleiche Welle wie 52; 61 = Primfaktor aus 427)"
+  },
+  {
+   "id": "Sa-40",
+   "teeth": 40,
+   "type": "spur",
+   "assembly": "AM-324",
+   "evidence": "E3",
+   "meshes": [
+    "Sa-61",
+    "Sa-68"
+   ],
+   "function": "Saturn Zwischenrad"
+  },
+  {
+   "id": "Sa-68",
+   "teeth": 68,
+   "type": "spur",
+   "assembly": "AM-324",
+   "evidence": "E3",
+   "meshes": [
+    "Sa-40"
+   ],
+   "function": "Saturn Epizykel mit Stift (68 = 4 x 17)"
+  },
+  {
+   "id": "Sa-86a",
+   "teeth": 86,
+   "type": "spur",
+   "assembly": "AM-324",
+   "evidence": "E3",
+   "meshes": [
+    "Sa-86b"
+   ],
+   "function": "Saturn Ausgang (Schlitz-Folger)"
+  },
+  {
+   "id": "Sa-86b",
+   "teeth": 86,
+   "type": "spur",
+   "assembly": "AM-324",
+   "evidence": "E3",
+   "meshes": [
+    "Sa-86a"
+   ],
+   "function": "Saturn Ausgang zum Ring"
+  },
+  {
+   "id": "Dr-49",
+   "teeth": 49,
+   "type": "spur",
+   "assembly": "AM-330",
+   "evidence": "E4",
+   "mount": "b1-spoke-B",
+   "meshes": [
+    "Dr-62"
+   ],
+   "function": "Drachenzeiger (Mondknoten) Stufe 1",
+   "note": "Freeth 2021 selbst: keine direkte physische Evidenz"
+  },
+  {
+   "id": "Dr-62",
+   "teeth": 62,
+   "type": "spur",
+   "assembly": "AM-330",
+   "evidence": "E4",
+   "meshes": [
+    "Dr-49"
+   ],
+   "function": "Drachenzeiger"
+  },
+  {
+   "id": "Dr-64",
+   "teeth": 64,
+   "type": "spur",
+   "assembly": "AM-330",
+   "evidence": "E4",
+   "meshes": [
+    "Dr-48"
+   ],
+   "function": "Drachenzeiger (gleiche Welle wie 62)"
+  },
+  {
+   "id": "Dr-48",
+   "teeth": 48,
+   "type": "spur",
+   "assembly": "AM-330",
+   "evidence": "E4",
+   "meshes": [
+    "Dr-64"
+   ],
+   "function": "Drachenzeiger Ausgang (Knotenumlauf 18,6 Jahre, rückwärts)"
+  }
+ ],
+ "trains": [
+  {
+   "id": "moon-sidereal",
+   "name": "Mond (siderischer Monat)",
+   "type": "simple",
+   "meshes": [
+    [
+     "b2",
+     "c1"
+    ],
+    [
+     "c2",
+     "d1"
+    ],
+    [
+     "d2",
+     "e2"
+    ],
+    [
+     "e5",
+     "k1"
+    ],
+    [
+     "k2",
+     "e6"
+    ],
+    [
+     "e1",
+     "b3"
+    ]
+   ],
+   "expectedTurnsPerYear": "254/19",
+   "evidence": "E1"
+  },
+  {
+   "id": "lunar-apsides",
+   "name": "Mondapsiden (Träger e3)",
+   "type": "simple",
+   "meshes": [
+    [
+     "b2",
+     "l1"
+    ],
+    [
+     "l2",
+     "m1"
+    ],
+    [
+     "m3",
+     "e3"
+    ]
+   ],
+   "expectedTurnsPerYear": "477/4237",
+   "evidence": "E2"
+  },
+  {
+   "id": "metonic",
+   "name": "Metonische Spirale",
+   "type": "simple",
+   "meshes": [
+    [
+     "b2",
+     "l1"
+    ],
+    [
+     "l2",
+     "m1"
+    ],
+    [
+     "m2",
+     "n1"
+    ]
+   ],
+   "expectedTurnsPerYear": "5/19",
+   "evidence": "E2"
+  },
+  {
+   "id": "olympiad",
+   "name": "Spiele-Anzeige",
+   "type": "simple",
+   "meshes": [
+    [
+     "b2",
+     "l1"
+    ],
+    [
+     "l2",
+     "m1"
+    ],
+    [
+     "m2",
+     "n1"
+    ],
+    [
+     "n2",
+     "o1"
+    ]
+   ],
+   "expectedTurnsPerYear": "1/4",
+   "evidence": "E2"
+  },
+  {
+   "id": "callippic",
+   "name": "Kallippischer Zyklus",
+   "type": "simple",
+   "meshes": [
+    [
+     "b2",
+     "l1"
+    ],
+    [
+     "l2",
+     "m1"
+    ],
+    [
+     "m2",
+     "n1"
+    ],
+    [
+     "n3",
+     "p1"
+    ],
+    [
+     "p2",
+     "q1"
+    ]
+   ],
+   "expectedTurnsPerYear": "1/76",
+   "evidence": "E2"
+  },
+  {
+   "id": "saros",
+   "name": "Saros-Spirale",
+   "type": "simple",
+   "meshes": [
+    [
+     "b2",
+     "l1"
+    ],
+    [
+     "l2",
+     "m1"
+    ],
+    [
+     "m3",
+     "e3"
+    ],
+    [
+     "e4",
+     "f1"
+    ],
+    [
+     "f2",
+     "g1"
+    ]
+   ],
+   "expectedTurnsPerYear": "940/4237",
+   "evidence": "E2"
+  },
+  {
+   "id": "exeligmos",
+   "name": "Exeligmos",
+   "type": "simple",
+   "meshes": [
+    [
+     "b2",
+     "l1"
+    ],
+    [
+     "l2",
+     "m1"
+    ],
+    [
+     "m3",
+     "e3"
+    ],
+    [
+     "e4",
+     "f1"
+    ],
+    [
+     "f2",
+     "g1"
+    ],
+    [
+     "g2",
+     "h1"
+    ],
+    [
+     "h2",
+     "i1"
+    ]
+   ],
+   "expectedTurnsPerYear": "235/12711",
+   "evidence": "E2"
+  },
+  {
+   "id": "venus",
+   "name": "Venus (synodisch, relativ zum Träger b1)",
+   "type": "epicyclic",
+   "meshes": [
+    [
+     "V-51",
+     "V-44"
+    ],
+    [
+     "V-34",
+     "r1"
+    ]
+   ],
+   "idlers": [
+    "V-26"
+   ],
+   "expectedTurnsPerYear": "289/462",
+   "periodRelation": "289 synodische Zyklen in 462 Jahren",
+   "evidence": "E3"
+  },
+  {
+   "id": "mercury",
+   "name": "Merkur (synodisch, relativ zum Träger b1)",
+   "type": "epicyclic",
+   "meshes": [
+    [
+     "V-51",
+     "Me-72"
+    ],
+    [
+     "Me-89",
+     "Me-20"
+    ]
+   ],
+   "idlers": [
+    "Me-40"
+   ],
+   "expectedTurnsPerYear": "1513/480",
+   "periodRelation": "1513 synodische Zyklen in 480 Jahren",
+   "evidence": "E3"
+  },
+  {
+   "id": "true-sun",
+   "name": "Wahre Sonne (Epizykel raumfest)",
+   "type": "epicyclic",
+   "meshes": [
+    [
+     "CP-56",
+     "S-56"
+    ]
+   ],
+   "idlers": [
+    "S-52"
+   ],
+   "expectedTurnsPerYear": "1/1",
+   "evidence": "E3"
+  },
+  {
+   "id": "mars",
+   "name": "Mars (synodisch)",
+   "type": "epicyclic",
+   "meshes": [
+    [
+     "CP-56",
+     "MJ-64"
+    ],
+    [
+     "Ma-38",
+     "Ma-71"
+    ]
+   ],
+   "idlers": [
+    "Ma-40"
+   ],
+   "expectedTurnsPerYear": "133/284",
+   "periodRelation": "133 synodische Zyklen in 284 Jahren",
+   "evidence": "E3"
+  },
+  {
+   "id": "jupiter",
+   "name": "Jupiter (synodisch)",
+   "type": "epicyclic",
+   "meshes": [
+    [
+     "CP-56",
+     "MJ-64"
+    ],
+    [
+     "Ju-45",
+     "Ju-43"
+    ]
+   ],
+   "idlers": [
+    "Ju-40"
+   ],
+   "expectedTurnsPerYear": "315/344",
+   "periodRelation": "315 synodische Zyklen in 344 Jahren",
+   "evidence": "E3"
+  },
+  {
+   "id": "saturn",
+   "name": "Saturn (synodisch)",
+   "type": "epicyclic",
+   "meshes": [
+    [
+     "CP-56",
+     "S-52"
+    ],
+    [
+     "Sa-61",
+     "Sa-68"
+    ]
+   ],
+   "expectedTurnsPerYear": "427/442",
+   "periodRelation": "427 synodische Zyklen in 442 Jahren",
+   "evidence": "E3"
+  },
+  {
+   "id": "nodes",
+   "name": "Mondknoten / Drachenzeiger",
+   "type": "epicyclic",
+   "meshes": [
+    [
+     "Dr-49",
+     "Dr-62"
+    ],
+    [
+     "Dr-64",
+     "Dr-48"
+    ]
+   ],
+   "expectedTurnsPerYear": "98/93",
+   "note": "Ausgang relativ zu b1 = 98/93 -> raumfest -5/93 (Umlauf 18,6 Jahre rückwärts)",
+   "evidence": "E4"
+  }
+ ]
+}

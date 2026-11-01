@@ -1,0 +1,225 @@
+{
+ "meta": {
+  "hinweis": "Jahre negativ = v. Chr. 'sicherheit': gesichert | geschätzt | hypothese",
+  "kategorien": [
+   "wissen",
+   "bau",
+   "fund",
+   "forschung",
+   "grabung"
+  ]
+ },
+ "events": [
+  {
+   "year": -700,
+   "label": "Babylonische Astronomen kennen den Saros-Zyklus",
+   "kategorie": "wissen",
+   "sicherheit": "geschätzt",
+   "text": "223 Mondmonate - danach wiederholen sich Finsternisse. Grundlage der Finsternis-Spirale."
+  },
+  {
+   "year": -432,
+   "label": "Meton von Athen",
+   "kategorie": "wissen",
+   "sicherheit": "gesichert",
+   "text": "19 Jahre = 235 Mondmonate. Grundlage der Metonischen Spirale."
+  },
+  {
+   "year": -330,
+   "label": "Kallippos verfeinert den Zyklus",
+   "kategorie": "wissen",
+   "sicherheit": "geschätzt",
+   "text": "76 Jahre = 4 Metonische Zyklen minus 1 Tag."
+  },
+  {
+   "year": -212,
+   "label": "Tod des Archimedes",
+   "kategorie": "wissen",
+   "sicherheit": "gesichert",
+   "text": "Cicero berichtet später von einer Himmelskugel des Archimedes - ähnliche Geräte gab es also."
+  },
+  {
+   "year": -205,
+   "label": "Startdatum der Skalen",
+   "kategorie": "bau",
+   "sicherheit": "hypothese",
+   "text": "Saros-Monat 1 = Frühjahr 205 v. Chr. (Carman & Evans 2014, Freeth 2014). Kalenderstart kurz nach Neumond 23. Aug. 205 v. Chr. (Iversen 2017). Das ist das Startdatum der Skalen, nicht zwingend das Baujahr."
+  },
+  {
+   "year": -178,
+   "label": "Alternatives Kalibrierdatum",
+   "kategorie": "bau",
+   "sicherheit": "hypothese",
+   "text": "Voulgaris et al. 2022 schlagen den 23. Dez. 178 v. Chr. vor."
+  },
+  {
+   "year": -150,
+   "label": "Baujahr: wahrscheinlicher Zeitraum",
+   "kategorie": "bau",
+   "sicherheit": "geschätzt",
+   "range": [
+    -205,
+    -87
+   ],
+   "text": "Schriftform der Inschriften: Ende 3. bis Anfang 1. Jh. v. Chr. Viele Forscher: um 150-100 v. Chr."
+  },
+  {
+   "year": -130,
+   "label": "Hipparch (aktiv ca. 140-120 v. Chr.)",
+   "kategorie": "wissen",
+   "sicherheit": "gesichert",
+   "text": "Mondtheorie mit Epizykel - im Mechanismus mechanisch umgesetzt (Stift-Schlitz)."
+  },
+  {
+   "year": -65,
+   "label": "Untergang des Schiffs",
+   "kategorie": "fund",
+   "sicherheit": "geschätzt",
+   "range": [
+    -70,
+    -60
+   ],
+   "text": "Schiff mit Luxusladung sinkt vor Antikythera."
+  },
+  {
+   "year": 1900,
+   "label": "Schwammtaucher finden das Wrack",
+   "kategorie": "fund",
+   "sicherheit": "gesichert",
+   "text": "Kapitän Dimitrios Kontos und Taucher aus Symi."
+  },
+  {
+   "year": 1901,
+   "label": "Bergung des Mechanismus",
+   "kategorie": "fund",
+   "sicherheit": "gesichert",
+   "text": "Vermutlich Juli 1901, zunächst unbeachtet."
+  },
+  {
+   "year": 1902,
+   "label": "Zahnrad entdeckt",
+   "kategorie": "forschung",
+   "sicherheit": "gesichert",
+   "text": "17. Mai 1902: Valerios Stais bemerkt ein Zahnrad im Fragment."
+  },
+  {
+   "year": 1905,
+   "label": "Albert Rehm: astronomisches Rechengerät",
+   "kategorie": "forschung",
+   "sicherheit": "gesichert",
+   "text": "Erste Deutung als Rechenmaschine für den Himmel."
+  },
+  {
+   "year": 1974,
+   "label": "Derek de Solla Price: 'Gears from the Greeks'",
+   "kategorie": "forschung",
+   "sicherheit": "gesichert",
+   "text": "Erste Röntgenbilder (mit Karakalos 1971), erstes Gesamtmodell."
+  },
+  {
+   "year": 1976,
+   "label": "Jacques Cousteau taucht am Wrack",
+   "kategorie": "grabung",
+   "sicherheit": "gesichert",
+   "text": "Münzen aus Pergamon u. a. gefunden. Im selben Jahr wird Fragment E identifiziert."
+  },
+  {
+   "year": 2002,
+   "label": "Michael Wright: funktionierendes Modell",
+   "kategorie": "forschung",
+   "sicherheit": "gesichert",
+   "text": "Erste mechanische Rekonstruktion mit Planeten (Wright 2002-2006)."
+  },
+  {
+   "year": 2005,
+   "label": "Röntgen-CT des AMRP",
+   "kategorie": "forschung",
+   "sicherheit": "gesichert",
+   "text": "Antikythera Mechanism Research Project: Computertomografie + Oberflächenscans; tausende Schriftzeichen lesbar."
+  },
+  {
+   "year": 2006,
+   "label": "Nature: Mond und Finsternisse entschlüsselt",
+   "kategorie": "forschung",
+   "sicherheit": "gesichert",
+   "text": "Freeth et al.: Rückseiten-Getriebe, Stift-Schlitz-Mond, Saros."
+  },
+  {
+   "year": 2008,
+   "label": "Nature: Kalender und Olympiaden",
+   "kategorie": "forschung",
+   "sicherheit": "gesichert",
+   "text": "Korinthische Monatsnamen, Spiele-Anzeige."
+  },
+  {
+   "year": 2012,
+   "label": "Freeth & Jones: Kosmos-Modell",
+   "kategorie": "forschung",
+   "sicherheit": "gesichert",
+   "text": "Planetenanzeige als Modell vorgeschlagen."
+  },
+  {
+   "year": 2014,
+   "label": "Datierung auf 205 v. Chr. / Return to Antikythera",
+   "kategorie": "forschung",
+   "sicherheit": "gesichert",
+   "text": "Carman & Evans; im selben Jahr beginnen neue Tauchgrabungen."
+  },
+  {
+   "year": 2016,
+   "label": "Zahlen 462 und 442 gelesen",
+   "kategorie": "forschung",
+   "sicherheit": "gesichert",
+   "text": "Perioden für Venus und Saturn auf der Frontdeckel-Inschrift."
+  },
+  {
+   "year": 2017,
+   "label": "Iversen: Kalender aus Epirus, Halieia von Rhodos",
+   "kategorie": "forschung",
+   "sicherheit": "gesichert",
+   "text": "Herkunftsfrage neu belebt."
+  },
+  {
+   "year": 2020,
+   "label": "Budiselic et al.: Lochzählung Kalenderring",
+   "kategorie": "forschung",
+   "sicherheit": "gesichert",
+   "text": "Neue Messung der Löcher unter dem Kalenderring."
+  },
+  {
+   "year": 2021,
+   "label": "UCL: vollständiges Kosmos-Modell",
+   "kategorie": "forschung",
+   "sicherheit": "gesichert",
+   "text": "Freeth et al. 2021 - Grundlage unserer Front-Rekonstruktion."
+  },
+  {
+   "year": 2021,
+   "label": "Grabungsprogramm 2021-2025",
+   "kategorie": "grabung",
+   "sicherheit": "gesichert",
+   "text": "Schweizer Archäologische Schule in Griechenland; 2024 Teile des Rumpfs gefunden."
+  },
+  {
+   "year": 2024,
+   "label": "Kalenderring: 354 Löcher",
+   "kategorie": "forschung",
+   "sicherheit": "gesichert",
+   "text": "Woan & Bayley (Glasgow): Mondkalender wahrscheinlicher als Sonnenjahr."
+  },
+  {
+   "year": 2025,
+   "label": "Klemmte das Getriebe?",
+   "kategorie": "forschung",
+   "sicherheit": "gesichert",
+   "text": "Szigety & Arenas (Preprint): Mit den gemessenen Fertigungsfehlern wäre das Getriebe oft blockiert - oder die Messungen sind durch Korrosion verfälscht."
+  },
+  {
+   "year": 2025,
+   "label": "Rumpfteile geborgen",
+   "kategorie": "grabung",
+   "sicherheit": "gesichert",
+   "text": "Abschluss der Grabungen 2021–2025: Planken des Schiffsrumpfs geborgen. Erste Analyse: Ulme und Eiche, Holz etwa um 235 v. Chr."
+  }
+ ]
+}
