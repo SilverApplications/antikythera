@@ -56,7 +56,7 @@ After editing anything in `data/`: `python3 tools/build_data.py`.
 
 - Gear **sizes, thicknesses and centre distances** follow the CT measurements in Table S8 of the supplement to Freeth et al. 2021; the cosmos gearing sits on the bearings found on the spokes of b1 (Freeth 2021, Suppl. S5/S9). The **directions** between the axles behind b1 are schematic: axle coordinates are not published as numbers. Literature notes: `docs/literatur/`.
 - Planetary pin-and-slot followers are not yet modelled as geometry; the planets' positions are computed with the equivalent epicycle model.
-- Month names per cell of the Metonic spiral are computed (Freeth 2008: intercalary years 1, 3, 6, 9, 11, 14, 17) and shown in the readout, but not yet engraved; the Saros eclipse glyphs are not yet included.
+- Month names per cell of the Metonic spiral (Freeth 2008) and the 51 eclipse glyphs of the Saros spiral (Iversen & Jones 2019; hours after Carman & Evans 2014) are engraved and shown in the readout; glyph hours exist only for the 22 legible predictions.
 
 ## Sources (selection)
 

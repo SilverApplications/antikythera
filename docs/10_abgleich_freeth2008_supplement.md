@@ -44,6 +44,6 @@ Drei Sektoren: leer (0 h), H (8 h) und IϚ (16 h). Im CT steht H bei 7 Uhr und I
 - Der Kalenderring war versetzbar. Ein Stift griff in Löcher darunter, 2008 noch mit 365 angenommen, heute 354.
 
 ## 2. Weiter offen
-- Monatsnamen in jede Zelle der Spirale gravieren (die Daten sind jetzt vorhanden).
-- Saros-Glyphen nach Freeth 2014 / Carman & Evans 2014.
+- ~~Monatsnamen in jede Zelle gravieren~~ → erledigt (v0.6).
+- ~~Saros-Glyphen~~ → erledigt nach Iversen & Jones 2019 / Carman & Evans 2014, siehe docs/11.
 - Auf welcher Seite die Olympiaden-Anzeige sitzt (links oder rechts in der Ansicht von hinten): im Text nicht eindeutig. Bei uns sitzt sie von hinten gesehen links.

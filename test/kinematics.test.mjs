@@ -2,7 +2,7 @@
 // Aufruf: npm test   (oder: node --test test/)
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { RATES, stateAt, EPOCH, METONIC_CELLS } from '../app/js/kinematics.js';
+import { RATES, stateAt, EPOCH, METONIC_CELLS, GLYPH_BY_CELL } from '../app/js/kinematics.js';
 import { realSky, angDiff, julianDay, nextEclipses } from '../app/js/astro.js';
 import { PLACE, ARBORS, pitchR, moduleOf, BEARING } from '../app/js/layout.js';
 import { GEARS } from '../app/js/generated/data.js';
@@ -86,4 +86,16 @@ test('Metonischer Kalender: 235 Zellen, Jahr 8 beginnt in Zelle 88 (Freeth 2008)
 
 test('Stift-Schlitz: Achse K\' liegt 1,1 mm neben K', () => {
   close(PLACE.k2.at[0] - PLACE.k1.at[0], 1.1, 1e-12);
+});
+
+test('Saros-Glyphen: 51 Zellen, 38 Mond-Möglichkeiten (213/214 offen), belegte Lücken stimmen (Iversen & Jones 2019)', () => {
+  const g = Object.values(GLYPH_BY_CELL);
+  assert.equal(g.length, 51);
+  assert.equal(g.filter((x) => x.lunar && x.lunar !== 'unsicher').length, 37);
+  assert.ok(GLYPH_BY_CELL[213].lunar === 'unsicher' && GLYPH_BY_CELL[214].lunar === 'unsicher');
+  for (const c of [113, 19, 190]) assert.ok(!GLYPH_BY_CELL[c]?.solar, `Zelle ${c} hat keine Sonnen-Glyphe`);
+  assert.equal(GLYPH_BY_CELL[13].solarHour.h, 1);  // „1. Stunde am Tag“ (Carman & Evans 2014, Tab. 11)
+  // Vollmond von Monat 1 (12. Mai 205 v. Chr.) liegt in Zelle 1, die keine Glyphe trägt
+  assert.equal(stateAt(julianDay(-204, 5, 12.5)).saros.glyph, null);
+  assert.equal(stateAt(julianDay(-204, 5, 12.5) + 29.53 * 12).saros.glyph.cell, 13);
 });

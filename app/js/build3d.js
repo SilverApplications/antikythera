@@ -3,7 +3,7 @@ import * as THREE from '../vendor/three.module.min.js';
 import { GEARS } from './generated/data.js';
 import { PLACE, ARBORS, BACK, PLATE, FRONT, A1, pitchR, moduleOf, thickOf, SPOKE } from './layout.js';
 import { deviceText } from './i18n.js';
-import { METONIC_CELLS } from './kinematics.js';
+import { METONIC_CELLS, GLYPH_BY_CELL } from './kinematics.js';
 import { patinaTextures, oliveWood, engravedTexture, engraveStroke, engraveText } from './patina.js';
 
 const TAU = Math.PI * 2;
@@ -227,6 +227,20 @@ export function backTexture() {
       }
     };
     spiral(BACK.metonic); spiral(BACK.saros);
+    // Finsternis-Glyphen in der Saros-Spirale: Σ/Η (bzw. M/S) und Indexbuchstabe (Iversen & Jones 2019)
+    {
+      const sp = BACK.saros, [cx, cy] = toC(...sp.c), pitch = (sp.r1 - sp.r0) / sp.turns, a0 = (sp.start ?? 0) * Math.PI / 180;
+      for (const gl of Object.values(GLYPH_BY_CELL)) {
+        const t = (gl.cell - 0.5) / sp.cells * sp.turns, a = a0 + t * TAU, r = sp.r0 + pitch * t;
+        const w = (TAU * r) / (sp.cells / sp.turns) * 0.86;
+        const mark = (s, ch) => (s ? ch + (s === 'unsicher' ? '?' : '') : '');
+        const top = [mark(gl.lunar, D.glyphL), mark(gl.solar, D.glyphS)].filter(Boolean).join(' ');
+        g.save(); g.translate(cx, cy); g.rotate(a); g.translate(0, -r * k); g.rotate(Math.PI);
+        engraveText(g, st, top, 0, (gl.index ? -0.85 : 0) * k, fitSize(top, w, 1.45) * k);
+        if (gl.index) engraveText(g, st, gl.index, 0, 1.05 * k, fitSize(gl.index, w, 1.2) * k);
+        g.restore();
+      }
+    }
     // Monatsnamen in den 235 Zellen der Metonischen Spirale; Jahresbeginn mit Jahreszeichen (Freeth 2008)
     {
       const sp = BACK.metonic, [cx, cy] = toC(...sp.c), pitch = (sp.r1 - sp.r0) / sp.turns, a0 = sp.start * Math.PI / 180;

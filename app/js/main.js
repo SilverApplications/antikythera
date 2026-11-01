@@ -150,6 +150,16 @@ canvas.addEventListener('pointerup', (e) => {
   showInfo(hits[0]?.object.userData);
 });
 let infoShown = null;
+// Finsternis-Glyphe der aktuellen Saros-Zelle in Worten
+function glyphText(g) {
+  if (!g) return t('gl.none');
+  const hour = (h) => (h ? ` – ${t(h.tag ? 'gl.hourDay' : 'gl.hourNight', { h: h.h })}${h.unsicher ? ' (?)' : ''}` : '');
+  const status = (s) => t(`gl.${s}`);
+  const parts = [];
+  if (g.lunar) parts.push(`${t('gl.lunar')}${hour(g.lunarHour)} [${status(g.lunar)}]`);
+  if (g.solar) parts.push(`${t('gl.solar')}${hour(g.solarHour)} [${status(g.solar)}]`);
+  return parts.join('; ') + (g.index ? ` · ${t('gl.index', { i: g.index })}${g.indexBelegt ? '' : '*'}` : '');
+}
 const monthName = (m) => (lang === 'el' ? CORINTHIAN_MONTHS_EL : CORINTHIAN_MONTHS)[m.month] + (m.intercalary ? ' II' : '');
 const GEAR_BY_ID = Object.fromEntries(GEARS.gears.map((g) => [g.id, g]));
 const fmtNum = (x, d) => x.toLocaleString(lang === 'en' ? 'en-GB' : lang === 'el' ? 'el-GR' : 'de-DE', { minimumFractionDigits: d, maximumFractionDigits: d });
@@ -277,7 +287,7 @@ function updateReadouts() {
     [t('metonic'), `${monthName(st.metonic)} · ${t('monthOf', { a: st.metonic.cell + 1, b: 235 })} · ${t('yearOf', { a: st.metonic.year + 1, b: 19 })}`],
     [t('games'), t('gamesYear', { a: st.games.year + 1, b: gamesNames })],
     [t('callippic'), t('sector', { a: st.callippic.sector + 1, b: 4 })],
-    [t('saros'), t('monthOf', { a: st.saros.cell + 1, b: 223 })],
+    [t('saros'), `${t('monthOf', { a: st.saros.cell + 1, b: 223 })} · ${glyphText(st.saros.glyph)}`],
     [t('exeligmos'), t('correction', { a: st.exeligmos.label })],
     [t('egCal'), `${EG_MONTHS[st.egyptian.month]} ${st.egyptian.day}`],
   ].map(([a, b]) => `<tr><td>${a}</td><td>${b}</td></tr>`).join('');

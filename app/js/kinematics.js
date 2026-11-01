@@ -2,7 +2,7 @@
 // Alle Geschwindigkeiten stammen aus den Zähnezahlen in data/gears.json (exakte Brüche),
 // nicht aus moderner Astronomie. Nur die Anfangsstellung (Epoche) wird einmal an
 // mittleren Bahnelementen kalibriert - so wie ein antiker Benutzer das Gerät eingestellt hätte.
-import { GEARS } from './generated/data.js';
+import { GEARS, SAROS_GLYPHS } from './generated/data.js';
 import { julianDay, meanElements, TROPICAL_YEAR, norm360, egyptianDate } from './astro.js';
 
 const Z = Object.fromEntries(GEARS.gears.map((g) => [g.id, g.teeth]));
@@ -76,6 +76,9 @@ export const METONIC_CELLS = (() => {
   return cells;
 })();
 
+// Finsternis-Glyphen der Saros-Spirale (Iversen & Jones 2019, Stunden nach Carman & Evans 2014)
+export const GLYPH_BY_CELL = Object.fromEntries(SAROS_GLYPHS.cells.map((g) => [g.cell, g]));
+
 const frac = (x) => x - Math.floor(x);
 
 // Stift-Schlitz: Ausgangswinkel aus Eingangswinkel (rad), Versatz in Richtung 0°
@@ -138,7 +141,7 @@ export function stateAt(jd) {
     metonic: { frac: metFrac, cell: metCell, year: metYear, month: metInfo.month - 1, intercalary: metInfo.intercalary, turns: metFrac * 5 },
     games: { year: gamesYear, names: GAMES[gamesYear], frac: frac(yc / 4) },
     callippic: { frac: callFrac, sector: Math.floor(callFrac * 4) },
-    saros: { frac: sarosFrac, cell: sarosCell, turns: sarosFrac * 4 },
+    saros: { frac: sarosFrac, cell: sarosCell, turns: sarosFrac * 4, glyph: GLYPH_BY_CELL[sarosCell + 1] ?? null },
     exeligmos: { frac: exeFrac, sector: Math.floor(exeFrac * 3), label: EXELIGMOS[Math.floor(exeFrac * 3)] },
     egyptian: eg,
     crankTurns: years * Z.b1 / Z.a1,

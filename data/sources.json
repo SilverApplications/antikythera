@@ -35,7 +35,36 @@
    "titel": "On the epoch of the Antikythera mechanism and its eclipse predictor",
    "ort": "Archive for History of Exact Sciences 68, 693-774",
    "url": "https://ri.conicet.gov.ar/handle/11336/98820",
-   "nutzen": "Datierung 205 v. Chr."
+   "nutzen": "Datierung 205 v. Chr.; Tabelle 11: Stunden der belegten Glyphen (Lesungen von A. Jones)"
+  },
+  {
+   "id": "freeth2014",
+   "autoren": "Freeth, T.",
+   "jahr": 2014,
+   "titel": "Eclipse Prediction on the Ancient Greek Astronomical Calculating Machine Known as the Antikythera Mechanism",
+   "ort": "PLoS ONE 9(7), e103275",
+   "url": "https://doi.org/10.1371/journal.pone.0103275",
+   "lizenz": "CC BY 4.0",
+   "nutzen": "Glyphen, Indexbuchstaben, 51 Glyphen, Eclipse-Year-Modell"
+  },
+  {
+   "id": "freeth2019",
+   "autoren": "Freeth, T.",
+   "jahr": 2019,
+   "titel": "Revising the eclipse prediction scheme in the Antikythera mechanism",
+   "ort": "Palgrave Communications 5, 7",
+   "url": "https://doi.org/10.1057/s41599-018-0210-9",
+   "lizenz": "CC BY 4.0",
+   "nutzen": "Indexbuchstaben-Gruppen, Zusatzsymbole nach dem 2. Alphabet"
+  },
+  {
+   "id": "iversenjones2019",
+   "autoren": "Iversen, P., Jones, A.",
+   "jahr": 2019,
+   "titel": "The Back Plate Inscription and eclipse scheme of the Antikythera Mechanism revisited",
+   "ort": "Archive for History of Exact Sciences 73, 469-511",
+   "url": "https://archive.nyu.edu/bitstream/2451/48012/2/Iversen%20and%20Jones%202019%20BPI%20AHES.pdf",
+   "nutzen": "Tabelle 3: alle Glyphenzellen mit Typ und Indexbuchstabe (Grundlage der Saros-Glyphen)"
   },
   {
    "id": "iversen2017",

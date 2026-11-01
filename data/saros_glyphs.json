@@ -1,0 +1,419 @@
+{
+ "meta": {
+  "titel": "Finsternis-Glyphen der Saros-Spirale (223 Monate)",
+  "quellen": [
+   "iversenjones2019 (Tabelle 3: Zellen, Typ, Indexbuchstaben)",
+   "carman2014 (Tabelle 11: Stunden nach Lesungen von A. Jones)",
+   "freeth2014",
+   "freeth2019"
+  ],
+  "hinweis": "Mondfinsternis-Möglichkeit zur Monatsmitte (Vollmond), Sonnenfinsternis-Möglichkeit zum Monatsende (Neumond); Monate beginnen mit der ersten Sichel. Stunden: Tag ab Sonnenaufgang, Nacht ab Sonnenuntergang; dazu kommt die Exeligmos-Korrektur (0/8/16 h). Status: belegt = auf den Fragmenten lesbar, rekonstruiert = aus dem Schema erschlossen, unsicher = in der Literatur offen.",
+  "monat1": "Vollmond von Monat 1 = 12. Mai 205 v. Chr. (Carman & Evans 2014)"
+ },
+ "cells": [
+  {
+   "cell": 2,
+   "lunar": "rekonstruiert",
+   "solar": "unsicher",
+   "index": "Α",
+   "indexBelegt": false
+  },
+  {
+   "cell": 8,
+   "lunar": "belegt",
+   "solar": "belegt",
+   "index": "Β",
+   "indexBelegt": true
+  },
+  {
+   "cell": 13,
+   "solar": "belegt",
+   "index": "Γ",
+   "indexBelegt": true,
+   "solarHour": {
+    "h": 1,
+    "tag": true
+   }
+  },
+  {
+   "cell": 14,
+   "lunar": "rekonstruiert",
+   "index": "Δ",
+   "indexBelegt": false
+  },
+  {
+   "cell": 20,
+   "lunar": "belegt",
+   "index": "Ε",
+   "indexBelegt": true,
+   "lunarHour": {
+    "h": 6,
+    "tag": false
+   }
+  },
+  {
+   "cell": 25,
+   "solar": "belegt",
+   "index": "Ζ",
+   "indexBelegt": true,
+   "solarHour": {
+    "h": 6,
+    "tag": true
+   }
+  },
+  {
+   "cell": 26,
+   "lunar": "belegt",
+   "index": "Η",
+   "indexBelegt": true,
+   "lunarHour": {
+    "h": 7,
+    "tag": true
+   }
+  },
+  {
+   "cell": 31,
+   "solar": "rekonstruiert",
+   "index": "Θ",
+   "indexBelegt": false
+  },
+  {
+   "cell": 32,
+   "lunar": "rekonstruiert",
+   "index": "Ι",
+   "indexBelegt": false
+  },
+  {
+   "cell": 37,
+   "lunar": "rekonstruiert",
+   "solar": "rekonstruiert",
+   "index": "Κ",
+   "indexBelegt": false
+  },
+  {
+   "cell": 43,
+   "lunar": "rekonstruiert",
+   "solar": "rekonstruiert",
+   "index": "Λ",
+   "indexBelegt": false
+  },
+  {
+   "cell": 49,
+   "lunar": "rekonstruiert",
+   "index": "Μ",
+   "indexBelegt": false
+  },
+  {
+   "cell": 55,
+   "lunar": "rekonstruiert",
+   "solar": "rekonstruiert",
+   "index": "Ν",
+   "indexBelegt": false
+  },
+  {
+   "cell": 60,
+   "solar": "rekonstruiert",
+   "index": "Ξ",
+   "indexBelegt": false
+  },
+  {
+   "cell": 61,
+   "lunar": "belegt",
+   "index": "Ο",
+   "indexBelegt": false
+  },
+  {
+   "cell": 67,
+   "lunar": "belegt",
+   "index": "Π",
+   "indexBelegt": true
+  },
+  {
+   "cell": 72,
+   "solar": "belegt",
+   "index": "Ρ",
+   "indexBelegt": true
+  },
+  {
+   "cell": 73,
+   "lunar": "rekonstruiert",
+   "index": "Σ",
+   "indexBelegt": false
+  },
+  {
+   "cell": 78,
+   "solar": "belegt",
+   "index": "Τ",
+   "indexBelegt": true,
+   "solarHour": {
+    "h": 1,
+    "tag": true
+   }
+  },
+  {
+   "cell": 79,
+   "lunar": "belegt",
+   "index": "Υ",
+   "indexBelegt": true,
+   "lunarHour": {
+    "h": 10,
+    "tag": true
+   }
+  },
+  {
+   "cell": 84,
+   "lunar": "rekonstruiert",
+   "solar": "rekonstruiert",
+   "index": "Φ",
+   "indexBelegt": false
+  },
+  {
+   "cell": 90,
+   "lunar": "rekonstruiert",
+   "solar": "rekonstruiert",
+   "index": "Χ",
+   "indexBelegt": false
+  },
+  {
+   "cell": 96,
+   "lunar": "rekonstruiert",
+   "index": "Ψ",
+   "indexBelegt": false
+  },
+  {
+   "cell": 102,
+   "lunar": "rekonstruiert",
+   "solar": "rekonstruiert",
+   "index": "Ω",
+   "indexBelegt": false
+  },
+  {
+   "cell": 107,
+   "solar": "rekonstruiert",
+   "index": "Α̅",
+   "indexBelegt": false
+  },
+  {
+   "cell": 108,
+   "lunar": "rekonstruiert",
+   "index": "Β̅",
+   "indexBelegt": false
+  },
+  {
+   "cell": 114,
+   "lunar": "belegt",
+   "index": "Γ̅",
+   "indexBelegt": true,
+   "lunarHour": {
+    "h": 12,
+    "tag": true
+   }
+  },
+  {
+   "cell": 119,
+   "solar": "belegt",
+   "index": "Δ̅",
+   "indexBelegt": true,
+   "solarHour": {
+    "h": 11,
+    "tag": false,
+    "unsicher": true
+   }
+  },
+  {
+   "cell": 120,
+   "lunar": "belegt",
+   "index": "Ε̅",
+   "indexBelegt": true,
+   "lunarHour": {
+    "h": 6,
+    "tag": true,
+    "unsicher": true
+   }
+  },
+  {
+   "cell": 125,
+   "lunar": "belegt",
+   "solar": "belegt",
+   "index": "Ζ̅",
+   "indexBelegt": true,
+   "lunarHour": {
+    "h": 8,
+    "tag": true
+   },
+   "solarHour": {
+    "h": 3,
+    "tag": true
+   }
+  },
+  {
+   "cell": 131,
+   "lunar": "belegt",
+   "solar": "belegt",
+   "index": "Η̅",
+   "indexBelegt": true,
+   "lunarHour": {
+    "h": 2,
+    "tag": false
+   },
+   "solarHour": {
+    "h": 9,
+    "tag": false
+   }
+  },
+  {
+   "cell": 137,
+   "lunar": "belegt",
+   "solar": "belegt",
+   "index": "Θ̅",
+   "indexBelegt": true,
+   "lunarHour": {
+    "h": 5,
+    "tag": true
+   },
+   "solarHour": {
+    "h": 12,
+    "tag": true
+   }
+  },
+  {
+   "cell": 143,
+   "lunar": "rekonstruiert",
+   "index": "Ι̅",
+   "indexBelegt": false
+  },
+  {
+   "cell": 149,
+   "lunar": "rekonstruiert",
+   "solar": "rekonstruiert",
+   "index": "Κ̅",
+   "indexBelegt": false
+  },
+  {
+   "cell": 154,
+   "solar": "rekonstruiert",
+   "index": "Λ̅",
+   "indexBelegt": false
+  },
+  {
+   "cell": 155,
+   "lunar": "rekonstruiert",
+   "index": "Μ̅",
+   "indexBelegt": false
+  },
+  {
+   "cell": 161,
+   "lunar": "rekonstruiert",
+   "index": "Ν̅",
+   "indexBelegt": false
+  },
+  {
+   "cell": 166,
+   "solar": "rekonstruiert",
+   "index": "Ξ̅",
+   "indexBelegt": false
+  },
+  {
+   "cell": 167,
+   "lunar": "rekonstruiert",
+   "index": "Ο̅",
+   "indexBelegt": false
+  },
+  {
+   "cell": 172,
+   "lunar": "belegt",
+   "solar": "belegt",
+   "index": "Π̅",
+   "indexBelegt": true,
+   "lunarHour": {
+    "h": 6,
+    "tag": false
+   },
+   "solarHour": {
+    "h": 12,
+    "tag": true
+   }
+  },
+  {
+   "cell": 178,
+   "lunar": "belegt",
+   "solar": "belegt",
+   "index": "Ρ̅",
+   "indexBelegt": true,
+   "lunarHour": {
+    "h": 9,
+    "tag": false
+   },
+   "solarHour": {
+    "h": 9,
+    "tag": true
+   }
+  },
+  {
+   "cell": 184,
+   "lunar": "belegt",
+   "solar": "belegt",
+   "index": "Σ̅",
+   "indexBelegt": true,
+   "lunarHour": {
+    "h": 4,
+    "tag": true
+   },
+   "solarHour": {
+    "h": 1,
+    "tag": true
+   }
+  },
+  {
+   "cell": 190,
+   "lunar": "belegt",
+   "index": "Τ̅",
+   "indexBelegt": true,
+   "lunarHour": {
+    "h": 9,
+    "tag": true
+   }
+  },
+  {
+   "cell": 196,
+   "lunar": "rekonstruiert",
+   "solar": "unsicher",
+   "index": "Υ̅",
+   "indexBelegt": false
+  },
+  {
+   "cell": 201,
+   "solar": "rekonstruiert",
+   "index": "Φ̅",
+   "indexBelegt": false
+  },
+  {
+   "cell": 202,
+   "lunar": "rekonstruiert",
+   "index": "Χ̅",
+   "indexBelegt": false
+  },
+  {
+   "cell": 207,
+   "solar": "unsicher"
+  },
+  {
+   "cell": 208,
+   "lunar": "rekonstruiert"
+  },
+  {
+   "cell": 213,
+   "lunar": "unsicher",
+   "solar": "rekonstruiert"
+  },
+  {
+   "cell": 214,
+   "lunar": "unsicher"
+  },
+  {
+   "cell": 219,
+   "lunar": "rekonstruiert",
+   "solar": "rekonstruiert"
+  }
+ ]
+}

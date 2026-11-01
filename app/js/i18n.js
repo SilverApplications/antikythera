@@ -17,7 +17,7 @@ export function setDeviceLang(l) { deviceLang = l; store.set('ak-device', l); li
 
 const UI = {
   de: {
-    version: 'Rekonstruktion v0.6 · Forschungsstand 11/2026', siteLang: 'Sprache', deviceLang: 'Beschriftung am Gerät',
+    version: 'Rekonstruktion v0.7 · Forschungsstand 11/2026', siteLang: 'Sprache', deviceLang: 'Beschriftung am Gerät',
     'view.front': 'Front', 'view.back': 'Rückseite', 'view.gears': 'Getriebe', 'view.explode': 'Explosion',
     definite: 'eindeutig', measured: 'Zähne laut CT (Freeth et al. 2006): {count} (Grenzen: {lim}).', measured21: 'Gemessen (Freeth et al. 2021, Tab. S8): Teilkreis {pitch} mm, Stärke {thick} mm, Modul {mod}. Im Modell: {model} mm.',
     schematic: 'Achslagen schematisch', schematicTitle: 'Radgrößen und Achsabstände nach CT-Messung (Freeth et al. 2021, Tab. S8), Kosmos-Lager nach den Speichen von b1; Richtungen zwischen den Achsen hinter b1 schematisch',
@@ -30,6 +30,9 @@ const UI = {
     backH: 'Rückseite: Kalender & Finsternisse', eclH: 'Nächste Finsternisse (echter Himmel)', goThere: 'hin',
     sun: 'Sonne', moon: 'Mond', mercury: 'Merkur', venus: 'Venus', mars: 'Mars', jupiter: 'Jupiter', saturn: 'Saturn', date: 'Datum',
     moonPhase: 'Mondphase', lit: '{n} % beleuchtet',
+    'gl.none': 'keine Finsternis-Glyphe', 'gl.lunar': 'Mondfinsternis möglich (Monatsmitte)', 'gl.solar': 'Sonnenfinsternis möglich (Monatsende)',
+    'gl.hourDay': '{h}. Stunde nach Sonnenaufgang', 'gl.hourNight': '{h}. Stunde nach Sonnenuntergang', 'gl.index': 'Index {i}',
+    'gl.belegt': 'belegt', 'gl.rekonstruiert': 'rekonstruiert', 'gl.unsicher': 'unsicher',
     metonic: 'Metonisch', monthOf: 'Monat {a} / {b}', yearOf: 'Jahr {a} / {b}', games: 'Spiele', gamesYear: 'Jahr {a}: {b}', callippic: 'Kallipp', sector: 'Sektor {a} / {b}',
     saros: 'Saros', exeligmos: 'Exeligmos', correction: 'Korrektur {a}', egCal: 'Ägypt. Kalender', and: ' & ',
     lunarEcl: 'Mondfinsternis', solarEcl: 'Sonnenfinsternis', 'k.total': 'total', 'k.partial': 'partiell', 'k.penumbral': 'Halbschatten', 'k.annular': 'ringförmig', 'k.hybrid': 'hybrid',
@@ -45,7 +48,7 @@ const UI = {
     'lvl.belegt': 'belegt', 'lvl.modell': 'Modell', 'lvl.hypothese': 'Hypothese', 'lvl.historisch': 'historisch',
   },
   en: {
-    version: 'Reconstruction v0.6 · research as of 11/2026', siteLang: 'Language', deviceLang: 'Lettering on the device',
+    version: 'Reconstruction v0.7 · research as of 11/2026', siteLang: 'Language', deviceLang: 'Lettering on the device',
     'view.front': 'Front', 'view.back': 'Back', 'view.gears': 'Gearing', 'view.explode': 'Exploded',
     definite: 'unambiguous', measured: 'Teeth from CT (Freeth et al. 2006): {count} (limits: {lim}).', measured21: 'Measured (Freeth et al. 2021, Table S8): pitch radius {pitch} mm, thickness {thick} mm, module {mod}. In the model: {model} mm.',
     schematic: 'Axle positions schematic', schematicTitle: 'Gear sizes and centre distances from CT measurements (Freeth et al. 2021, Table S8), cosmos bearings from the spokes of b1; directions between the axles behind b1 schematic',
@@ -58,6 +61,9 @@ const UI = {
     backH: 'Back: calendar & eclipses', eclH: 'Next eclipses (real sky)', goThere: 'go',
     sun: 'Sun', moon: 'Moon', mercury: 'Mercury', venus: 'Venus', mars: 'Mars', jupiter: 'Jupiter', saturn: 'Saturn', date: 'Date',
     moonPhase: 'Moon phase', lit: '{n} % lit',
+    'gl.none': 'no eclipse glyph', 'gl.lunar': 'lunar eclipse possible (mid-month)', 'gl.solar': 'solar eclipse possible (end of month)',
+    'gl.hourDay': 'hour {h} after sunrise', 'gl.hourNight': 'hour {h} after sunset', 'gl.index': 'index {i}',
+    'gl.belegt': 'attested', 'gl.rekonstruiert': 'reconstructed', 'gl.unsicher': 'uncertain',
     metonic: 'Metonic', monthOf: 'Month {a} / {b}', yearOf: 'Year {a} / {b}', games: 'Games', gamesYear: 'Year {a}: {b}', callippic: 'Callippic', sector: 'Sector {a} / {b}',
     saros: 'Saros', exeligmos: 'Exeligmos', correction: 'Correction {a}', egCal: 'Egyptian calendar', and: ' & ',
     lunarEcl: 'Lunar eclipse', solarEcl: 'Solar eclipse', 'k.total': 'total', 'k.partial': 'partial', 'k.penumbral': 'penumbral', 'k.annular': 'annular', 'k.hybrid': 'hybrid',
@@ -73,7 +79,7 @@ const UI = {
     'lvl.belegt': 'established', 'lvl.modell': 'model', 'lvl.hypothese': 'hypothesis', 'lvl.historisch': 'historical',
   },
   el: {
-    version: 'Ανακατασκευή v0.6 · ερευνητικά δεδομένα 11/2026', siteLang: 'Γλώσσα', deviceLang: 'Επιγραφές στη συσκευή',
+    version: 'Ανακατασκευή v0.7 · ερευνητικά δεδομένα 11/2026', siteLang: 'Γλώσσα', deviceLang: 'Επιγραφές στη συσκευή',
     'view.front': 'Εμπρός', 'view.back': 'Πίσω', 'view.gears': 'Γρανάζια', 'view.explode': 'Ανάπτυξη',
     definite: 'σαφής', measured: 'Δόντια κατά CT (Freeth et al. 2006): {count} (όρια: {lim}).', measured21: 'Μέτρηση (Freeth et al. 2021, πίν. S8): ακτίνα αρχικού κύκλου {pitch} mm, πάχος {thick} mm, μέτρο {mod}. Στο μοντέλο: {model} mm.',
     schematic: 'Θέσεις αξόνων σχηματικές', schematicTitle: 'Μεγέθη τροχών και αποστάσεις αξόνων από μετρήσεις CT (Freeth et al. 2021, πίν. S8), έδρανα του Κόσμου από τις ακτίνες του b1· οι κατευθύνσεις μεταξύ των αξόνων πίσω από τον b1 σχηματικές',
@@ -86,6 +92,9 @@ const UI = {
     backH: 'Πίσω: ημερολόγιο & εκλείψεις', eclH: 'Επόμενες εκλείψεις (πραγματικός ουρανός)', goThere: 'μετάβαση',
     sun: 'Ήλιος', moon: 'Σελήνη', mercury: 'Ερμής', venus: 'Αφροδίτη', mars: 'Άρης', jupiter: 'Δίας', saturn: 'Κρόνος', date: 'Ημερομηνία',
     moonPhase: 'Φάση Σελήνης', lit: '{n} % φωτισμένη',
+    'gl.none': 'καμία γλυφή έκλειψης', 'gl.lunar': 'πιθανή έκλειψη Σελήνης (μέσα του μήνα)', 'gl.solar': 'πιθανή έκλειψη Ηλίου (τέλος του μήνα)',
+    'gl.hourDay': '{h}η ώρα μετά την ανατολή', 'gl.hourNight': '{h}η ώρα μετά τη δύση', 'gl.index': 'δείκτης {i}',
+    'gl.belegt': 'μαρτυρείται', 'gl.rekonstruiert': 'ανασυντεθειμένο', 'gl.unsicher': 'αβέβαιο',
     metonic: 'Μετωνικός', monthOf: 'Μήνας {a} / {b}', yearOf: 'Έτος {a} / {b}', games: 'Αγώνες', gamesYear: 'Έτος {a}: {b}', callippic: 'Καλλιππικός', sector: 'Τομέας {a} / {b}',
     saros: 'Σάρος', exeligmos: 'Εξελιγμός', correction: 'Διόρθωση {a}', egCal: 'Αιγυπτ. ημερολόγιο', and: ' & ',
     lunarEcl: 'Σεληνιακή έκλειψη', solarEcl: 'Ηλιακή έκλειψη', 'k.total': 'ολική', 'k.partial': 'μερική', 'k.penumbral': 'παρασκιώδης', 'k.annular': 'δακτυλιοειδής', 'k.hybrid': 'υβριδική',
@@ -125,6 +134,7 @@ export const DEVICE = {
     exeligmos: ['', 'Η', 'ΙϚ'], callippic: ['Α', 'Β', 'Γ', 'Δ'], metonicTitle: '', sarosTitle: '',
     // Metonische Zellen: Monatsnamen (gekürzt, wie auf dem Original teils auch) und Jahreszeichen L + Zahl (Freeth 2008)
     metMonths: ['ΦΟΙΝ', 'ΚΡΑΝ', 'ΛΑΝΟ', 'ΜΑΧΑ', 'ΔΩΔΕ', 'ΕΥΚΛ', 'ΑΡΤΕ', 'ΨΥΔΡ', 'ΓΑΜΕ', 'ΑΓΡΙ', 'ΠΑΝΑ', 'ΑΠΕΛ'],
+    glyphL: 'Σ', glyphS: 'Η', // ΣΕΛΗΝΗ / ΗΛΙΟΣ (Freeth 2008)
     yearMark: (n) => `L${['Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ϛ', 'Ζ', 'Η', 'Θ', 'Ι', 'ΙΑ', 'ΙΒ', 'ΙΓ', 'ΙΔ', 'ΙΕ', 'ΙϚ', 'ΙΖ', 'ΙΗ', 'ΙΘ'][n - 1]}`,
   },
   de: {
@@ -132,14 +142,14 @@ export const DEVICE = {
     egMonths: ['THOTH', 'PHAOPHI', 'ATHYR', 'CHOIAK', 'TYBI', 'MECHIR', 'PHAMENOTH', 'PHARMUTHI', 'PACHON', 'PAYNI', 'EPIPHI', 'MESORE', 'ZUSATZ'],
     games: [['ISTHMIEN', 'OLYMPIA'], ['NEMEA', 'NAA'], ['ISTHMIEN', 'PYTHIEN'], ['NEMEA', 'HALIEIA']],
     exeligmos: ['0 h', '+8 h', '+16 h'], callippic: ['1', '2', '3', '4'], metonicTitle: 'METONISCHER KALENDER · 235 MONATE', sarosTitle: 'SAROS · 223 MONATE · FINSTERNISSE',
-    metMonths: ['PHOIN', 'KRAN', 'LANO', 'MACH', 'DODE', 'EUKL', 'ARTE', 'PSYD', 'GAME', 'AGRI', 'PANA', 'APEL'], yearMark: (n) => `J${n}`,
+    metMonths: ['PHOIN', 'KRAN', 'LANO', 'MACH', 'DODE', 'EUKL', 'ARTE', 'PSYD', 'GAME', 'AGRI', 'PANA', 'APEL'], yearMark: (n) => `J${n}`, glyphL: 'M', glyphS: 'S',
   },
   en: {
     zodiac: ['ARIES', 'TAURUS', 'GEMINI', 'CANCER', 'LEO', 'VIRGO', 'LIBRA', 'SCORPIO', 'SAGITTARIUS', 'CAPRICORN', 'AQUARIUS', 'PISCES'],
     egMonths: ['THOTH', 'PHAOPHI', 'ATHYR', 'CHOIAK', 'TYBI', 'MECHIR', 'PHAMENOTH', 'PHARMUTHI', 'PACHON', 'PAYNI', 'EPIPHI', 'MESORE', 'EXTRA'],
     games: [['ISTHMIA', 'OLYMPIA'], ['NEMEA', 'NAA'], ['ISTHMIA', 'PYTHIA'], ['NEMEA', 'HALIEIA']],
     exeligmos: ['0 h', '+8 h', '+16 h'], callippic: ['1', '2', '3', '4'], metonicTitle: 'METONIC CALENDAR · 235 MONTHS', sarosTitle: 'SAROS · 223 MONTHS · ECLIPSES',
-    metMonths: ['PHOIN', 'KRAN', 'LANO', 'MACH', 'DODE', 'EUKL', 'ARTE', 'PSYD', 'GAME', 'AGRI', 'PANA', 'APEL'], yearMark: (n) => `Y${n}`,
+    metMonths: ['PHOIN', 'KRAN', 'LANO', 'MACH', 'DODE', 'EUKL', 'ARTE', 'PSYD', 'GAME', 'AGRI', 'PANA', 'APEL'], yearMark: (n) => `Y${n}`, glyphL: 'M', glyphS: 'S',
   },
 };
 export const deviceText = () => DEVICE[deviceLang] ?? DEVICE.orig;
@@ -165,7 +175,7 @@ export const PARTS = {
     dragon: ['Drachenzeiger', 'Zeigt die Mondknoten (Finsternis-Zonen). Laut Freeth 2021 thematisch begründet, aber ohne direkten physischen Beleg.'],
     backplate: ['Rückplatte mit Spiralen', 'Oben die Metonische Spirale (5 Windungen, 235 Monate), unten die Saros-Spirale (4 Windungen, 223 Monate) mit Nebenzifferblättern.'],
     'ptr-metonic': ['Metonischer Zeiger', 'Zeiger mit Läufer, der in der Spiralnut gleitet (Rekonstruktion).'],
-    'ptr-saros': ['Saros-Zeiger', 'Zeigt den Monat im 223-Monats-Zyklus; einzelne Zellen tragen Finsternis-Glyphen.'],
+    'ptr-saros': ['Saros-Zeiger', 'Zeigt den Monat im 223-Monats-Zyklus. 51 Zellen tragen Finsternis-Glyphen: Σ = Mond, Η = Sonne, darunter der Indexbuchstabe (nach Iversen & Jones 2019).'],
     'ptr-games': ['Spiele-Zeiger', 'Vierjahreszyklus der Panhellenischen Spiele. Einziger Zeiger gegen den Uhrzeigersinn.'],
     'ptr-callippic': ['Kallipp-Zeiger', '76-Jahres-Zyklus in 4 Sektoren.'],
     'ptr-exeligmos': ['Exeligmos-Zeiger', '54-Jahres-Zyklus: Zeitkorrektur 0, +8 oder +16 Stunden für Finsternisse.'],
@@ -190,7 +200,7 @@ export const PARTS = {
     dragon: ['Dragon hand', 'Shows the lunar nodes (eclipse zones). Thematically justified by Freeth 2021, but without direct physical evidence.'],
     backplate: ['Back plate with spirals', 'Top: Metonic spiral (5 turns, 235 months). Bottom: Saros spiral (4 turns, 223 months) with subsidiary dials.'],
     'ptr-metonic': ['Metonic pointer', 'Pointer with a follower sliding in the spiral groove (reconstruction).'],
-    'ptr-saros': ['Saros pointer', 'Shows the month in the 223-month cycle; some cells carry eclipse glyphs.'],
+    'ptr-saros': ['Saros pointer', 'Shows the month in the 223-month cycle. 51 cells carry eclipse glyphs: Σ = Moon, Η = Sun, with the index letter below (after Iversen & Jones 2019).'],
     'ptr-games': ['Games pointer', 'Four-year cycle of the Panhellenic games. The only anticlockwise pointer.'],
     'ptr-callippic': ['Callippic pointer', '76-year cycle in 4 sectors.'],
     'ptr-exeligmos': ['Exeligmos pointer', '54-year cycle: time correction of 0, +8 or +16 hours for eclipses.'],
@@ -215,7 +225,7 @@ export const PARTS = {
     dragon: ['Δείκτης δράκοντα', 'Δείχνει τους σεληνιακούς δεσμούς (ζώνες εκλείψεων). Θεματικά τεκμηριωμένος από τον Freeth 2021, χωρίς άμεσο υλικό τεκμήριο.'],
     backplate: ['Οπίσθια πλάκα με σπείρες', 'Πάνω η μετωνική σπείρα (5 στροφές, 235 μήνες), κάτω η σπείρα του Σάρου (4 στροφές, 223 μήνες) με βοηθητικές ενδείξεις.'],
     'ptr-metonic': ['Μετωνικός δείκτης', 'Δείκτης με ολισθητή που κινείται στην αυλάκωση της σπείρας (ανακατασκευή).'],
-    'ptr-saros': ['Δείκτης Σάρου', 'Δείχνει τον μήνα στον κύκλο των 223 μηνών· ορισμένα κελιά φέρουν σύμβολα εκλείψεων.'],
+    'ptr-saros': ['Δείκτης Σάρου', 'Δείχνει τον μήνα στον κύκλο των 223 μηνών. 51 κελιά φέρουν γλυφές εκλείψεων: Σ = Σελήνη, Η = Ήλιος, από κάτω το γράμμα-δείκτης (κατά Iversen & Jones 2019).'],
     'ptr-games': ['Δείκτης αγώνων', 'Τετραετής κύκλος των πανελλήνιων αγώνων. Ο μόνος δείκτης με αριστερόστροφη κίνηση.'],
     'ptr-callippic': ['Καλλιππικός δείκτης', 'Κύκλος 76 ετών σε 4 τομείς.'],
     'ptr-exeligmos': ['Δείκτης εξελιγμού', 'Κύκλος 54 ετών: διόρθωση χρόνου 0, +8 ή +16 ωρών για τις εκλείψεις.'],

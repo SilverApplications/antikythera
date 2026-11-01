@@ -54,6 +54,17 @@
    "url": "https://ri.conicet.gov.ar/handle/11336/98820"
   },
   {
+   "jahr": 2014,
+   "autor": "Tony Freeth",
+   "titel": "Eclipse Prediction (PLoS ONE)",
+   "gemacht": "Glyphen, Indexbuchstaben und Inschriften der Saros-Spirale neu gelesen.",
+   "ergebnis": "51 Glyphen; die Indexbuchstaben verweisen auf Textabschnitte, die Finsternisse nach Abstand vom Mondknoten gruppieren. Zwei einfache Rechenmodelle erklären das ganze Schema.",
+   "warum": "Zeigt, dass das Finsternis-Schema auf Arithmetik beruht, nicht auf Beobachtungslisten.",
+   "sicherheit": "gut begründetes Modell",
+   "level": "modell",
+   "url": "https://doi.org/10.1371/journal.pone.0103275"
+  },
+  {
    "jahr": 2017,
    "autor": "Paul Iversen",
    "titel": "The Calendar on the Antikythera Mechanism",
@@ -73,6 +84,17 @@
    "warum": "Beste Einstiegslektüre.",
    "sicherheit": "Überblick",
    "level": "belegt"
+  },
+  {
+   "jahr": 2019,
+   "autor": "Iversen & Jones",
+   "titel": "Back Plate Inscription und Finsternis-Schema",
+   "gemacht": "Inschrift neben der Saros-Spirale neu ediert und mit allen Glyphen abgeglichen.",
+   "ergebnis": "Vollständige Tabelle, welche Zelle eine Mond- oder Sonnenfinsternis und welchen Indexbuchstaben trägt. Sonnenfinsternisse sind nach der Breite des Mondes sortiert.",
+   "warum": "Grundlage der Glyphen in der Saros-Spirale dieser App.",
+   "sicherheit": "hoch für belegte Zellen, Rest erschlossen",
+   "level": "belegt",
+   "url": "https://archive.nyu.edu/bitstream/2451/48012/2/Iversen%20and%20Jones%202019%20BPI%20AHES.pdf"
   },
   {
    "jahr": 2020,

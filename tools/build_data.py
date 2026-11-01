@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-names = ["gears", "assemblies", "timeline", "locations", "sources", "papers"]
+names = ["gears", "assemblies", "timeline", "locations", "sources", "papers", "saros_glyphs"]
 parts = ["// Generiert von tools/build_data.py aus /data. Nicht von Hand bearbeiten."]
 for n in names:
     obj = json.loads((ROOT / "data" / f"{n}.json").read_text(encoding="utf-8"))
