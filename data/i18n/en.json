@@ -33,10 +33,10 @@
   "n1": {"function": "Metonic pointer (5 turns = 19 years = 235 months)"}, "n2": {"function": "Branch to the Callippic cycle", "note": "Named as in the literature: n2 (15) drives p1 (Freeth 2006, Spinellis 2008)."}, "n3": {"function": "Branch to the Games dial (Olympiad)"},
   "o1": {"function": "Games pointer (4 years), the only anticlockwise pointer", "note": "CT best fit 60 (limits 57–61). Freeth 2006 still assigned o1 to the Callippic train; since Freeth 2008 it drives the Games dial."}, "p1": {"function": "Callippic train"}, "p2": {"function": "Callippic train"}, "q1": {"function": "Callippic pointer (76 years)"},
   "ma1": {"function": "Contrate gear of the moon phase ball (turns the half dark / half light ball, approx. 6 mm)", "note": "20 teeth, tip radius 5.3 mm (Freeth 2006, Suppl. Notes 3, where it is called “q1”, fragment C)."},
-  "b0": {"function": "Mean Sun as reference for the lunar phase (difference Moon − Sun)", "note": "According to Freeth 2021 attached to a block on spoke D"},
-  "V-51": {"function": "Fixed central gear shared by Mercury and Venus"}, "V-44": {"function": "Venus, stage 1"}, "V-34": {"function": "Venus, stage 1 (same arbor as 44)"}, "V-26": {"function": "Venus idler"},
-  "r1": {"function": "Venus epicycle; carries the pin for the slotted follower", "note": "Physically preserved (fragment D, only 3 teeth missing). Its role as Venus epicycle is an interpretation (E3)."},
-  "Me-72": {"function": "Mercury, stage 1"}, "Me-89": {"function": "Mercury, stage 1 (same arbor as 72; 89 = prime factor of 1513 = 17 × 89)"}, "Me-40": {"function": "Mercury idler"}, "Me-20": {"function": "Mercury epicycle with pin"},
+  "b0": {"function": "Mean Sun as reference for the lunar phase (difference Moon − Sun)", "note": "20 teeth, like the contrate gear ma1 (Freeth 2021, Suppl. S6.2.6). Sits on a tube that is linked to b1 by a bar fixed to the block on spoke D (31.8 mm from the centre)."},
+  "V-51": {"function": "Fixed central gear shared by Mercury and Venus"}, "V-44": {"function": "Venus, stage 1", "note": "Arbor 44+34 turns in the bearing on spoke C, 25.6 mm from the centre (Freeth 2021, Suppl. S5). Module approx. 0.54."}, "V-34": {"function": "Venus, stage 1 (same arbor as 44)"}, "V-26": {"function": "Venus idler"},
+  "r1": {"function": "Venus epicycle; carries the pin for the slotted follower", "note": "Physically preserved (fragment D, only 3 teeth missing). Its role as Venus epicycle is an interpretation (E3). Axis 27.8 mm from the centre, pin on the riveted disk 20.0 mm from the gear centre (Freeth 2021, Table S9)."},
+  "Me-72": {"function": "Mercury, stage 1", "note": "Arbor 72+89 sits on the flattened area of spoke A, 31.6 mm from the centre (Freeth 2021, Suppl. S5)."}, "Me-89": {"function": "Mercury, stage 1 (same arbor as 72; 89 = prime factor of 1513 = 17 × 89)"}, "Me-40": {"function": "Mercury idler"}, "Me-20": {"function": "Mercury epicycle with pin", "note": "Axis 36.0 mm from the centre, pin 14.0 mm from the gear centre (Freeth 2021, Table S9)."},
   "CP-56": {"function": "Fixed central gear on the circular plate, shared by true Sun, Mars, Jupiter and Saturn"},
   "S-52": {"function": "True Sun idler; also on a common arbor with Saturn 61"}, "S-56": {"function": "Sun epicycle (fixed in space) with pin → slotted follower produces the solar anomaly"},
   "MJ-64": {"function": "Gear shared by Mars and Jupiter"}, "Ma-38": {"function": "Mars (same arbor as 64)"}, "Ma-40": {"function": "Mars idler"}, "Ma-71": {"function": "Mars epicycle with pin (71 = prime factor of 284)"},
@@ -45,7 +45,7 @@
   "Ju-65a": {"function": "Jupiter output (slotted follower)"}, "Ju-65b": {"function": "Jupiter output to the ring"},
   "Sa-61": {"function": "Saturn (same arbor as 52; 61 = prime factor of 427)"}, "Sa-40": {"function": "Saturn idler"}, "Sa-68": {"function": "Saturn epicycle with pin (68 = 4 × 17)"},
   "Sa-86a": {"function": "Saturn output (slotted follower)"}, "Sa-86b": {"function": "Saturn output to the ring"},
-  "Dr-49": {"function": "Dragon hand (lunar nodes), stage 1", "note": "Freeth 2021 themselves: no direct physical evidence"}, "Dr-62": {"function": "Dragon hand"},
+  "Dr-49": {"function": "Dragon hand (lunar nodes), stage 1", "note": "Freeth 2021 themselves: no direct physical evidence"}, "Dr-62": {"function": "Dragon hand", "note": "Arbor 62+64 turns in the bearing on spoke B, 27.0 mm from the centre (Freeth 2021, Suppl. S4/S6). Modules 0.486 (49/62) and 0.482 (64/48)."},
   "Dr-64": {"function": "Dragon hand (same arbor as 62)"}, "Dr-48": {"function": "Dragon hand output (nodal cycle 18.6 years, retrograde)"}
  },
  "locations": {

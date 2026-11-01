@@ -1,36 +1,39 @@
 // Achslagen und Ebenen.
-// Radien: aus den CT-Messungen von Freeth et al. 2006 (Supplementary Notes 3). Für jedes
-// Eingriffspaar wird ein gemeinsamer Modul so gewählt, dass die Teilkreise am besten zu den
-// gemessenen Radien passen (Mitte zwischen Fuß- und Kopfkreis). Damit stimmen Größe und
-// Achsabstand mit dem Original überein, und die Zähne greifen trotzdem sauber ineinander.
-// Räder ohne Messung (verlorene Räder, Kosmos-Getriebe) erhalten Modul 0,5 mm.
-// Die RICHTUNGEN zwischen den Achsen sind weiterhin schematisch: Koordinaten der Achsen
-// sind in den Supplements nicht als Zahlen veröffentlicht.
+// Radien: gemessene Teilkreise aus Freeth et al. 2021, Supplementary Table S8 (CT, VGStudio Max;
+// Teilkreis = Mitte zwischen Fuß- und Kopfkreis). Wie im Original haben kämmende Räder leicht
+// verschiedene Module (im Mittel 3,7 %); der Achsabstand ist die Summe der Teilkreisradien.
+// Räder ohne Messung: Modul des gemessenen Partners, sonst 0,5 mm. Kosmos-Getriebe: Module und
+// Lagerstellen nach Freeth 2021 (Speichen von b1, Tabelle S9).
+// Die RICHTUNGEN zwischen den Achsen hinter b1 sind schematisch: Achskoordinaten sind in den
+// Supplements nicht als Zahlen veröffentlicht.
 import { GEARS } from './generated/data.js';
 
 export const MODULE = 0.5;
 const Z = Object.fromEntries(GEARS.gears.map((g) => [g.id, g.teeth]));
-const MEAS = Object.fromEntries(GEARS.gears.filter((g) => g.measured?.rIn != null)
-  .map((g) => [g.id, (g.measured.rIn + g.measured.rOut) / 2]));
-const MESH_GROUPS = [
-  ['a1', 'b1'], ['b2', 'c1', 'l1'], ['c2', 'd1'], ['d2', 'e2'], ['e5', 'k1'], ['k2', 'e6'], ['e1', 'b3'],
-  ['l2', 'm1'], ['m2', 'n1'], ['m3', 'e3'], ['e4', 'f1'], ['f2', 'g1'], ['g2', 'h1'], ['h2', 'i1'],
-  ['n3', 'o1'], ['n2', 'p1'], ['p2', 'q1'],
-  ['V-34', 'V-26', 'r1'], // Venus: r1 aus Fragment D ist gemessen
-];
+const GB = Object.fromEntries(GEARS.gears.map((g) => [g.id, g]));
 const MOD = {};
-for (const grp of MESH_GROUPS) {
-  let zr = 0, zz = 0;
-  for (const id of grp) if (MEAS[id] != null) { zr += Z[id] * MEAS[id]; zz += Z[id] ** 2; }
-  for (const id of grp) MOD[id] = zz ? (2 * zr) / zz : MODULE;
-}
-// Stift-Schlitz: Achse K' von k2 liegt ca. 1,1 mm weiter außen als K (Freeth 2006).
-// Der Modul von k2/e6 folgt daraus (ergibt 0,534 mm, gemessen 0,54 ± 0,02 mm).
+for (const g of GEARS.gears) if (g.measured2021?.pitch) MOD[g.id] = (2 * g.measured2021.pitch) / g.teeth;
+// verlorene Räder: Modul des kämmenden, gemessenen Partners
+const PARTNER = { a1: 'b1', m3: 'e3', n1: 'm2', n3: 'o1' };
+for (const [id, p] of Object.entries(PARTNER)) MOD[id] = MOD[p];
+// Kosmos (Freeth 2021, Suppl. S4-S6): 51 ~ 0,53; 34/26/63 wie r1 (0,521); Knoten 0,486 / 0,482
+Object.assign(MOD, { 'V-51': 0.53, 'V-34': MOD.r1, 'V-26': MOD.r1, 'Dr-49': 27.0 * 2 / 111, 'Dr-62': 27.0 * 2 / 111, 'Dr-64': 27.0 * 2 / 112, 'Dr-48': 27.0 * 2 / 112 });
+// Lagerstellen auf den Speichen (Abstand von der Mitte, mm) legen 44 und 72 fest
+export const SPOKE = { A: 60, B: -30, C: 240, D: 150 }; // Winkel im System von b1 (1, 4, 7, 10 Uhr von vorn)
+export const BEARING = { A: 31.6, B: 27.0, C: 25.6, D: 31.8 };
+MOD['V-44'] = (BEARING.C - Z['V-51'] * MOD['V-51'] / 2) * 2 / Z['V-44'];
+MOD['Me-72'] = (BEARING.A - Z['V-51'] * MOD['V-51'] / 2) * 2 / Z['Me-72'];
+// Stift-Schlitz: Achse K' von k2 liegt ca. 1,1 mm weiter außen als K (Freeth 2006). k2 und e6 werden
+// dafür gemeinsam um 0,8 % verkleinert (gemessen 13,5 + 13,4 mm, im Modell 13,39 + 13,31 mm).
 export const PIN_OFFSET = 1.1;
-MOD.k2 = MOD.e6 = ((Z.e5 + Z.k1) * MOD.e5 / 2 + PIN_OFFSET) * 2 / (Z.k2 + Z.e6);
+{
+  const want = (Z.e5 * MOD.e5 + Z.k1 * MOD.k1) / 2 + PIN_OFFSET, have = (Z.k2 * MOD.k2 + Z.e6 * MOD.e6) / 2;
+  MOD.k2 *= want / have; MOD.e6 *= want / have;
+}
 export const moduleOf = (id) => MOD[id] ?? MODULE;
 export const MODULE_B1 = moduleOf('b1');
 export const pitchR = (id) => (Z[id] ?? 20) * moduleOf(id) / 2;
+export const thickOf = (id) => Math.min(2.4, GB[id]?.measured2021?.thick ?? 1.4);
 const d = (a, b) => pitchR(a) + pitchR(b);
 const deg = Math.PI / 180;
 
@@ -55,17 +58,24 @@ const D = circ(C, d('c2', 'd1'), E, d('d2', 'e2'), 1);
 const F = circ(E, d('e4', 'f1'), G, d('f2', 'g1'), 1);
 const H = polar(G, d('g2', 'h1'), -60);
 const I = polar(H, d('h2', 'i1'), -120);
+// Spiele-Anzeige: Achsabstand n-o 24,4 mm (Freeth 2008). Kallipp-Anzeige spiegelbildlich dazu (Freeth 2008, 3.7).
 const O = polar(N, d('n3', 'o1'), 20);
-const P = polar(N, d('n2', 'p1'), 160);
-const Q = polar(P, d('p2', 'q1'), 200);
+const Q = [2 * N[0] - O[0], O[1]];
+const P = circ(N, d('n2', 'p1'), Q, d('p2', 'q1'), 1);
 
 export const ARBORS = { B, E, N, G, M, L, C, D, F, H, I, O, P, Q };
 
 // Spiralen und Nebenzifferblätter der Rückseite (mm)
 export const BACK = {
-  metonic: { c: N, r0: 47, r1: 74, turns: 5, cells: 235 },
-  saros: { c: G, r0: 46, r1: 70, turns: 4, cells: 223 },
-  games: { c: O, r: 9 }, callippic: { c: Q, r: 9 }, exeligmos: { c: I, r: 9 },
+  // Metonische Spirale: beginnt innen unten und läuft im Uhrzeigersinn nach außen (Freeth 2008, 3.2)
+  metonic: { c: N, r0: 47, r1: 74, turns: 5, cells: 235, start: 180 },
+  saros: { c: G, r0: 46, r1: 70, turns: 4, cells: 223, start: 0 },
+  // Spiele: Jahr 1 unten rechts, gegen den Uhrzeigersinn, Teilung 8° gekippt (Freeth 2008, 3.5)
+  games: { c: O, r: 9, start: 172, dir: -1 },
+  // Kallipp: hypothetisch, spiegelbildlich zur Spiele-Anzeige
+  callippic: { c: Q, r: 9, start: 180, dir: 1 },
+  // Exeligmos: leer bei 3 Uhr, H (8) bei 7 Uhr, IϚ (16) bei 11 Uhr (Freeth 2008, 4.8)
+  exeligmos: { c: I, r: 9, start: 30, dir: 1 },
 };
 
 export const PLATE = { w: 180, yMin: -168, yMax: 144, zFront: 30, zBack: -33, t: 2 };
@@ -96,14 +106,15 @@ export const PLACE = {
 (function carrier() {
   const put = (id, at, z, extra = {}) => { PLACE[id] = { frame: 'carrier', at, z, ...extra }; };
   const fixed = (id, z) => { PLACE[id] = { frame: 'fixedCenter', at: B, z }; };
-  // Merkur + Venus am Festrad 51
+  // Ebenen zwischen b1 und Strap (Freeth 2021): mittlere Sonne, Knoten, Merkur, Venus
+  // Festrad 51 (Merkur + Venus) mit 72 (Speiche A) und 44 (Speiche C)
   fixed('V-51', 2.5);
-  const v44 = polar(B, d('V-51', 'V-44'), 45); put('V-44', v44, 2.5); put('V-34', v44, 5);
-  const v26 = polar(v44, d('V-34', 'V-26'), 20); put('V-26', v26, 5);
-  put('r1', polar(v26, d('V-26', 'r1'), 0), 5);
-  const m72 = polar(B, d('V-51', 'Me-72'), 225); put('Me-72', m72, 2.5); put('Me-89', m72, 7.5);
-  const m40 = polar(m72, d('Me-89', 'Me-40'), 200); put('Me-40', m40, 7.5);
-  put('Me-20', polar(m40, d('Me-40', 'Me-20'), 150), 7.5);
+  const vC = polar(B, BEARING.C, SPOKE.C); put('V-44', vC, 2.5); put('V-34', vC, 10.3);
+  const vR = polar(B, 27.8, SPOKE.D);                          // Venus-Epizykel 63 über Speiche D (Tabelle S9)
+  put('V-26', circ(vC, d('V-34', 'V-26'), vR, d('V-26', 'r1'), -1), 10.3); put('r1', vR, 10.3);
+  const mA = polar(B, BEARING.A, SPOKE.A); put('Me-72', mA, 2.5); put('Me-89', mA, 8.5);
+  const mE = polar(B, 36.0, -20);                              // Merkur-Epizykel 20, 36 mm von der Mitte, nahe Speiche B
+  put('Me-40', circ(mA, d('Me-89', 'Me-40'), mE, d('Me-40', 'Me-20'), 1), 8.5); put('Me-20', mE, 8.5);
   // Sonne und äußere Planeten am Festrad 56 (Kreisplatte)
   fixed('CP-56', 12);
   const s52 = polar(B, d('CP-56', 'S-52'), 135); put('S-52', s52, 12); put('Sa-61', s52, 19.5);
@@ -121,10 +132,10 @@ export const PLACE = {
     PLACE[b] = { frame: 'out', at: B, z, planet: b.slice(0, 2) };
     PLACE[a] = { frame: 'out', at: polar(B, d(a, b), ang), z, planet: a.slice(0, 2), counter: true };
   }
-  // Drachenzeiger (spekulativ): Festrad 49, Epizykel 62+64, Ausgang 48
-  fixed('Dr-49', -2.5 + 0.0001); PLACE['Dr-49'].z = 25;
-  const dr = polar(B, d('Dr-49', 'Dr-62'), 160); put('Dr-62', dr, 25); put('Dr-64', dr, 27.5);
-  PLACE['Dr-48'] = { frame: 'out', at: B, z: 27.5, planet: 'Dr' };
+  // Drachenzeiger (hypothetisch): Festrad 49, 62+64 im Lager auf Speiche B (27,0 mm), Ausgang 48
+  fixed('Dr-49', 4.5);
+  const dr = polar(B, BEARING.B, SPOKE.B); put('Dr-62', dr, 4.5); put('Dr-64', dr, 6.5);
+  PLACE['Dr-48'] = { frame: 'out', at: B, z: 6.5, planet: 'Dr' };
 })();
 
 // Kronrad a1: Achse entlang x, greift seitlich in b1

@@ -72,7 +72,7 @@ Legende: `~` kämmt, `+` gleiche Welle, `⊕` Stift-Schlitz-Kopplung.
 | E3 rekonstruiert | Freeth 2021 Kosmos (inkl. mittlere Sonne b0) | 28 |
 | E4 spekulativ | Drachenzeiger, Kurbel, Gehäusedetails, Marker Mars/Jupiter/Saturn | 4 Räder + Bauteile |
 
-Summe 69 Räder – deckt sich mit der Gesamtzahl im Paper. Offen: Zähnezahl von b0. (ma1 = 20 Zähne, Freeth 2006 Suppl. Notes 3, dort „q1“; Benennung n2/n3 an die Literatur angepasst, siehe docs/08.)
+Summe 69 Räder – deckt sich mit der Gesamtzahl im Paper. ma1 = 20 Zähne (Freeth 2006, dort „q1“), b0 = 20 Zähne (Freeth 2021, S6.2.6); Benennung n2/n3 an die Literatur angepasst. Details: docs/08–10, Literatur-Übersicht docs/literatur/.
 
 ## 5. Kontroversen, die wir in der App zeigen sollten
 
@@ -83,7 +83,7 @@ Summe 69 Räder – deckt sich mit der Gesamtzahl im Paper. Offen: Zähnezahl vo
 5. **Planeten-Getriebe:** Fast vollständig verloren. Freeth 2021 passt zu allen Indizien, ist aber ausdrücklich kein Replikat.
 
 ## 6. Datenlücken / TODO
-- ~~Gemessene Radien~~ → erledigt mit Freeth 2006, Supplementary Notes 3 (siehe docs/08). Offen: **Koordinaten** der Achsen (nicht als Zahlen veröffentlicht; ggf. aus CT-Abbildungen ablesen).
+- ~~Gemessene Radien~~ → erledigt mit Freeth 2021, Tabelle S8 (docs/09); Kosmos-Lagerstellen aus den Speichen von b1. Offen: **Koordinaten** der Achsen hinter b1 (nicht als Zahlen veröffentlicht; ggf. aus CT-Abbildungen ablesen).
 - ~~Zähnezahl ma1~~ → 20 (Freeth 2006).
 - Exakte Geometrie Front-/Rückplatte, Spiralabstände, Zellenradien.
 - Parapegma- und Inschriftentexte (neue Edition Iversen in Arbeit, siehe MPIWG-Vortrag Feb. 2026).

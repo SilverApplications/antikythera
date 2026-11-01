@@ -35,8 +35,9 @@ RATES.syn = {
 export const PARAMS = {
   pinRadius: 9.6, pinOffset: 1.1,                 // mm, Stift-Schlitz Mond (Freeth 2006: Achsversatz k1/k2 ca. 1,1 mm)
   sunEcc: 1 / 24, sunApogee: 65.5,                // Hipparch: Exzentrizität und Apogäum
-  // Epizykel/Deferent-Verhältnis: hier moderne große Halbachsen (Freeth 2021 nutzt antike Werte)
-  a: { mercury: 0.387, venus: 0.723, mars: 1.524, jupiter: 5.203, saturn: 9.537 },
+  // Epizykel/Deferent-Verhältnis = Abstand Planet-Sonne in AE, wie Freeth et al. 2021, Tabelle S9
+  // (dort aus moderner Theorie berechnet; antike Werte wären ebenso möglich)
+  a: { mercury: 0.39, venus: 0.72, mars: 1.52, jupiter: 5.20, saturn: 9.58 },
   inferior: { mercury: true, venus: true, mars: false, jupiter: false, saturn: false },
 };
 
@@ -58,6 +59,22 @@ export const GAMES = [
 export const EXELIGMOS = ['0 h', '+8 h', '+16 h'];
 export const CORINTHIAN_MONTHS = ['Phoinikaios', 'Kraneios', 'Lanotropios', 'Machaneus', 'Dodekateus', 'Eukleios',
   'Artemisios', 'Psydreus', 'Gameilios', 'Agrianios', 'Panamos', 'Apellaios'];
+
+export const CORINTHIAN_MONTHS_EL = ['Φοινικαίος', 'Κράνειος', 'Λανοτρόπιος', 'Μαχανεύς', 'Δωδεκατεύς', 'Εύκλειος',
+  'Αρτεμίσιος', 'Ψυδρεύς', 'Γαμείλιος', 'Αγριάνιος', 'Πάναμος', 'Απελλαίος'];
+
+// Metonische Spirale: 235 Zellen, 19 Jahre. Schaltjahre (13 Monate) in den Jahren 1, 3, 6, 9, 11, 14, 17;
+// als einfachste Hypothese wird immer der 6. Monat (Eukleios) wiederholt (Freeth et al. 2008, Suppl. 3.3).
+// Damit beginnt Jahr 8 in Zelle 88 – wie im Fragment B belegt („088-08.01“).
+export const INTERCALARY_YEARS = [1, 3, 6, 9, 11, 14, 17];
+export const METONIC_CELLS = (() => {
+  const cells = [];
+  for (let y = 1; y <= 19; y++) for (let m = 1; m <= 12; m++) {
+    cells.push({ year: y, month: m, intercalary: false });
+    if (m === 6 && INTERCALARY_YEARS.includes(y)) cells.push({ year: y, month: 6, intercalary: true });
+  }
+  return cells;
+})();
 
 const frac = (x) => x - Math.floor(x);
 
@@ -106,7 +123,8 @@ export function stateAt(jd) {
   // Rückseite
   const metFrac = frac(yc / 19);
   const metCell = Math.floor(metFrac * 235);
-  const metYear = Math.floor(metFrac * 19);
+  const metInfo = METONIC_CELLS[metCell];
+  const metYear = metInfo.year - 1;
   const gamesYear = Math.floor(frac(yc / 4) * 4);
   const callFrac = frac(yc / 76);
   const sarosFrac = frac(years * RATES.saros / 4); // eine Saros-Periode = 4 Windungen
@@ -117,8 +135,7 @@ export function stateAt(jd) {
   return {
     jd, years,
     sunMean, sunTrue, moonMean, moonTrue, anomaly, elong, illum, node, planets,
-    // Monatsnamen pro Zelle (inkl. Schaltmonate) folgen in v0.3 aus Freeth 2008 / Iversen 2017
-    metonic: { frac: metFrac, cell: metCell, year: metYear, turns: metFrac * 5 },
+    metonic: { frac: metFrac, cell: metCell, year: metYear, month: metInfo.month - 1, intercalary: metInfo.intercalary, turns: metFrac * 5 },
     games: { year: gamesYear, names: GAMES[gamesYear], frac: frac(yc / 4) },
     callippic: { frac: callFrac, sector: Math.floor(callFrac * 4) },
     saros: { frac: sarosFrac, cell: sarosCell, turns: sarosFrac * 4 },

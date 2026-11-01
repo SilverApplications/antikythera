@@ -1,7 +1,7 @@
 // Prozedurale 3D-Geometrie: Zahnräder mit Dreieckszähnen, Platten, Zifferblätter, Gehäuse.
 import * as THREE from '../vendor/three.module.min.js';
 import { GEARS } from './generated/data.js';
-import { PLACE, ARBORS, BACK, PLATE, FRONT, A1, pitchR, moduleOf } from './layout.js';
+import { PLACE, ARBORS, BACK, PLATE, FRONT, A1, pitchR, moduleOf, thickOf, SPOKE } from './layout.js';
 import { deviceText } from './i18n.js';
 import { patinaTextures, oliveWood, engravedTexture, engraveStroke, engraveText } from './patina.js';
 
@@ -119,7 +119,8 @@ export function buildMechanism(mat) {
     const g = GEAR[id]; if (!g) continue;
     const teeth = g.teeth ?? 40;
     const m = moduleOf(id);
-    const mesh = new THREE.Mesh(spurGeometry(teeth, m), mat.bronze);
+    const mesh = new THREE.Mesh(spurGeometry(teeth, m, thickOf(id)), mat.bronze);
+    if (id === 'b1') mesh.rotation.z = SPOKE.A * Math.PI / 180; // Speiche A auf 1 Uhr (Freeth 2021)
     const holder = new THREE.Group(); holder.add(mesh);
     holder.position.set(pl.at[0], pl.at[1], pl.z);
     const info = { kind: 'gear', id, teeth: g.teeth, assembly: g.assembly, evidence: g.evidence, label: `${id} · ${g.teeth ?? '?'} Zähne`, func: g.function, note: g.note, frame: pl.frame || 'fixed' };
@@ -214,28 +215,29 @@ export function backTexture() {
   const toC = (x, y) => [S / 2 - x * k, (yMax - y) * k]; // Rückansicht: Leinwand-x = Welt -x
   return engravedTexture(S, Hpx, (g, st) => {
     const spiral = (sp) => {
-      const [cx, cy] = toC(...sp.c); const pitch = (sp.r1 - sp.r0) / sp.turns; const rAt = (t) => sp.r0 + pitch * t;
+      const [cx, cy] = toC(...sp.c); const pitch = (sp.r1 - sp.r0) / sp.turns; const rAt = (t) => sp.r0 + pitch * t; const a0 = (sp.start ?? 0) * Math.PI / 180;
       for (const off of [-0.5, 0.5]) engraveStroke(g, st, () => {
         g.beginPath();
-        for (let i = 0; i <= sp.turns * 360; i++) { const t = i / 360, a = t * TAU, r = (rAt(t) + off * pitch * 0.9) * k; const x = cx + Math.sin(a) * r, y = cy - Math.cos(a) * r; i ? g.lineTo(x, y) : g.moveTo(x, y); }
+        for (let i = 0; i <= sp.turns * 360; i++) { const t = i / 360, a = t * TAU, r = (rAt(t) + off * pitch * 0.9) * k; const x = cx + Math.sin(a + a0) * r, y = cy - Math.cos(a + a0) * r; i ? g.lineTo(x, y) : g.moveTo(x, y); }
       }, 0.35 * k);
       for (let c = 0; c <= sp.cells; c++) {
-        const t = c / sp.cells * sp.turns, a = t * TAU, r0 = (rAt(t) - pitch * 0.45) * k, r1 = (rAt(t) + pitch * 0.45) * k;
+        const t = c / sp.cells * sp.turns, a = t * TAU + a0, r0 = (rAt(t) - pitch * 0.45) * k, r1 = (rAt(t) + pitch * 0.45) * k;
         engraveStroke(g, st, () => { g.beginPath(); g.moveTo(cx + Math.sin(a) * r0, cy - Math.cos(a) * r0); g.lineTo(cx + Math.sin(a) * r1, cy - Math.cos(a) * r1); }, 0.16 * k);
       }
     };
     spiral(BACK.metonic); spiral(BACK.saros);
-    const sub = (sd, labels, ccw, n) => {
-      const [cx, cy] = toC(...sd.c), r = sd.r * k;
+    // Nebenzifferblätter: Sektorgrenzen ab sd.start (Grad, im Uhrzeigersinn von oben, Ansicht von hinten), sd.dir = ±1
+    const sub = (sd, labels, n) => {
+      const [cx, cy] = toC(...sd.c), r = sd.r * k; const s0 = sd.start * Math.PI / 180, dir = sd.dir;
       engraveStroke(g, st, () => { g.beginPath(); g.arc(cx, cy, r, 0, TAU); }, 0.3 * k);
       for (let i = 0; i < n; i++) {
-        const a = (i / n) * TAU * (ccw ? -1 : 1);
+        const a = s0 + (i / n) * TAU * dir;
         engraveStroke(g, st, () => { g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + Math.sin(a) * r, cy - Math.cos(a) * r); }, 0.22 * k);
-        const am = ((i + 0.5) / n) * TAU * (ccw ? -1 : 1); const L = labels[i]; const lines = Array.isArray(L) ? L : [L];
+        const am = s0 + ((i + 0.5) / n) * TAU * dir; const L = labels[i]; const lines = Array.isArray(L) ? L : [L];
         lines.forEach((t, j) => { if (t) engraveText(g, st, t, cx + Math.sin(am) * r * 0.56, cy - Math.cos(am) * r * 0.56 + (j - (lines.length - 1) / 2) * 1.7 * k, fitSize(t, sd.r * 0.95, 1.45) * k); });
       }
     };
-    sub(BACK.games, D.games, true, 4); sub(BACK.callippic, D.callippic, false, 4); sub(BACK.exeligmos, D.exeligmos, false, 3);
+    sub(BACK.games, D.games, 4); sub(BACK.callippic, D.callippic, 4); sub(BACK.exeligmos, D.exeligmos, 3);
     if (D.metonicTitle) { const [mx, my] = toC(BACK.metonic.c[0], BACK.metonic.c[1] + BACK.metonic.r1 + 4.5); engraveText(g, st, D.metonicTitle, mx, my, 2.6 * k); }
     if (D.sarosTitle) { const [sx, sy] = toC(BACK.saros.c[0], BACK.saros.c[1] - BACK.saros.r1 - 5); engraveText(g, st, D.sarosTitle, sx, sy, 2.6 * k); }
   });

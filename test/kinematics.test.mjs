@@ -2,9 +2,9 @@
 // Aufruf: npm test   (oder: node --test test/)
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { RATES, stateAt, EPOCH } from '../app/js/kinematics.js';
+import { RATES, stateAt, EPOCH, METONIC_CELLS } from '../app/js/kinematics.js';
 import { realSky, angDiff, julianDay, nextEclipses } from '../app/js/astro.js';
-import { PLACE, ARBORS, pitchR, moduleOf } from '../app/js/layout.js';
+import { PLACE, ARBORS, pitchR, moduleOf, BEARING } from '../app/js/layout.js';
 import { GEARS } from '../app/js/generated/data.js';
 
 const close = (a, b, eps = 1e-12) => assert.ok(Math.abs(a - b) < eps, `${a} != ${b}`);
@@ -47,24 +47,41 @@ test('Kurbel: eine Umdrehung ≈ 78,6 Tage (48/223 Jahr)', () => {
   close(b.crankTurns - a.crankTurns, 1, 1e-9);
 });
 
-test('Getriebe-Geometrie: jedes Eingriffspaar hat gleichen Modul und passenden Achsabstand', () => {
+test('Getriebe-Geometrie: jedes Eingriffspaar sitzt im Abstand der Teilkreisradien', () => {
   const abs = (id) => { const p = PLACE[id]; return p.frame === 'e3' ? [ARBORS.E[0] + p.at[0], ARBORS.E[1] + p.at[1]] : p.at; };
-  const back = GEARS.gears.filter((g) => PLACE[g.id] && (!PLACE[g.id].frame || PLACE[g.id].frame === 'e3'));
+  const same = (a, b) => (PLACE[a].frame ?? 'fixed') === (PLACE[b].frame ?? 'fixed') || [PLACE[a].frame, PLACE[b].frame].every((f) => !f || f === 'e3');
   let n = 0;
-  for (const g of back) for (const o of g.meshes ?? []) {
-    if (!PLACE[o] || (PLACE[o].frame && PLACE[o].frame !== 'e3')) continue;
-    close(moduleOf(g.id), moduleOf(o), 1e-12);
-    const [a, b] = [abs(g.id), abs(o)];
+  for (const g of GEARS.gears) for (const o of g.meshes ?? []) {
+    if (!PLACE[g.id] || !PLACE[o] || !same(g.id, o)) continue;
+    const [a, b] = PLACE[g.id].frame === 'carrier' || PLACE[g.id].frame === 'fixedCenter' ? [PLACE[g.id].at, PLACE[o].at] : [abs(g.id), abs(o)];
     close(Math.hypot(a[0] - b[0], a[1] - b[1]), pitchR(g.id) + pitchR(o), 1e-9); n++;
+    // kämmende Räder: Module höchstens 8 % verschieden (Original: max. 7,6 %, Freeth 2021 S8)
+    assert.ok(Math.abs(moduleOf(g.id) - moduleOf(o)) / ((moduleOf(g.id) + moduleOf(o)) / 2) < 0.08, `${g.id}~${o}`);
   }
-  assert.ok(n >= 20, `nur ${n} Paare geprüft`);
+  assert.ok(n >= 30, `nur ${n} Paare geprüft`);
 });
 
-test('Radien stimmen mit den CT-Messungen (Freeth 2006) auf ±0,75 mm überein', () => {
-  for (const g of GEARS.gears) if (g.measured?.rIn != null) {
-    const m = (g.measured.rIn + g.measured.rOut) / 2;
-    assert.ok(Math.abs(pitchR(g.id) - m) <= 0.75, `${g.id}: Modell ${pitchR(g.id).toFixed(2)} mm, gemessen ${m.toFixed(2)} mm`);
+test('Teilkreise = CT-Messung (Freeth 2021, Tabelle S8)', () => {
+  for (const g of GEARS.gears) if (g.measured2021) {
+    const tol = ['k2', 'e6'].includes(g.id) ? 0.15 : 1e-9; // k2/e6 für den Achsversatz 1,1 mm minimal angepasst
+    assert.ok(Math.abs(pitchR(g.id) - g.measured2021.pitch) <= tol, `${g.id}: ${pitchR(g.id)} vs ${g.measured2021.pitch}`);
   }
+});
+
+test('Kosmos: Lagerstellen auf den Speichen und Epizykel-Abstände (Freeth 2021, S5/S9)', () => {
+  const r = (id) => Math.hypot(...PLACE[id].at);
+  close(r('Me-72'), BEARING.A, 1e-9); close(r('Dr-62'), BEARING.B, 1e-9); close(r('V-44'), BEARING.C, 1e-9);
+  close(r('r1'), 27.8, 1e-9); close(r('Me-20'), 36.0, 1e-9);
+  close(pitchR('Dr-49') + pitchR('Dr-62'), pitchR('Dr-64') + pitchR('Dr-48'), 1e-9); // Ausgang 48 wieder auf der Mittelachse
+});
+
+test('Metonischer Kalender: 235 Zellen, Jahr 8 beginnt in Zelle 88 (Freeth 2008)', () => {
+  assert.equal(METONIC_CELLS.length, 235);
+  assert.equal(METONIC_CELLS.findIndex((c) => c.year === 8) + 1, 88);
+  const ic = METONIC_CELLS.map((c, i) => (c.intercalary ? i + 1 : 0)).filter(Boolean);
+  const between = (a, b) => ic.filter((x) => x > a && x < b).length;
+  assert.equal(between(2, 37), 2); assert.equal(between(49, 87), 1); assert.equal(between(96, 133), 2);
+  assert.equal(between(142, 175), 1); assert.equal(ic.filter((x) => x > 189).length, 1);
 });
 
 test('Stift-Schlitz: Achse K\' liegt 1,1 mm neben K', () => {

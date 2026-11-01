@@ -2,6 +2,8 @@
 
 **Quelle:** T. Freeth et al., *Decoding the ancient Greek astronomical calculator known as the Antikythera Mechanism*, Nature 444, 587–591 (2006), **Supplementary Information** (27 Seiten). Artikel: <https://doi.org/10.1038/nature05357> – das Zusatzmaterial ist auf der Artikelseite unter „Supplementary information“ frei abrufbar.
 
+> **Nachtrag v0.6:** Die Radgrößen kommen inzwischen aus der neueren Messung in Freeth et al. 2021, Tabelle S8 (siehe [docs/09](09_abgleich_freeth2021_supplement.md)). Statt eines gemeinsamen Moduls je Eingriffspaar hat jetzt jedes gemessene Rad seinen eigenen Teilkreis – wie im Original. Die Zähnezahl-Grenzen unten bleiben gültig.
+
 Stand: November 2026. Geprüft wurden alle drei Teile: *Notes 1* (Fragmente), *Notes 2* (Glyphen und Inschriften), *Notes 3* (Zahnräder).
 
 ## 1. Was das Supplement enthält – und was nicht

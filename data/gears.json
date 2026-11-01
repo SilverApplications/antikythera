@@ -1,7 +1,7 @@
 {
  "meta": {
   "title": "Antikythera-Mechanismus - Zahnraddaten",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "stand": "2026-11-01",
   "basisModell": "Freeth et al. 2006 (Nature) + Freeth et al. 2008 (Nature) für die Rückseite; Freeth et al. 2021 (Scientific Reports) für den Kosmos an der Front",
   "einheiten": {
@@ -20,7 +20,7 @@
    "mittlereRadstaerke_mm": 1.4,
    "mittlererLuftspalt_mm": 1.2,
    "zahnhoehe_mm": 1.1,
-   "hinweis": "Radien je Eingriffspaar aus den CT-Messungen von Freeth et al. 2006 (Supplementary Notes 3, Feld \"measured\") gemittelt; Modul variiert dadurch zwischen ca. 0,42 und 0,58 mm. Räder ohne Messung: Modul 0,5 mm.",
+   "hinweis": "Radien und Radstärken nach Freeth et al. 2021, Supplementary Table S8 (Feld \"measured2021\"; CT-Messung mit VGStudio Max), Zähnezahl-Grenzen nach Freeth 2006 (Feld \"measured\"). Teilkreis = Mitte zwischen Fuß- und Kopfkreis, Modul = Teilkreisdurchmesser / Zähne. Kämmende Räder haben im Original leicht verschiedene Module (im Mittel 3,7 % Unterschied). Räder ohne Messung: Modul des Partners bzw. 0,5 mm; Lagerstellen der Kosmos-Getriebe nach den Speichen von b1 (Freeth 2021, Suppl. Fig. S12).",
    "modulOhneMessung_mm": 0.5
   },
   "evidenzklassen": {
@@ -72,6 +72,14 @@
     "count": "223",
     "limits": "223/224",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 65.0,
+    "rIn": 63.8,
+    "pitch": 64.4,
+    "thick": 2.7,
+    "module": 0.578,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -95,6 +103,14 @@
     "count": "64",
     "limits": "64-66",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 15.7,
+    "rIn": 15.0,
+    "pitch": 15.3,
+    "thick": 2.3,
+    "module": 0.479,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -117,6 +133,14 @@
     "count": "32",
     "limits": "definitiv",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 9.2,
+    "rIn": 8.3,
+    "pitch": 8.7,
+    "thick": 1.3,
+    "module": 0.546,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -139,6 +163,14 @@
     "count": "38",
     "limits": "38/39",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 10.3,
+    "rIn": 9.4,
+    "pitch": 9.8,
+    "thick": 1.5,
+    "module": 0.517,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -161,6 +193,14 @@
     "count": "47/48",
     "limits": "47-49",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 11.0,
+    "rIn": 10.5,
+    "pitch": 10.7,
+    "thick": 1.3,
+    "module": 0.447,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -183,6 +223,14 @@
     "count": "24",
     "limits": "definitiv",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 5.8,
+    "rIn": 5.1,
+    "pitch": 5.4,
+    "thick": 2.4,
+    "module": 0.452,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -205,6 +253,14 @@
     "count": "127",
     "limits": "definitiv",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 31.7,
+    "rIn": 30.6,
+    "pitch": 31.2,
+    "thick": 1.3,
+    "module": 0.491,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -227,6 +283,14 @@
     "count": "32",
     "limits": "definitiv",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 7.8,
+    "rIn": 7.1,
+    "pitch": 7.4,
+    "thick": 1.0,
+    "module": 0.465,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -250,7 +314,15 @@
     "limits": "50-52",
     "src": "freeth2006-suppl"
    },
-   "note": "CT-Bestwert 52 (Grenzen 50-52); das Modell nutzt wie Freeth 2006 im Text 50 = k1, sonst stimmt die Mondanomalie nicht."
+   "note": "CT-Bestwert 52 (Grenzen 50-52); das Modell nutzt wie Freeth 2006 im Text 50 = k1, sonst stimmt die Mondanomalie nicht.",
+   "measured2021": {
+    "rOut": 13.1,
+    "rIn": 12.2,
+    "pitch": 12.6,
+    "thick": 0.5,
+    "module": 0.505,
+    "src": "freeth2021-suppl-S8"
+   }
   },
   {
    "id": "e3",
@@ -272,6 +344,14 @@
     "count": "220-225",
     "limits": "217-235",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 52.4,
+    "rIn": 51.5,
+    "pitch": 51.9,
+    "thick": 1.4,
+    "module": 0.466,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -294,6 +374,14 @@
     "count": "187-191",
     "limits": "180-192",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 49.9,
+    "rIn": 49.1,
+    "pitch": 49.5,
+    "thick": 1.5,
+    "module": 0.526,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -317,6 +405,14 @@
     "count": "49/50",
     "limits": "48-51",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 13.3,
+    "rIn": 12.6,
+    "pitch": 13.0,
+    "thick": 0.6,
+    "module": 0.519,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -339,6 +435,14 @@
     "count": "50",
     "limits": "48-52",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 14.0,
+    "rIn": 13.1,
+    "pitch": 13.5,
+    "thick": 0.5,
+    "module": 0.541,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -361,6 +465,14 @@
     "count": "50",
     "limits": "49/50",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 13.9,
+    "rIn": 12.9,
+    "pitch": 13.4,
+    "thick": 0.6,
+    "module": 0.536,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -383,6 +495,14 @@
     "count": "32",
     "limits": "definitiv",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 9.7,
+    "rIn": 8.6,
+    "pitch": 9.2,
+    "thick": 1.3,
+    "module": 0.572,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -405,6 +525,15 @@
     "count": "53",
     "limits": "53/54",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 13.6,
+    "rIn": 12.9,
+    "pitch": 13.2,
+    "thick": 1.3,
+    "module": 0.499,
+    "src": "freeth2021-suppl-S8",
+    "hinweis": "In Tabelle S8 sind Außen- und Innenradius vertauscht abgedruckt (12,9/13,6); Teilkreis 13,2 mm. Freeth 2006 maß noch 14,1 mm."
    }
   },
   {
@@ -427,6 +556,14 @@
     "count": "30",
     "limits": "definitiv",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 8.2,
+    "rIn": 7.4,
+    "pitch": 7.8,
+    "thick": 1.2,
+    "module": 0.522,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -449,6 +586,14 @@
     "count": "54",
     "limits": "54-56",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 14.4,
+    "rIn": 13.4,
+    "pitch": 13.9,
+    "thick": 1.5,
+    "module": 0.513,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -471,6 +616,14 @@
     "count": "20",
     "limits": "definitiv",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 4.9,
+    "rIn": 4.1,
+    "pitch": 4.5,
+    "thick": 1.6,
+    "module": 0.451,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -493,6 +646,14 @@
     "count": "60-64",
     "limits": "60-64",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 13.7,
+    "rIn": 13.0,
+    "pitch": 13.4,
+    "thick": 1.0,
+    "module": 0.445,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -515,6 +676,14 @@
     "count": "15",
     "limits": "definitiv",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 3.8,
+    "rIn": 3.0,
+    "pitch": 3.4,
+    "thick": 1.4,
+    "module": 0.454,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -537,6 +706,14 @@
     "count": "60",
     "limits": "59-62",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 13.2,
+    "rIn": 12.6,
+    "pitch": 12.9,
+    "thick": 1.2,
+    "module": 0.429,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -559,6 +736,14 @@
     "count": "38",
     "limits": "definitiv",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 9.0,
+    "rIn": 8.3,
+    "pitch": 8.6,
+    "thick": 1.5,
+    "module": 0.455,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -581,6 +766,14 @@
     "count": "53",
     "limits": "definitiv",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 13.3,
+    "rIn": 12.5,
+    "pitch": 12.9,
+    "thick": 1.5,
+    "module": 0.487,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -603,6 +796,14 @@
     "count": "96/97",
     "limits": "96-99",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 24.7,
+    "rIn": 23.6,
+    "pitch": 24.1,
+    "thick": 2.0,
+    "module": 0.503,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -625,6 +826,14 @@
     "count": "15",
     "limits": "definitiv",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 4.0,
+    "rIn": 3.7,
+    "pitch": 3.9,
+    "thick": 1.8,
+    "module": 0.514,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -701,7 +910,15 @@
     "limits": "57-61",
     "src": "freeth2006-suppl"
    },
-   "note": "CT-Bestwert 60 (Grenzen 57-61). Freeth 2006 ordnete o1 noch dem Kallipp-Zug zu; seit Freeth 2008 treibt es die Spiele-Anzeige."
+   "note": "CT-Bestwert 60 (Grenzen 57-61). Freeth 2006 ordnete o1 noch dem Kallipp-Zug zu; seit Freeth 2008 treibt es die Spiele-Anzeige.",
+   "measured2021": {
+    "rOut": 12.8,
+    "rIn": 12.2,
+    "pitch": 12.5,
+    "thick": 1.1,
+    "module": 0.417,
+    "src": "freeth2021-suppl-S8"
+   }
   },
   {
    "id": "p1",
@@ -765,7 +982,7 @@
   },
   {
    "id": "b0",
-   "teeth": null,
+   "teeth": 20,
    "type": "spur",
    "assembly": "AM-400",
    "evidence": "E3",
@@ -775,7 +992,7 @@
     "ma1"
    ],
    "function": "Mittlere Sonne als Referenz für die Mondphase (Differenz Mond - Sonne)",
-   "note": "laut Freeth 2021 an Block auf Speiche D befestigt"
+   "note": "20 Zähne wie das Kronrad ma1 (Freeth 2021, Suppl. S6.2.6). Sitzt auf einem Rohr, das über einen Steg am Block auf Speiche D (31,8 mm von der Mitte) mit b1 verbunden ist."
   },
   {
    "id": "V-51",
@@ -801,7 +1018,8 @@
    "meshes": [
     "V-51"
    ],
-   "function": "Venus Stufe 1"
+   "function": "Venus Stufe 1",
+   "note": "Welle 44+34 im Lager auf Speiche C, 25,6 mm von der Mitte (Freeth 2021, Suppl. S5). Modul ca. 0,54."
   },
   {
    "id": "V-34",
@@ -840,7 +1058,7 @@
     "V-26"
    ],
    "function": "Venus Epizykel; trägt Stift für den Schlitz-Folger",
-   "note": "Physisch erhalten (Fragment D, nur 3 Zähne fehlen). Rolle als Venus-Epizykel ist Interpretation (E3).",
+   "note": "Physisch erhalten (Fragment D, nur 3 Zähne fehlen). Rolle als Venus-Epizykel ist Interpretation (E3). Achse 27,8 mm von der Mitte, Stift auf der angenieteten Scheibe 20,0 mm von der Radmitte (Freeth 2021, Tabelle S9).",
    "measured": {
     "tip": 16.4,
     "tipErr": 0.2,
@@ -849,6 +1067,14 @@
     "count": "63",
     "limits": "definitiv",
     "src": "freeth2006-suppl"
+   },
+   "measured2021": {
+    "rOut": 16.9,
+    "rIn": 15.9,
+    "pitch": 16.4,
+    "thick": 1.6,
+    "module": 0.521,
+    "src": "freeth2021-suppl-S8"
    }
   },
   {
@@ -861,7 +1087,8 @@
    "meshes": [
     "V-51"
    ],
-   "function": "Merkur Stufe 1"
+   "function": "Merkur Stufe 1",
+   "note": "Welle 72+89 auf der abgeflachten Stelle von Speiche A, 31,6 mm von der Mitte (Freeth 2021, Suppl. S5)."
   },
   {
    "id": "Me-89",
@@ -898,7 +1125,8 @@
    "meshes": [
     "Me-40"
    ],
-   "function": "Merkur Epizykel mit Stift"
+   "function": "Merkur Epizykel mit Stift",
+   "note": "Achse 36,0 mm von der Mitte, Stift 14,0 mm von der Radmitte (Freeth 2021, Tabelle S9)."
   },
   {
    "id": "CP-56",
@@ -1138,7 +1366,8 @@
    "meshes": [
     "Dr-49"
    ],
-   "function": "Drachenzeiger"
+   "function": "Drachenzeiger",
+   "note": "Welle 62+64 im Lager auf Speiche B, 27,0 mm von der Mitte (Freeth 2021, Suppl. S4/S6). Module 0,486 (49/62) und 0,482 (64/48)."
   },
   {
    "id": "Dr-64",

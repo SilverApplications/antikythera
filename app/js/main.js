@@ -2,7 +2,7 @@ import * as THREE from '../vendor/three.module.min.js';
 import { OrbitControls } from '../vendor/addons/OrbitControls.js';
 import { RoomEnvironment } from '../vendor/addons/RoomEnvironment.js';
 import { ASSEMBLIES, GEARS } from './generated/data.js';
-import { stateAt, gearAngles, START_JD, EPOCH, RATES } from './kinematics.js';
+import { stateAt, gearAngles, START_JD, EPOCH, RATES, CORINTHIAN_MONTHS, CORINTHIAN_MONTHS_EL } from './kinematics.js';
 import { PLACE, pitchR } from './layout.js';
 import { buildMechanism, makeMaterials, refreshDeviceText } from './build3d.js';
 import { t, td, lang, deviceLang, setLang, setDeviceLang, onLangChange, SITE_LANGS, DEVICE_LANGS, partText } from './i18n.js';
@@ -150,6 +150,7 @@ canvas.addEventListener('pointerup', (e) => {
   showInfo(hits[0]?.object.userData);
 });
 let infoShown = null;
+const monthName = (m) => (lang === 'el' ? CORINTHIAN_MONTHS_EL : CORINTHIAN_MONTHS)[m.month] + (m.intercalary ? ' II' : '');
 const GEAR_BY_ID = Object.fromEntries(GEARS.gears.map((g) => [g.id, g]));
 const fmtNum = (x, d) => x.toLocaleString(lang === 'en' ? 'en-GB' : lang === 'el' ? 'el-GR' : 'de-DE', { minimumFractionDigits: d, maximumFractionDigits: d });
 function showInfo(u) {
@@ -159,13 +160,10 @@ function showInfo(u) {
   if (u.kind === 'gear') {
     label = `${u.id} · ${u.teeth ?? '?'} ${t('teeth')}`;
     func = td('gears', u.id, 'function', u.func); note = u.note ? td('gears', u.id, 'note', u.note) : '';
-    const ms = GEAR_BY_ID[u.id]?.measured;
-    if (ms) {
-      const f = (x) => fmtNum(x, 1);
-      const mid = ms.rIn != null ? (ms.rIn + ms.rOut) / 2 : null;
-      note += `${note ? '<br>' : ''}${t('measured', { tip: f(ms.tip), err: f(ms.tipErr), count: ms.count, lim: ms.limits === 'definitiv' ? t('definite') : ms.limits })}`
-        + (mid != null && u.id !== 'a1' ? ` ${t('measuredModel', { mid: f(mid), model: f(pitchR(u.id)) })}` : '');
-    }
+    const ms = GEAR_BY_ID[u.id]?.measured, m21 = GEAR_BY_ID[u.id]?.measured2021;
+    const f = (x, d = 1) => fmtNum(x, d);
+    if (ms) note += `${note ? '<br>' : ''}${t('measured', { count: ms.count, lim: ms.limits === 'definitiv' ? t('definite') : ms.limits })}`;
+    if (m21) note += `${note ? '<br>' : ''}${t('measured21', { pitch: f(m21.pitch), thick: f(m21.thick), mod: f(m21.module, 3), model: f(pitchR(u.id), 2) })}`;
   } else { const pt = partText(u.id) || [u.label ?? u.id, u.func]; label = pt[0]; func = pt[1]; }
   const asm = u.assembly ? `${u.assembly} · ${nameOf(u.assembly)}` : '';
   const ev = u.evidence ? `<span class="ev ev-${u.evidence}">${u.evidence}</span>${eviText(u.evidence)}` : '';
@@ -255,9 +253,12 @@ function updateMechanism() {
   F.dragon.rotation.z = -st.node * D2R;
   // Rückseite
   const Bk = M.back;
-  const spiralPtr = (p, turns) => { p.grp.rotation.z = turns * TAU; p.slider.position.y = p.sp.r0 + (p.sp.r1 - p.sp.r0) * turns / p.sp.turns; };
+  // rotation.z > 0 = im Uhrzeigersinn von hinten gesehen; Startstellungen nach Freeth 2008 (siehe layout.js BACK)
+  const spiralPtr = (p, turns) => { p.grp.rotation.z = (p.sp.start ?? 0) * D2R + turns * TAU; p.slider.position.y = p.sp.r0 + (p.sp.r1 - p.sp.r0) * turns / p.sp.turns; };
   spiralPtr(Bk.metonic, st.metonic.turns); spiralPtr(Bk.saros, st.saros.turns);
-  Bk.games.grp.rotation.z = -st.games.frac * TAU; Bk.callippic.grp.rotation.z = st.callippic.frac * TAU; Bk.exeligmos.grp.rotation.z = st.exeligmos.frac * TAU;
+  Bk.games.grp.rotation.z = Math.PI - st.games.frac * TAU;          // startet senkrecht nach unten, gegen den Uhrzeigersinn
+  Bk.callippic.grp.rotation.z = Math.PI + st.callippic.frac * TAU;
+  Bk.exeligmos.grp.rotation.z = 30 * D2R + st.exeligmos.frac * TAU; // Sektor „0 h“ beginnt bei 1 Uhr
 
   $('#dateLabel').textContent = formatDate(jd);
   $('#dateSub').textContent = `${calendarName(jd)} · ${EG_MONTHS[st.egyptian.month]} ${st.egyptian.day} (${t('egShort')}) · ${t('crankTurns', { n: st.crankTurns.toFixed(1) })}`;
@@ -273,7 +274,7 @@ function updateReadouts() {
     + `<tr><td>${t('moonPhase')}</td><td>${t('lit', { n: Math.round(st.illum * 100) })}</td><td>${sky ? Math.round((1 - Math.cos(sky.moonPhase * D2R)) / 2 * 100) + ' %' : '–'}</td>${sky ? fmtD(angDiff(st.elong, sky.moonPhase)) : '<td>–</td>'}</tr>`;
   const gamesNames = st.games.names.map((n) => (lang === 'el' ? { Isthmia: 'Ίσθμια', Olympia: 'Ολύμπια', Nemea: 'Νέμεα', Naa: 'Νάια', Pythia: 'Πύθια', Halieia: 'Αλίεια' }[n] : n)).join(t('and'));
   $('#readBack').innerHTML = [
-    [t('metonic'), `${t('monthOf', { a: st.metonic.cell + 1, b: 235 })} · ${t('yearOf', { a: st.metonic.year + 1, b: 19 })}`],
+    [t('metonic'), `${monthName(st.metonic)} · ${t('monthOf', { a: st.metonic.cell + 1, b: 235 })} · ${t('yearOf', { a: st.metonic.year + 1, b: 19 })}`],
     [t('games'), t('gamesYear', { a: st.games.year + 1, b: gamesNames })],
     [t('callippic'), t('sector', { a: st.callippic.sector + 1, b: 4 })],
     [t('saros'), t('monthOf', { a: st.saros.cell + 1, b: 223 })],

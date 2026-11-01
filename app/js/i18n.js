@@ -17,10 +17,10 @@ export function setDeviceLang(l) { deviceLang = l; store.set('ak-device', l); li
 
 const UI = {
   de: {
-    version: 'Rekonstruktion v0.5 · Forschungsstand 11/2026', siteLang: 'Sprache', deviceLang: 'Beschriftung am Gerät',
+    version: 'Rekonstruktion v0.6 · Forschungsstand 11/2026', siteLang: 'Sprache', deviceLang: 'Beschriftung am Gerät',
     'view.front': 'Front', 'view.back': 'Rückseite', 'view.gears': 'Getriebe', 'view.explode': 'Explosion',
-    definite: 'eindeutig', measured: 'CT-Messung (Freeth et al. 2006): Spitzenradius {tip} ± {err} mm, Zähne {count} (Grenzen: {lim}).', measuredModel: 'Teilkreis gemessen ≈ {mid} mm, im Modell {model} mm.',
-    schematic: 'Achslagen schematisch', schematicTitle: 'Radgrößen und Achsabstände nach CT-Messung (Freeth et al. 2006), Richtungen zwischen den Achsen schematisch',
+    definite: 'eindeutig', measured: 'Zähne laut CT (Freeth et al. 2006): {count} (Grenzen: {lim}).', measured21: 'Gemessen (Freeth et al. 2021, Tab. S8): Teilkreis {pitch} mm, Stärke {thick} mm, Modul {mod}. Im Modell: {model} mm.',
+    schematic: 'Achslagen schematisch', schematicTitle: 'Radgrößen und Achsabstände nach CT-Messung (Freeth et al. 2021, Tab. S8), Kosmos-Lager nach den Speichen von b1; Richtungen zwischen den Achsen hinter b1 schematisch',
     'tab.model': 'Modell', 'tab.dials': 'Anzeigen', 'tab.map': 'Karte', 'tab.time': 'Zeitstrahl', 'tab.research': 'Forschung',
     tools: 'Werkzeuge', explode: 'Demontage', section: 'Schnitt', evidence: 'Evidenz einfärben', ghosts: 'Echten Himmel einblenden', assemblies: 'Baugruppen',
     setDate: 'Datum einstellen', go: 'Los', bc: 'v. Chr.', ad: 'n. Chr.', day: 'Tag', month: 'Monat', year: 'Jahr', era: 'Ära',
@@ -45,10 +45,10 @@ const UI = {
     'lvl.belegt': 'belegt', 'lvl.modell': 'Modell', 'lvl.hypothese': 'Hypothese', 'lvl.historisch': 'historisch',
   },
   en: {
-    version: 'Reconstruction v0.5 · research as of 11/2026', siteLang: 'Language', deviceLang: 'Lettering on the device',
+    version: 'Reconstruction v0.6 · research as of 11/2026', siteLang: 'Language', deviceLang: 'Lettering on the device',
     'view.front': 'Front', 'view.back': 'Back', 'view.gears': 'Gearing', 'view.explode': 'Exploded',
-    definite: 'unambiguous', measured: 'CT measurement (Freeth et al. 2006): tip radius {tip} ± {err} mm, teeth {count} (limits: {lim}).', measuredModel: 'Measured pitch circle ≈ {mid} mm, in the model {model} mm.',
-    schematic: 'Axle positions schematic', schematicTitle: 'Gear sizes and centre distances from CT measurements (Freeth et al. 2006); directions between the axles schematic',
+    definite: 'unambiguous', measured: 'Teeth from CT (Freeth et al. 2006): {count} (limits: {lim}).', measured21: 'Measured (Freeth et al. 2021, Table S8): pitch radius {pitch} mm, thickness {thick} mm, module {mod}. In the model: {model} mm.',
+    schematic: 'Axle positions schematic', schematicTitle: 'Gear sizes and centre distances from CT measurements (Freeth et al. 2021, Table S8), cosmos bearings from the spokes of b1; directions between the axles behind b1 schematic',
     'tab.model': 'Model', 'tab.dials': 'Dials', 'tab.map': 'Map', 'tab.time': 'Timeline', 'tab.research': 'Research',
     tools: 'Tools', explode: 'Disassemble', section: 'Section', evidence: 'Colour by evidence', ghosts: 'Show real sky', assemblies: 'Assemblies',
     setDate: 'Set date', go: 'Go', bc: 'BC', ad: 'AD', day: 'Day', month: 'Month', year: 'Year', era: 'Era',
@@ -73,10 +73,10 @@ const UI = {
     'lvl.belegt': 'established', 'lvl.modell': 'model', 'lvl.hypothese': 'hypothesis', 'lvl.historisch': 'historical',
   },
   el: {
-    version: 'Ανακατασκευή v0.5 · ερευνητικά δεδομένα 11/2026', siteLang: 'Γλώσσα', deviceLang: 'Επιγραφές στη συσκευή',
+    version: 'Ανακατασκευή v0.6 · ερευνητικά δεδομένα 11/2026', siteLang: 'Γλώσσα', deviceLang: 'Επιγραφές στη συσκευή',
     'view.front': 'Εμπρός', 'view.back': 'Πίσω', 'view.gears': 'Γρανάζια', 'view.explode': 'Ανάπτυξη',
-    definite: 'σαφής', measured: 'Μέτρηση CT (Freeth et al. 2006): ακτίνα κορυφών {tip} ± {err} mm, δόντια {count} (όρια: {lim}).', measuredModel: 'Μετρημένος αρχικός κύκλος ≈ {mid} mm, στο μοντέλο {model} mm.',
-    schematic: 'Θέσεις αξόνων σχηματικές', schematicTitle: 'Μεγέθη τροχών και αποστάσεις αξόνων από μετρήσεις CT (Freeth et al. 2006)· οι κατευθύνσεις μεταξύ των αξόνων σχηματικές',
+    definite: 'σαφής', measured: 'Δόντια κατά CT (Freeth et al. 2006): {count} (όρια: {lim}).', measured21: 'Μέτρηση (Freeth et al. 2021, πίν. S8): ακτίνα αρχικού κύκλου {pitch} mm, πάχος {thick} mm, μέτρο {mod}. Στο μοντέλο: {model} mm.',
+    schematic: 'Θέσεις αξόνων σχηματικές', schematicTitle: 'Μεγέθη τροχών και αποστάσεις αξόνων από μετρήσεις CT (Freeth et al. 2021, πίν. S8), έδρανα του Κόσμου από τις ακτίνες του b1· οι κατευθύνσεις μεταξύ των αξόνων πίσω από τον b1 σχηματικές',
     'tab.model': 'Μοντέλο', 'tab.dials': 'Ενδείξεις', 'tab.map': 'Χάρτης', 'tab.time': 'Χρονολόγιο', 'tab.research': 'Έρευνα',
     tools: 'Εργαλεία', explode: 'Αποσυναρμολόγηση', section: 'Τομή', evidence: 'Χρωματισμός τεκμηρίωσης', ghosts: 'Εμφάνιση πραγματικού ουρανού', assemblies: 'Υποσυστήματα',
     setDate: 'Ορισμός ημερομηνίας', go: 'Μετάβαση', bc: 'π.Χ.', ad: 'μ.Χ.', day: 'Ημέρα', month: 'Μήνας', year: 'Έτος', era: 'Εποχή',
