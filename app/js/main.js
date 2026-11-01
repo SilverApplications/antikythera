@@ -3,7 +3,7 @@ import { OrbitControls } from '../vendor/addons/OrbitControls.js';
 import { RoomEnvironment } from '../vendor/addons/RoomEnvironment.js';
 import { ASSEMBLIES, GEARS } from './generated/data.js';
 import { stateAt, gearAngles, START_JD, EPOCH, RATES, CORINTHIAN_MONTHS, CORINTHIAN_MONTHS_EL } from './kinematics.js';
-import { PLACE, pitchR } from './layout.js';
+import { PLACE, pitchR, STRUCT } from './layout.js';
 import { buildMechanism, makeMaterials, refreshDeviceText } from './build3d.js';
 import { t, td, lang, deviceLang, setLang, setDeviceLang, onLangChange, SITE_LANGS, DEVICE_LANGS, partText } from './i18n.js';
 import { julianDay, formatDate, calendarName, realSky, nextEclipses, angDiff, zodiacLabel, EG_MONTHS, TROPICAL_YEAR } from './astro.js';
@@ -64,10 +64,12 @@ function resize() {
 new ResizeObserver(resize).observe(canvas.parentElement);
 
 // ------------------------------------------------------------------ Ansichten
+// Deckel (AM-140) sind in jeder Ansicht zunächst ausgeblendet und lassen sich im Baugruppenbaum einschalten.
+const DEFAULT_HIDDEN = ['AM-140'];
 const VIEWS = {
   front: { pos: [90, 30, 820], explode: 0, hide: [] },
   back: { pos: [-90, 20, -820], explode: 0, hide: [] },
-  gears: { pos: [420, 200, 470], explode: 0.15, hide: ['AM-110', 'AM-120', 'AM-130', 'AM-700', 'AM-800'] },
+  gears: { pos: [420, 200, 470], explode: 0.15, hide: ['AM-110', 'AM-120', 'AM-130', 'AM-151', 'AM-153', 'AM-155', 'AM-160', 'AM-700', 'AM-800'] },
   explode: { pos: [760, 300, 560], explode: 0.8, hide: ['AM-110'] },
 };
 let tween = null;
@@ -76,7 +78,7 @@ function setView(name) {
   document.querySelectorAll('[data-view]').forEach((b) => b.classList.toggle('on', b.dataset.view === name));
   tween = { from: camera.position.clone(), to: new THREE.Vector3(...v.pos), t: 0 };
   $('#explode').value = v.explode; applyExplode();
-  for (const a of ASSEMBLIES.assemblies) checked.set(a.id, !v.hide.includes(a.id));
+  for (const a of ASSEMBLIES.assemblies) checked.set(a.id, !v.hide.includes(a.id) && !DEFAULT_HIDDEN.includes(a.id));
   syncTreeChecks(); applyVisibility();
 }
 document.querySelectorAll('[data-view]').forEach((b) => b.addEventListener('click', () => setView(b.dataset.view)));
@@ -112,7 +114,7 @@ $('#evidence').addEventListener('change', () => {
 $('#ghosts').addEventListener('change', () => { for (const g of Object.values(M.front.ghosts)) g.visible = $('#ghosts').checked; invalidate(); });
 
 // ------------------------------------------------------------------ Baugruppenbaum
-const checked = new Map(ASSEMBLIES.assemblies.map((a) => [a.id, true]));
+const checked = new Map(ASSEMBLIES.assemblies.map((a) => [a.id, !DEFAULT_HIDDEN.includes(a.id)]));
 const parentOf = Object.fromEntries(ASSEMBLIES.assemblies.map((a) => [a.id, a.parent]));
 const nameOf = (id) => td('assemblies', id, null, ASSEMBLIES.assemblies.find((a) => a.id === id)?.name ?? '');
 function visibleAsm(id) { for (let a = id; a; a = parentOf[a]) if (checked.get(a) === false) return false; return true; }
@@ -247,7 +249,15 @@ function updateMechanism() {
   rel.CP = 0;
   for (const [id, r] of Object.entries(rel)) if (M.gearObjs[id]) M.gearObjs[id].rotation.z = r;
   const outAng = { Ma: -st.planets.mars * D2R, Ju: -st.planets.jupiter * D2R, Sa: -st.planets.saturn * D2R, Dr: -st.node * D2R };
-  for (const [id, pl] of Object.entries(PLACE)) if (pl.frame === 'out' && M.gearObjs[id]) M.gearObjs[id].rotation.z = (pl.counter ? -1 : 1) * outAng[pl.planet];
+  for (const [id, pl] of Object.entries(PLACE)) {
+    if (!M.gearObjs[id]) continue;
+    if (pl.frame === 'out') M.gearObjs[id].rotation.z = outAng[pl.planet];
+    else if (pl.pinSlot) M.gearObjs[id].rotation.z = -(outAng[pl.pinSlot] - b); // g6 auf der CP kämmt mit g7 (gleiche Zähnezahl)
+  }
+  // Folger von Merkur und Venus zeigen auf den Stift ihrer Scheibe
+  const pinAngle = (gid, r) => { const pl = PLACE[gid], a = M.gearObjs[gid].rotation.z; return Math.atan2(pl.at[1] + r * Math.sin(a), pl.at[0] + r * Math.cos(a)) + b; };
+  M.followers.Me.rotation.z = pinAngle('Me-20', STRUCT.disks.Me.pin) - Math.PI / 2;
+  M.followers.Ve.rotation.z = pinAngle('r1', STRUCT.disks.Ve.pin) - Math.PI / 2;
 
   // Front
   const F = M.front;
@@ -264,7 +274,7 @@ function updateMechanism() {
   // Rückseite
   const Bk = M.back;
   // rotation.z > 0 = im Uhrzeigersinn von hinten gesehen; Startstellungen nach Freeth 2008 (siehe layout.js BACK)
-  const spiralPtr = (p, turns) => { p.grp.rotation.z = (p.sp.start ?? 0) * D2R + turns * TAU; p.slider.position.y = p.sp.r0 + (p.sp.r1 - p.sp.r0) * turns / p.sp.turns; };
+  const spiralPtr = (p, turns) => { p.grp.rotation.z = (p.sp.start ?? 0) * D2R + turns * TAU; p.slide.position.y = p.sp.r0 + (p.sp.r1 - p.sp.r0) * turns / p.sp.turns; };
   spiralPtr(Bk.metonic, st.metonic.turns); spiralPtr(Bk.saros, st.saros.turns);
   Bk.games.grp.rotation.z = Math.PI - st.games.frac * TAU;          // startet senkrecht nach unten, gegen den Uhrzeigersinn
   Bk.callippic.grp.rotation.z = Math.PI + st.callippic.frac * TAU;

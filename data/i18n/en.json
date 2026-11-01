@@ -7,12 +7,12 @@
  },
  "assemblies": {
   "AM-000": "Antikythera Mechanism", "AM-100": "Case & supporting structure", "AM-110": "Wooden case with frame", "AM-120": "Front plate", "AM-130": "Back plate",
-  "AM-140": "Covers with inscriptions", "AM-150": "Middle plate, pillars, circular plate, strap", "AM-160": "Fasteners", "AM-200": "Drive", "AM-210": "Hand crank",
+  "AM-140": "Covers with inscriptions (front removable)", "AM-141": "Front cover (inscription outside)", "AM-142": "Back cover (inscription inside, sliding catch)", "AM-150": "Supporting structure", "AM-151": "Main plate, retainers, spacer strips", "AM-152": "Short pillars + Strap", "AM-153": "Long pillars + circular plate", "AM-154": "D-plate, bracket on spoke C", "AM-155": "Sub-plate (tube bearing)", "AM-156": "Fixed tube through b1", "AM-160": "Fasteners (thumb catches, rivets, pins)", "AM-200": "Drive", "AM-210": "Crank/key (removable)",
   "AM-300": "Cosmos gearing (front)", "AM-310": "Inner planets (fixed gear 51)", "AM-311": "Mercury", "AM-312": "Venus", "AM-320": "Sun & outer planets (fixed gear 56)",
-  "AM-321": "True Sun", "AM-322": "Mars", "AM-323": "Jupiter", "AM-324": "Saturn", "AM-330": "Dragon hand (lunar nodes)", "AM-340": "Output tubes (9 coaxial)",
+  "AM-321": "True Sun", "AM-322": "Mars", "AM-323": "Jupiter", "AM-324": "Saturn", "AM-330": "Dragon hand (lunar nodes)", "AM-340": "Output tubes (9 coaxial)", "AM-350": "Mean Sun (bar on spoke D)",
   "AM-400": "Lunar gearing", "AM-500": "Calendar gearing (Metonic, Games, Callippic)", "AM-600": "Eclipse gearing (Saros, Exeligmos)", "AM-700": "Front display",
-  "AM-710": "Zodiac scale", "AM-720": "Calendar ring (354 holes)", "AM-730": "Planet rings + markers", "AM-740": "Moon pointer + phase ball", "AM-750": "Date pointer",
-  "AM-800": "Back display", "AM-810": "Metonic spiral", "AM-820": "Saros spiral", "AM-830": "Subsidiary dials", "AM-840": "Spiral pointers with follower", "AM-900": "Inscriptions / user manual"
+  "AM-710": "Zodiac scale", "AM-720": "Calendar ring (354 holes)", "AM-730": "Planet rings + markers", "AM-740": "Moon pointer + phase ball", "AM-750": "Date pointer", "AM-760": "Parapegma plates",
+  "AM-800": "Back display", "AM-810": "Metonic spiral", "AM-820": "Saros spiral", "AM-830": "Subsidiary dials", "AM-840": "Spiral pointers (sliding)", "AM-900": "Inscriptions / user manual"
  },
  "gears": {
   "a1": {"function": "Contrate (crown) gear at the input, at right angles to the main plane; driven by the crank"},
@@ -37,14 +37,14 @@
   "V-51": {"function": "Fixed central gear shared by Mercury and Venus"}, "V-44": {"function": "Venus, stage 1", "note": "Arbor 44+34 turns in the bearing on spoke C, 25.6 mm from the centre (Freeth 2021, Suppl. S5). Module approx. 0.54."}, "V-34": {"function": "Venus, stage 1 (same arbor as 44)"}, "V-26": {"function": "Venus idler"},
   "r1": {"function": "Venus epicycle; carries the pin for the slotted follower", "note": "Physically preserved (fragment D, only 3 teeth missing). Its role as Venus epicycle is an interpretation (E3). Axis 27.8 mm from the centre, pin on the riveted disk 20.0 mm from the gear centre (Freeth 2021, Table S9)."},
   "Me-72": {"function": "Mercury, stage 1", "note": "Arbor 72+89 sits on the flattened area of spoke A, 31.6 mm from the centre (Freeth 2021, Suppl. S5)."}, "Me-89": {"function": "Mercury, stage 1 (same arbor as 72; 89 = prime factor of 1513 = 17 × 89)"}, "Me-40": {"function": "Mercury idler"}, "Me-20": {"function": "Mercury epicycle with pin", "note": "Axis 36.0 mm from the centre, pin 14.0 mm from the gear centre (Freeth 2021, Table S9)."},
-  "CP-56": {"function": "Fixed central gear on the circular plate, shared by true Sun, Mars, Jupiter and Saturn"},
+  "CP-56": {"function": "Fixed central gear in front of the circular plate, riveted to the sub-plate; shared by true Sun, Mars, Jupiter and Saturn"},
   "S-52": {"function": "True Sun idler; also on a common arbor with Saturn 61"}, "S-56": {"function": "Sun epicycle (fixed in space) with pin → slotted follower produces the solar anomaly"},
   "MJ-64": {"function": "Gear shared by Mars and Jupiter"}, "Ma-38": {"function": "Mars (same arbor as 64)"}, "Ma-40": {"function": "Mars idler"}, "Ma-71": {"function": "Mars epicycle with pin (71 = prime factor of 284)"},
-  "Ma-80a": {"function": "Mars output (slotted follower)"}, "Ma-80b": {"function": "Mars output to the ring"},
+  "Ma-80a": {"function": "Mars: slotted gear (g6) on an eccentric axis on the circular plate; the pin of 71 engages it"}, "Ma-80b": {"function": "Mars output to the ring"},
   "Ju-45": {"function": "Jupiter (same arbor as 64)"}, "Ju-40": {"function": "Jupiter idler"}, "Ju-43": {"function": "Jupiter epicycle with pin (43 = prime factor of 344)"},
-  "Ju-65a": {"function": "Jupiter output (slotted follower)"}, "Ju-65b": {"function": "Jupiter output to the ring"},
+  "Ju-65a": {"function": "Jupiter: slotted gear (g6) on an eccentric axis on the circular plate; the pin of 43 engages it"}, "Ju-65b": {"function": "Jupiter output to the ring"},
   "Sa-61": {"function": "Saturn (same arbor as 52; 61 = prime factor of 427)"}, "Sa-40": {"function": "Saturn idler"}, "Sa-68": {"function": "Saturn epicycle with pin (68 = 4 × 17)"},
-  "Sa-86a": {"function": "Saturn output (slotted follower)"}, "Sa-86b": {"function": "Saturn output to the ring"},
+  "Sa-86a": {"function": "Saturn: slotted gear (g6) on an eccentric axis on the circular plate; the pin of 68 engages it"}, "Sa-86b": {"function": "Saturn output to the ring"},
   "Dr-49": {"function": "Dragon hand (lunar nodes), stage 1", "note": "Freeth 2021 themselves: no direct physical evidence"}, "Dr-62": {"function": "Dragon hand", "note": "Arbor 62+64 turns in the bearing on spoke B, 27.0 mm from the centre (Freeth 2021, Suppl. S4/S6). Modules 0.486 (49/62) and 0.482 (64/48)."},
   "Dr-64": {"function": "Dragon hand (same arbor as 62)"}, "Dr-48": {"function": "Dragon hand output (nodal cycle 18.6 years, retrograde)"}
  },

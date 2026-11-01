@@ -79,25 +79,26 @@ Evidenz wie im Projekt: **E1** erhalten/gemessen · **E2** zwingend erschlossen 
 
 ---
 
-## 6. Abgleich mit dem Modell (Stand v0.7)
+## 6. Abgleich mit dem Modell (Stand v0.8)
 
-| Thema | Modell heute | Befund | Bewertung |
+Umgesetzt wurde alles, was sich nicht widerspricht (Entscheidung November 2026). Die Kollisionsprüfung `test/structure.test.mjs` stellt sicher, dass sich keine Teile durchdringen.
+
+| Thema | v0.7 | v0.8 | Evidenz |
 |---|---|---|---|
-| Hauptplatte mit Haltern und Abstandsstreifen | fehlt | E1 | **ergänzen** |
-| Strap + 4 kurze Säulen, Kreisplatte + 4 lange Säulen | nur ein Ring (CP) bei z = 11 mm | Säulen E1, Höhen 16,2 / 27,5 mm | **ergänzen und Ebenen neu stapeln** (Kosmos-Räder in 9 + 5 Lagen nach 2021) |
-| D-Platte, Scheibe an r1 | fehlen | E1 | ergänzen |
-| Unterplatte mit Festrad 56, Rohrbündel | fehlt (56 schwebt) | E3 | ergänzen |
-| **Mondzeiger** | nur 18 mm lang, endet vor dem Tierkreis | Zeiger bis zur Skala | **Fehler, korrigieren** |
-| Mondkugel | 6 mm, auf dem Mondzeiger | 6 mm in einem Zylinder an der Mondwelle | passt weitgehend |
-| Sonnenzeiger | goldene Kugel + Strahl | passt | ok |
-| Planetenringe | eine Kugel je Ring | zusätzlich kleine Oppositionssteine | optional |
-| Spiralzeiger | fester Zeiger mit Läufer | Schiebezeiger mit Stift in der Nut | **anpassen** |
-| Kalenderring | 354 Löcher, Ring steckt | passt; Einstellmarke Waage 17,7° fehlt | Marke ergänzen |
-| Parapegma-Platten | nur im Infotext erwähnt | E1 | Platten mit Schrift ergänzen |
-| Deckel vorn/hinten | Baugruppe AM-140 vorhanden, aber leer | Deckel E1, Scharniere unbelegt | abnehmbare Deckel (vorn 128,8 mm), ohne Scharniere |
-| Daumenriegel an der Zifferblatt-Platte | fehlen | E1 | ergänzen |
-| Kurbel | fest montiert | Schlüssel/Kurbel aufsteckbar (Aussparung in a1) | als aufsteckbar darstellen |
-| Zahnhöhe | 2,2 × Modul ≈ 1,1 mm | ≈ 1,36–1,5 mm (Dreieck) | auf gleichseitige Dreiecke ändern |
-| Speichen | alle Räder ab 60 Zähnen, 4 Speichen | nur b1 belegt (4, genietet, Schwalbenschwanz) | b1 genauer; übrige kennzeichnen oder als Vollscheibe |
-| Naben | rundes Loch | Vierkant | Vierkant-Naben ergänzen |
-| Frontplatte | z = 30 mm, Gehäuse innen ca. 77 mm tief | mit Strap/CP-Höhen nach 2021 rückt die Front auf ca. 37–40 mm; Gehäuse ca. 10 cm | anpassen |
+| Mondzeiger | 18 mm, endete vor dem Tierkreis | reicht bis zur Tierkreisskala; Kugel (6 mm) in einem hinten offenen Zylinder auf dem Zeiger, vor allen Ringen | E3 |
+| Hauptplatte | fehlte | volle Platte hinter b1 mit Lagerlöchern, 4 genietete Halter über dem Kranz, 5 Abstandsstreifen (3 genietet, 2 gelötet); alle Räder hinter b1 2,4 mm nach hinten | E1 |
+| Säulen, Strap, Kreisplatte | ein Ring bei z = 11 mm | 4 kurze Säulen (20,4/16,2 mm) mit Strap (1,6 mm, 25,3 mm breit, 11° zu den Speichen), 4 lange (32,0/27,5 mm) mit CP (2,0 mm); Haltestifte an den Säulenenden | Säulen E1, Platten E3 |
+| Lagen vor b1 | frei verteilt | 9 Lagen in 15,0 mm (Festrad 51 + 72 + 44 · Festrad 49 + 62 · Steg der mittleren Sonne · 64 + 48 · Merkur-Folger · Venus-Folger · Scheiben · 34/26/63 · D-Platte + 89/40/20), 5 Lagen in 9,7 mm (Mars-Ausgang · Mars-Zug · Jupiter-Ausgang · Saturn-Ausgang · Jupiter- und Saturn-Zug), eine Lage vor der CP (56, 52, 56, 64); Ausgänge in kosmologischer Reihenfolge | E3 |
+| Stift-Schlitz der äußeren Planeten | Schlitzrad fest im Gestell | g5 (Stift) und g6 (Schlitz) exzentrisch auf der CP, g7 auf dem Ausgangsrohr; Modul der Paare 0,44 mm, damit sie auf die CP passen | E3 |
+| D-Platte, Scheiben, Folger | fehlten | D-Platte am Strap; Venus-Scheibe (r 21,5 mm) an 63 genietet, Merkur-Scheibe an 20; Stifte laufen in Schlitz-Folgern auf der Mittelachse | D-Platte, Venus-Scheibe E1, Rest E3 |
+| Steg, Halter Speiche C | fehlten | Steg vom Block auf Speiche D zur Mitte; Halter der Welle 44 + 34 auf Speiche C (46,2 mm) | Block, Fläche E1, Form E3 |
+| Unterplatte, Festrohr, Rohrbündel | 56 schwebte | Unterplatte (als Steg) mit genietetem 56 und Lager; Festrohr durch b1 an der Hauptplatte; 10 koaxiale Rohre | E3 |
+| Front | z = 30 mm, Gehäuse ca. 77 mm tief | Front bei z = 35 mm, Gehäuse ca. 88 mm tief | E3 |
+| Spiralzeiger | fester Zeiger mit Läufer | Schiebezeiger: Stift an der Spitze in der Nut, Stange gleitet durch die Nabe | E2 |
+| Daumenriegel, Einstellmarke, Parapegma | fehlten | 4 Daumenriegel (Lage schematisch); radiale Marke bei Waage 17,7°; 2 Parapegma-Platten mit je 2 Spalten (Tierkreis-Viertel, Text angedeutet) | E1 (Lage teils E3) |
+| Kurbel | fest montiert | Vierkant-Aussparung in a1, Kurbel mit Vierkant aufgesteckt; wandert beim Zerlegen nach außen | Aussparung E1, Form E4 |
+| Zahnform | Zahnhöhe 2,2 × Modul | gleichseitige Dreiecke, 2,72 × Modul | E1 |
+| Speichen, Naben | Speichen bei allen Rädern ab 60 Zähnen; runde Bohrung | Speichen nur bei b1 (4, schwalbenschwanzförmig, Mittelscheibe mit Nieten); sonst Vollscheiben mit Vierkant-Nabe, auf Rohren passend, Lager rund | E1 |
+| Deckel | Baugruppe leer | Vorderdeckel 128,8 mm mit Zierrahmen, Inschrift außen (Planeten in CCO, Zahlen 462/442), Stützen E4; Rückdeckel über die ganze Rückseite, Inschrift innen, Schieberiegel unten rechts. **Standardmäßig ausgeblendet** (AM-140) | E1/E3 |
+
+Offen bzw. bewusst nicht umgesetzt: Folger der wahren Sonne, Oppositions-Steinchen auf den Planetenringen, genauer Wortlaut von Parapegma und Deckelinschriften, echte Achskoordinaten hinter b1.

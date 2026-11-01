@@ -34,20 +34,68 @@
   {
    "id": "AM-140",
    "parent": "AM-100",
-   "name": "Deckel mit Inschriften",
+   "name": "Deckel mit Inschriften (vorn abnehmbar)",
+   "evidence": "E1"
+  },
+  {
+   "id": "AM-141",
+   "parent": "AM-140",
+   "name": "Vorderdeckel (Inschrift außen)",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-142",
+   "parent": "AM-140",
+   "name": "Rückdeckel (Inschrift innen, Schieberiegel)",
    "evidence": "E1"
   },
   {
    "id": "AM-150",
    "parent": "AM-100",
-   "name": "Mittelplatte, Säulen, Kreisplatte, Strap",
+   "name": "Tragstruktur",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-151",
+   "parent": "AM-150",
+   "name": "Hauptplatte, Halter, Abstandsstreifen",
+   "evidence": "E1"
+  },
+  {
+   "id": "AM-152",
+   "parent": "AM-150",
+   "name": "Kurze Säulen + Strap",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-153",
+   "parent": "AM-150",
+   "name": "Lange Säulen + Kreisplatte",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-154",
+   "parent": "AM-150",
+   "name": "D-Platte, Halter auf Speiche C",
+   "evidence": "E1"
+  },
+  {
+   "id": "AM-155",
+   "parent": "AM-150",
+   "name": "Unterplatte (Lager der Rohre)",
+   "evidence": "E3"
+  },
+  {
+   "id": "AM-156",
+   "parent": "AM-150",
+   "name": "Festrohr durch b1",
    "evidence": "E3"
   },
   {
    "id": "AM-160",
    "parent": "AM-100",
-   "name": "Verbindungselemente",
-   "evidence": "E4"
+   "name": "Verbindungselemente (Daumenriegel, Nieten, Stifte)",
+   "evidence": "E1"
   },
   {
    "id": "AM-200",
@@ -57,7 +105,7 @@
   {
    "id": "AM-210",
    "parent": "AM-200",
-   "name": "Handkurbel",
+   "name": "Kurbel/Schlüssel (aufsteckbar)",
    "evidence": "E4"
   },
   {
@@ -126,6 +174,12 @@
    "evidence": "E3"
   },
   {
+   "id": "AM-350",
+   "parent": "AM-300",
+   "name": "Mittlere Sonne (Steg auf Speiche D)",
+   "evidence": "E3"
+  },
+  {
    "id": "AM-400",
    "parent": "AM-000",
    "name": "Mondgetriebe"
@@ -176,6 +230,12 @@
    "evidence": "E3"
   },
   {
+   "id": "AM-760",
+   "parent": "AM-700",
+   "name": "Parapegma-Platten",
+   "evidence": "E1"
+  },
+  {
    "id": "AM-800",
    "parent": "AM-000",
    "name": "Rückanzeige"
@@ -201,8 +261,8 @@
   {
    "id": "AM-840",
    "parent": "AM-800",
-   "name": "Spiralzeiger mit Läufer",
-   "evidence": "E3"
+   "name": "Spiralzeiger (Schiebezeiger)",
+   "evidence": "E2"
   },
   {
    "id": "AM-900",

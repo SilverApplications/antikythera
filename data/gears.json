@@ -1135,12 +1135,12 @@
    "assembly": "AM-320",
    "evidence": "E3",
    "fixed": true,
-   "mount": "circular-plate",
+   "mount": "sub-plate",
    "meshes": [
     "S-52",
     "MJ-64"
    ],
-   "function": "Feststehendes Zentralrad auf der Kreisplatte, gemeinsam für Wahre Sonne, Mars, Jupiter, Saturn"
+   "function": "Feststehendes Zentralrad vor der Kreisplatte, an die Unterplatte genietet; gemeinsam für Wahre Sonne, Mars, Jupiter, Saturn"
   },
   {
    "id": "S-52",
@@ -1219,7 +1219,7 @@
    "meshes": [
     "Ma-80b"
    ],
-   "function": "Mars Ausgang (Schlitz-Folger)"
+   "function": "Mars: Rad mit Schlitz (g6) auf exzentrischer Achse an der Kreisplatte; der Stift von 71 greift hinein"
   },
   {
    "id": "Ma-80b",
@@ -1275,7 +1275,7 @@
    "meshes": [
     "Ju-65b"
    ],
-   "function": "Jupiter Ausgang (Schlitz-Folger)"
+   "function": "Jupiter: Rad mit Schlitz (g6) auf exzentrischer Achse an der Kreisplatte; der Stift von 43 greift hinein"
   },
   {
    "id": "Ju-65b",
@@ -1331,7 +1331,7 @@
    "meshes": [
     "Sa-86b"
    ],
-   "function": "Saturn Ausgang (Schlitz-Folger)"
+   "function": "Saturn: Rad mit Schlitz (g6) auf exzentrischer Achse an der Kreisplatte; der Stift von 68 greift hinein"
   },
   {
    "id": "Sa-86b",

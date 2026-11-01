@@ -12,7 +12,9 @@ AM-000  Antikythera-Mechanismus (Gesamtsystem)
 │   ├─ AM-110  Holzkasten mit Rahmen                       E4 (Form) / E1 (Holzreste belegt)
 │   ├─ AM-120  Frontplatte (Bronze)                         E1 Reste
 │   ├─ AM-130  Rückplatte (Bronze)                          E1 Reste
-│   ├─ AM-140  Front- und Rückdeckel mit Inschriften (FCI außen / BCI innen); vorn wohl abnehmbar, Scharniere unbelegt  E1/E4
+│   ├─ AM-140  Deckel mit Inschriften; Scharniere unbelegt; im Modell standardmäßig ausgeblendet  E1
+│   │   ├─ AM-141  Vorderdeckel 128,8 mm, abnehmbar, Inschrift außen (FCI), Zierrahmen  E3 (Stützen E4)
+│   │   └─ AM-142  Rückdeckel, Inschrift innen (BCI), Schieberiegel unten rechts   E1
 │   ├─ AM-150  Tragstruktur (Details: docs/12)
 │   │   ├─ AM-151  Hauptplatte + 4 Halter (genietet) + 5 Abstandsstreifen  E1
 │   │   ├─ AM-152  4 kurze Säulen (20,4 mm) + Strap (11° schräg, mitdrehend)  E1/E3
@@ -35,7 +37,8 @@ AM-000  Antikythera-Mechanismus (Gesamtsystem)
 │   │   ├─ AM-323  Jupiter (64)+45 ~ 40 ~ 43 ⊕ 65~65        E3
 │   │   └─ AM-324  Saturn (52)+61 ~ 40 ~ 68 ⊕ 86~86         E3
 │   ├─ AM-330  Mondknoten / Drachenzeiger 49~62+64~48       E4
-│   └─ AM-340  Ausgangsrohre (9 koaxiale Hohlwellen)        E3
+│   ├─ AM-340  Ausgangsrohre (9 koaxiale Hohlwellen)        E3
+│   └─ AM-350  Mittlere Sonne: Steg vom Block auf Speiche D  E3 (Block E1)
 ├─ AM-400  Mondgetriebe
 │   ├─ AM-410  Siderischer Zug b2~c1+c2~d1+d2~e2            E1
 │   ├─ AM-420  Anomalie: e5~k1 ⊕ k2~e6 auf Träger e3        E1
@@ -53,7 +56,8 @@ AM-000  Antikythera-Mechanismus (Gesamtsystem)
 │   ├─ AM-720  Kalenderring (354 Löcher) + Stellstift       E1
 │   ├─ AM-730  Planetenringe + Marker (Edelsteine)          E3/E4
 │   ├─ AM-740  Mondzeiger + Phasenkugel                     E1/E3
-│   └─ AM-750  Datumszeiger                                 E3
+│   ├─ AM-750  Datumszeiger                                 E3
+│   └─ AM-760  Parapegma-Platten (2 × 2 Spalten)            E1
 ├─ AM-800  Rückanzeige
 │   ├─ AM-810  Metonische Spirale (5 Windungen, 235 Zellen) E1
 │   ├─ AM-820  Saros-Spirale (4 Windungen, 223 Zellen)      E1
