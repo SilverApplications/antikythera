@@ -123,18 +123,23 @@ export const DEVICE = {
     egMonths: ['ΘΩΘ', 'ΦΑΩΦΙ', 'ΑΘΥΡ', 'ΧΟΙΑΚ', 'ΤΥΒΙ', 'ΜΕΧΙΡ', 'ΦΑΜΕΝΩΘ', 'ΦΑΡΜΟΥΘΙ', 'ΠΑΧΩΝ', 'ΠΑΥΝΙ', 'ΕΠΙΦΙ', 'ΜΕΣΟΡΗ', 'ΕΠΑΓ'],
     games: [['ΙΣΘΜΙΑ', 'ΟΛΥΜΠΙΑ'], ['ΝΕΜΕΑ', 'ΝΑΑ'], ['ΙΣΘΜΙΑ', 'ΠΥΘΙΑ'], ['ΝΕΜΕΑ', 'ΑΛΙΕΙΑ']],
     exeligmos: ['', 'Η', 'ΙϚ'], callippic: ['Α', 'Β', 'Γ', 'Δ'], metonicTitle: '', sarosTitle: '',
+    // Metonische Zellen: Monatsnamen (gekürzt, wie auf dem Original teils auch) und Jahreszeichen L + Zahl (Freeth 2008)
+    metMonths: ['ΦΟΙΝ', 'ΚΡΑΝ', 'ΛΑΝΟ', 'ΜΑΧΑ', 'ΔΩΔΕ', 'ΕΥΚΛ', 'ΑΡΤΕ', 'ΨΥΔΡ', 'ΓΑΜΕ', 'ΑΓΡΙ', 'ΠΑΝΑ', 'ΑΠΕΛ'],
+    yearMark: (n) => `L${['Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ϛ', 'Ζ', 'Η', 'Θ', 'Ι', 'ΙΑ', 'ΙΒ', 'ΙΓ', 'ΙΔ', 'ΙΕ', 'ΙϚ', 'ΙΖ', 'ΙΗ', 'ΙΘ'][n - 1]}`,
   },
   de: {
     zodiac: ['WIDDER', 'STIER', 'ZWILLINGE', 'KREBS', 'LÖWE', 'JUNGFRAU', 'WAAGE', 'SKORPION', 'SCHÜTZE', 'STEINBOCK', 'WASSERMANN', 'FISCHE'],
     egMonths: ['THOTH', 'PHAOPHI', 'ATHYR', 'CHOIAK', 'TYBI', 'MECHIR', 'PHAMENOTH', 'PHARMUTHI', 'PACHON', 'PAYNI', 'EPIPHI', 'MESORE', 'ZUSATZ'],
     games: [['ISTHMIEN', 'OLYMPIA'], ['NEMEA', 'NAA'], ['ISTHMIEN', 'PYTHIEN'], ['NEMEA', 'HALIEIA']],
     exeligmos: ['0 h', '+8 h', '+16 h'], callippic: ['1', '2', '3', '4'], metonicTitle: 'METONISCHER KALENDER · 235 MONATE', sarosTitle: 'SAROS · 223 MONATE · FINSTERNISSE',
+    metMonths: ['PHOIN', 'KRAN', 'LANO', 'MACH', 'DODE', 'EUKL', 'ARTE', 'PSYD', 'GAME', 'AGRI', 'PANA', 'APEL'], yearMark: (n) => `J${n}`,
   },
   en: {
     zodiac: ['ARIES', 'TAURUS', 'GEMINI', 'CANCER', 'LEO', 'VIRGO', 'LIBRA', 'SCORPIO', 'SAGITTARIUS', 'CAPRICORN', 'AQUARIUS', 'PISCES'],
     egMonths: ['THOTH', 'PHAOPHI', 'ATHYR', 'CHOIAK', 'TYBI', 'MECHIR', 'PHAMENOTH', 'PHARMUTHI', 'PACHON', 'PAYNI', 'EPIPHI', 'MESORE', 'EXTRA'],
     games: [['ISTHMIA', 'OLYMPIA'], ['NEMEA', 'NAA'], ['ISTHMIA', 'PYTHIA'], ['NEMEA', 'HALIEIA']],
     exeligmos: ['0 h', '+8 h', '+16 h'], callippic: ['1', '2', '3', '4'], metonicTitle: 'METONIC CALENDAR · 235 MONTHS', sarosTitle: 'SAROS · 223 MONTHS · ECLIPSES',
+    metMonths: ['PHOIN', 'KRAN', 'LANO', 'MACH', 'DODE', 'EUKL', 'ARTE', 'PSYD', 'GAME', 'AGRI', 'PANA', 'APEL'], yearMark: (n) => `Y${n}`,
   },
 };
 export const deviceText = () => DEVICE[deviceLang] ?? DEVICE.orig;

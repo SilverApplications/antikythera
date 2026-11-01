@@ -3,6 +3,7 @@ import * as THREE from '../vendor/three.module.min.js';
 import { GEARS } from './generated/data.js';
 import { PLACE, ARBORS, BACK, PLATE, FRONT, A1, pitchR, moduleOf, thickOf, SPOKE } from './layout.js';
 import { deviceText } from './i18n.js';
+import { METONIC_CELLS } from './kinematics.js';
 import { patinaTextures, oliveWood, engravedTexture, engraveStroke, engraveText } from './patina.js';
 
 const TAU = Math.PI * 2;
@@ -226,6 +227,20 @@ export function backTexture() {
       }
     };
     spiral(BACK.metonic); spiral(BACK.saros);
+    // Monatsnamen in den 235 Zellen der Metonischen Spirale; Jahresbeginn mit Jahreszeichen (Freeth 2008)
+    {
+      const sp = BACK.metonic, [cx, cy] = toC(...sp.c), pitch = (sp.r1 - sp.r0) / sp.turns, a0 = sp.start * Math.PI / 180;
+      METONIC_CELLS.forEach((cell, i) => {
+        const t = (i + 0.5) / sp.cells * sp.turns, a = a0 + t * TAU, r = sp.r0 + pitch * t;
+        const w = (TAU * r) / (sp.cells / sp.turns) * 0.86, name = D.metMonths[cell.month - 1];
+        const first = cell.month === 1 && !cell.intercalary;
+        // Buchstabenoberkante zur Mitte hin (wie auf der Spiele-Anzeige belegt, Freeth 2008, 3.5)
+        g.save(); g.translate(cx, cy); g.rotate(a); g.translate(0, -r * k); g.rotate(Math.PI);
+        engraveText(g, st, name, 0, (first ? 0.95 : 0) * k, fitSize(name, w, 1.3) * k);
+        if (first) { const ym = D.yearMark(cell.year); engraveText(g, st, ym, 0, -1.05 * k, fitSize(ym, w, 1.25) * k); }
+        g.restore();
+      });
+    }
     // Nebenzifferblätter: Sektorgrenzen ab sd.start (Grad, im Uhrzeigersinn von oben, Ansicht von hinten), sd.dir = ±1
     const sub = (sd, labels, n) => {
       const [cx, cy] = toC(...sd.c), r = sd.r * k; const s0 = sd.start * Math.PI / 180, dir = sd.dir;
