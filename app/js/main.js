@@ -41,7 +41,7 @@ const scene = new THREE.Scene();
 const pmrem = new THREE.PMREMGenerator(renderer);
 const env = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 scene.environment = env;
-const camera = new THREE.PerspectiveCamera(32, 1, 1, 5000);
+const camera = new THREE.PerspectiveCamera(32, 1, 3, 5000);
 const controls = new OrbitControls(camera, canvas);
 let needRender = true, dirtyRendered = false;
 export const invalidate = () => { needRender = true; };
@@ -106,11 +106,52 @@ const EVI_TEXT = GEARS.meta.evidenzklassen;
 const eviText = (k) => td('evidence', k, null, EVI_TEXT[k]);
 const renderLegend = () => { $('#legend').innerHTML = Object.keys(EVI_TEXT).map((k) => `<div><span class="ev ev-${k}">${k}</span>${eviText(k).split(/ [-–] /)[0]}</div>`).join(''); };
 renderLegend();
-$('#evidence').addEventListener('change', () => {
-  const on = $('#evidence').checked;
-  M.root.traverse((o) => { if (o.isMesh && o.userData.mat0) o.material = on && o.userData.evidence && o.userData.kind !== 'ghost' ? mat.evidence[o.userData.evidence] : o.userData.mat0; });
+// Technische Darstellung: Räder, die ineinandergreifen, haben dieselbe Farbe; Räder auf derselben Welle
+// (oder koaxial auf der Mittelachse) bekommen verschiedene Farben. Platten werden durchsichtig, Kleinteile grau.
+const TECH_PALETTE = [0xf2c230, 0x2fb36d, 0x2f7de1, 0xe0533d, 0x9b59d0, 0x1fc3c9, 0xf08a24, 0xd94f9c, 0x8bc34a, 0x5c6bc0];
+const TECH_COLOR = (() => {
+  const ids = GEARS.gears.map((g) => g.id), par = Object.fromEntries(ids.map((i) => [i, i]));
+  const find = (i) => (par[i] === i ? i : (par[i] = find(par[i])));
+  for (const g of GEARS.gears) for (const o of g.meshes ?? []) if (par[o]) par[find(g.id)] = find(o);
+  // Welle: gleiche Achse im gleichen System; alle Räder auf der Mittelachse vor b1 gelten als benachbart
+  const arborKey = (id) => { const p = PLACE[id]; if (!p) return id === 'a1' ? 'a1' : id === 'ma1' || id === 'b0' ? 'moonphase' : null;
+    if (p.frame === 'fixedCenter' || p.frame === 'out') return 'center'; if (p.frame === 'carrier') return 'c:' + p.at.map((v) => v.toFixed(1)).join(',');
+    return p.arbor ?? p.at.join(','); };
+  const byArbor = {}; for (const id of ids) { const k = arborKey(id); if (k) (byArbor[k] ??= []).push(find(id)); }
+  const comps = [...new Set(ids.map(find))], adj = Object.fromEntries(comps.map((c) => [c, new Set()]));
+  for (const list of Object.values(byArbor)) for (const a of list) for (const b of list) if (a !== b) adj[a].add(b);
+  // Färben: Nachbarn verschieden, sonst die bisher seltenste Farbe (damit alle Farben genutzt werden)
+  const col = {}, count = TECH_PALETTE.map(() => 0);
+  for (const c of comps.sort((a, b) => adj[b].size - adj[a].size || (a < b ? -1 : 1))) {
+    const used = new Set([...adj[c]].map((n) => col[n]));
+    const k = TECH_PALETTE.map((_, i) => i).filter((i) => !used.has(i)).sort((a, b) => count[a] - count[b] || a - b)[0] ?? 0;
+    col[c] = k; count[k]++;
+  }
+  return Object.fromEntries(ids.map((i) => [i, col[find(i)]]));
+})();
+const techMat = {
+  gear: TECH_PALETTE.map((c) => new THREE.MeshStandardMaterial({ color: c, metalness: 0.1, roughness: 0.55, side: THREE.DoubleSide })),
+  glass: new THREE.MeshStandardMaterial({ color: 0xc9d1d9, metalness: 0, roughness: 0.6, transparent: true, opacity: 0.18, depthWrite: false, side: THREE.DoubleSide }),
+  grey: new THREE.MeshStandardMaterial({ color: 0x8a939c, metalness: 0.2, roughness: 0.6, side: THREE.DoubleSide }),
+};
+const PLATE_IDS = new Set(['frontplate', 'backplate', 'mainplate', 'CP', 'strap', 'subplate', 'dplate', 'parapegma-top', 'parapegma-bottom', 'cover-front', 'cover-back']);
+function applyMaterials() {
+  const ev = $('#evidence').checked, tech = $('#technical').checked;
+  M.root.traverse((o) => {
+    if (!o.isMesh || !o.userData.mat0) return;
+    const u = o.userData;
+    if (u.kind === 'ghost') { o.material = u.mat0; return; }
+    if (tech) {
+      if (u.kind === 'gear' && TECH_COLOR[u.id] !== undefined) o.material = techMat.gear[TECH_COLOR[u.id]];
+      else if (PLATE_IDS.has(u.id) || (u.id || '').startsWith('case-')) o.material = techMat.glass;
+      else if (u.kind === 'dial') o.material = u.mat0;
+      else o.material = techMat.grey;
+    } else o.material = ev && u.evidence ? mat.evidence[u.evidence] : u.mat0;
+  });
   invalidate();
-});
+}
+$('#evidence').addEventListener('change', () => { if ($('#evidence').checked) $('#technical').checked = false; applyMaterials(); });
+$('#technical').addEventListener('change', () => { if ($('#technical').checked) $('#evidence').checked = false; applyMaterials(); });
 $('#ghosts').addEventListener('change', () => { for (const g of Object.values(M.front.ghosts)) g.visible = $('#ghosts').checked; invalidate(); });
 
 // ------------------------------------------------------------------ Baugruppenbaum
@@ -269,7 +310,8 @@ function updateMechanism() {
   const HOLE = TAU / 354;
   const ideal = -st.sunMean * D2R + (st.egyptian.frac / 365) * TAU;
   F.calendar.rotation.z = Math.round(ideal / HOLE) * HOLE;
-  F.moon.rotation.z = -st.moonTrue * D2R; F.moonBall.rotation.y = st.elong * D2R - Math.PI;
+  F.moon.rotation.z = -st.moonTrue * D2R; F.moonBall.rotation.y = st.elong * D2R - Math.PI; F.moonCrown.rotation.y = F.moonBall.rotation.y;
+  F.b0.rotation.z = -st.sunMean * D2R; // b0 dreht mit der mittleren Sonne
   F.dragon.rotation.z = -st.node * D2R;
   // Rückseite
   const Bk = M.back;

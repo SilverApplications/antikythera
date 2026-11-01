@@ -19,13 +19,13 @@ export function makeMaterials(envMap) {
   g.strokeStyle = '#F4F5F6'; g.lineWidth = 6; for (let i = -64; i < 128; i += 16) { g.beginPath(); g.moveTo(i, 64); g.lineTo(i + 64, 0); g.stroke(); }
   const hatchTex = new THREE.CanvasTexture(hatch); hatchTex.wrapS = hatchTex.wrapT = THREE.RepeatWrapping; hatchTex.repeat.set(0.15, 0.15);
   hatchTex.colorSpace = THREE.SRGBColorSpace;
-  const pt = patinaTextures(1 / 60), ptPlate = patinaTextures(1 / 80);
+  const pt = patinaTextures(1 / 60, 'gear'), ptPlate = patinaTextures(1 / 80, 'plate');
   const pat = (color, tex, extra = {}) => std(color, 1, 1, { map: tex.map, metalnessMap: tex.mr, roughnessMap: tex.mr, ...extra });
   const wood = oliveWood();
   return {
     bronze: pat(0xffffff, pt),
     bronzeDark: pat(0xb8a890, pt),
-    plate: pat(0xffffff, ptPlate),
+    plate: pat(0xffffff, ptPlate, { roughness: 1 }),
     wood: std(0xffffff, 0.0, 0.8, { map: wood }),
     steel: std(0x9ba3ab, 0.9, 0.3),
     gold: std(0xd4a640, 1.0, 0.25),
@@ -88,6 +88,7 @@ function spurGeometry(z, m, t = 1.4, o = {}) {
 }
 
 // Ausgangsrohre (koaxial, Freeth 2021 S6.2.3): Radius in mm, innen der Mond, außen das Datumsrohr
+const TUBE_MOON = 0.7;
 export const TUBE = { moon: 0.7, fixed: 1.5, sunMean: 1.05, Dr: 1.4, Me: 1.75, Ve: 2.1, sunTrue: 2.45, Ma: 2.8, Ju: 3.15, Sa: 3.5, date: 3.85 };
 function gearOpts(id, pl) {
   if (id === 'b1') return { spokes: true, round: 2.2, hub: STRUCT.disc.r, ringIn: STRUCT.ringIn, sw: 5.5 };
@@ -302,11 +303,11 @@ export function buildMechanism(mat) {
     part(fixed, geos, mat.plate, { id: 'subplate', assembly: 'AM-155', evidence: 'E3' });
   }
   const zc = PLATE.zFront + PLATE.t + 0.2;   // Ebene der Ringe
-  const ZMOON = zc + 3.8;
+  const ZB0 = zc + 0.6;               // Ebene von b0 (Mondphase)
   {
     const T = TUBE, ring = (i) => zc + i * 0.05;
     const tubes = [
-      ['tube-moon', T.moon, PLACE.b3.z, ZMOON, 'AM-430'], ['tube-sunMean', T.sunMean, Ly.L3.z0, zc + 3.0, 'AM-340'],
+      ['tube-moon', T.moon, PLACE.b3.z, ZB0 + 0.6, 'AM-430'], ['tube-sunMean', T.sunMean, Ly.L3.z0, ZB0 - 0.5, 'AM-340'],
       ['tube-Dr', T.Dr, Ly.L4.z0, zc - 0.6, 'AM-340'], ['tube-Me', T.Me, Ly.L5.z0, ring(0), 'AM-340'], ['tube-Ve', T.Ve, Ly.L6.z0, ring(1), 'AM-340'],
       ['tube-sunTrue', T.sunTrue, S.strap.z0 + S.strap.t, ring(2), 'AM-340'], ['tube-Ma', T.Ma, Ly.s1.z0, ring(3), 'AM-340'],
       ['tube-Ju', T.Ju, Ly.s3.z0, ring(4), 'AM-340'], ['tube-Sa', T.Sa, Ly.s4.z0, ring(5), 'AM-340'], ['tube-date', T.date, S.cp.z0 + S.cp.t, ring(6), 'AM-340'],
@@ -552,8 +553,9 @@ function buildFront(mat, add, parent, texts) {
     ];
     for (const pp of plates) {
       const W = 172, H = pp.y1 - pp.y0, make = () => parapegmaTexture(W, H, pp.cols, pp.idx0);
-      const body = new THREE.Mesh(new THREE.BoxGeometry(W, H, 0.8), mat.plate); body.position.z = 0.4;
-      const face = new THREE.Mesh(new THREE.PlaneGeometry(W, H), dialMat(make(), mat.bronze.envMap)); face.position.z = 0.82;
+      // Platte liegt 0,3 mm über der Frontplatte, Schriftfläche 0,2 mm über der Platte (sonst Z-Fighting auf Mobilgeräten)
+      const body = new THREE.Mesh(new THREE.BoxGeometry(W, H, 0.8), mat.plate); body.position.z = 0.7;
+      const face = new THREE.Mesh(new THREE.PlaneGeometry(W - 0.4, H - 0.4), dialMat(make(), mat.bronze.envMap)); face.position.z = 1.3;
       const g = new THREE.Group(); g.add(body, face); g.position.set(0, (pp.y0 + pp.y1) / 2, zs);
       add(parent, g, { kind: 'part', id: pp.id, assembly: 'AM-760', evidence: 'E1' });
       texts.push({ mesh: face, make });
@@ -587,25 +589,46 @@ function buildFront(mat, add, parent, texts) {
     }
   });
 
-  // Mondzeiger: Kugel (6 mm, halb hell/halb dunkel) in einem Zylinder an der Mondwelle, der Zeiger reicht bis zur
-  // Tierkreisskala (Freeth 2021, S2.3/S6.2.4). Er liegt vor allen Ringen und Kugeln.
+  // Mondphase (Freeth 2021, S6.2.4; Wright): Differential aus zwei Rädern. b0 (20) sitzt fest am Rohr der mittleren
+  // Sonne, das Kronrad ma1 (20, Radius ca. 5,3 mm, Zähne zur Mittelachse hin) dreht mit dem Mondzeiger um und rollt
+  // auf b0 ab. Seine radiale Welle dreht die Kugel (6 mm, halb hell/halb dunkel) einmal pro synodischem Monat.
+  // Der Zeiger hängt am Zylinder um Kronrad und Kugel und reicht bis zur Tierkreisskala.
   {
-    const grp = new THREE.Group(), tipR = FRONT.zodiac[1] - 1.0, yb = 11;
-    const arm = new THREE.Mesh(boxAt(1.2, tipR - 3.2 - 2, 0.5, 0, (2 + tipR - 3.2) / 2, 0), mat.bronzeDark); grp.add(arm);
-    const tip = new THREE.Mesh(new THREE.ConeGeometry(1.4, 3.2, 3), mat.bronzeDark); tip.position.set(0, tipR - 1.6, 0); tip.scale.z = 0.35; grp.add(tip);
+    const mPh = 0.53, rP = 20 * mPh / 2, zB0 = zc + 0.6;
+    // b0 auf dem Rohr der mittleren Sonne (dreht mit der mittleren Sonne)
+    const b0 = new THREE.Group(); b0.add(new THREE.Mesh(spurGeometry(20, mPh, 1.0, { round: TUBE_MOON + 0.2 }), mat.bronze)); b0.position.z = zB0;
+    add(parent, b0, { kind: 'gear', id: 'b0', teeth: 20, assembly: GEAR.b0?.assembly ?? 'AM-400', evidence: GEAR.b0?.evidence ?? 'E3', label: 'b0 · 20 Zähne', func: GEAR.b0?.function, note: GEAR.b0?.note, frame: 'fixed' });
+    out.b0 = b0;
+    const grp = new THREE.Group(), tipR = FRONT.zodiac[1] - 1.0;
+    const zC = rP, [ring, disk] = crownGeometry(20, mPh), cH = 2.5 + TOOTH_H * mPh;   // Kronrad: Achse radial
+    const yC = rP + cH;                                                             // Zahnspitzen bei r ≈ Teilkreis von b0
+    const crown = new THREE.Group(); const ci = new THREE.Group(); ci.add(new THREE.Mesh(ring, mat.bronze), new THREE.Mesh(disk, mat.bronze)); ci.rotation.x = Math.PI / 2;
+    crown.add(ci); crown.position.set(0, yC, zC); grp.add(crown);
+    tag(crown, { kind: 'gear', id: 'ma1', teeth: 20, assembly: GEAR.ma1?.assembly ?? 'AM-400', evidence: GEAR.ma1?.evidence ?? 'E1', label: 'ma1 · 20 Zähne (Kronrad)', func: GEAR.ma1?.function, note: GEAR.ma1?.note });
+    const yb = yC + 3.8, rOut = rP + 1.4 + 0.6, zArm = zC + rOut + 0.8;
+    const axle = new THREE.CylinderGeometry(0.5, 0.5, yb - yC + 1.2, 10); axle.translate(0, (yC - 1.2 + yb) / 2, zC);
     const phaseTex = canvasTex(256, (g) => { g.fillStyle = '#e9e4d6'; g.fillRect(0, 0, 128, 128); g.fillStyle = '#1a1a1a'; g.fillRect(128, 0, 128, 128); }, 128);
     const ball = new THREE.Mesh(new THREE.SphereGeometry(3, 32, 20), new THREE.MeshStandardMaterial({ map: phaseTex, roughness: 0.5, metalness: 0.1 }));
-    ball.position.set(0, yb, 0.8); grp.add(ball);
-    // Zylinder (hinten halb offen), in dem die Kugel um die Zeigerachse dreht
-    const cyl = new THREE.CylinderGeometry(3.5, 3.5, 7.6, 24, 1, true, Math.PI / 2, Math.PI);
-    const cm = new THREE.Mesh(cyl, mat.bronzeDark); cm.position.set(0, yb, 0.8); grp.add(cm);
-    for (const dy of [-3.8, 3.8]) { const rim = new THREE.Mesh(new THREE.TorusGeometry(3.5, 0.35, 8, 24), mat.bronzeDark); rim.rotation.x = Math.PI / 2; rim.position.set(0, yb + dy, 0.8); grp.add(rim); }
-    const hub = new THREE.Mesh(new THREE.CylinderGeometry(2.2, 2.2, 1.5, 20), mat.bronzeDark); hub.rotation.x = Math.PI / 2; grp.add(hub);
-    grp.position.z = zc + 3.8;
+    ball.position.set(0, yb, zC); grp.add(ball);
+    // Zylinder um die Kugel, vorn offen; Zeigerarm darüber, verbunden mit der Mondwelle in der Mitte
+    const cyl = new THREE.CylinderGeometry(3.6, 3.6, 7.4, 24, 1, true, Math.PI / 2, Math.PI); cyl.translate(0, yb, 0); cyl.rotateY(0);
+    const cm = new THREE.Mesh(cyl, mat.bronzeDark); cm.position.z = zC; grp.add(cm);
+    for (const dy of [-3.7, 3.7]) { const rim = new THREE.Mesh(new THREE.TorusGeometry(3.6, 0.35, 8, 24), mat.bronzeDark); rim.rotation.x = Math.PI / 2; rim.position.set(0, yb + dy, zC); grp.add(rim); }
+    const frame = [
+      axle,
+      boxAt(1.2, tipR - 3.2 + 1.5, 0.5, 0, (tipR - 3.2 - 1.5) / 2, zArm),            // Zeigerarm
+      cylZ(0.9, 0.6, zArm + 0.4, 12),                                                 // Mondwelle bis zum Arm
+      cylZ(2.0, zArm - 0.4, zArm + 0.6, 20),                                          // Nabe
+      cylZ(0.6, zC, zArm, 8).translate(0, yb - 3.7, 0), cylZ(0.6, zC, zArm, 8).translate(0, yb + 3.7, 0), // Stützen Zylinder → Arm
+    ];
+    for (const g of frame) grp.add(new THREE.Mesh(g, mat.bronzeDark));
+    const tip = new THREE.Mesh(new THREE.ConeGeometry(1.4, 3.2, 3), mat.bronzeDark); tip.position.set(0, tipR - 1.6, zArm); tip.scale.z = 0.35; grp.add(tip);
+    grp.position.z = zB0;
     add(parent, grp, { kind: 'dial', id: 'moon-pointer', assembly: 'AM-740', evidence: 'E3' });
-    out.moon = grp; out.moonBall = ball;
+    tag(crown, { kind: 'gear', id: 'ma1', teeth: 20, assembly: GEAR.ma1?.assembly ?? 'AM-400', evidence: GEAR.ma1?.evidence ?? 'E1', label: 'ma1 · 20 Zähne (Kronrad)', func: GEAR.ma1?.function, note: GEAR.ma1?.note });
+    out.moon = grp; out.moonBall = ball; out.moonCrown = crown; out.moonTop = zB0 + zArm;
     const ghost = new THREE.Mesh(new THREE.SphereGeometry(1.1, 12, 8), mat.ghost); ghost.renderOrder = 10;
-    const gg = new THREE.Group(); ghost.position.set(0, tipR - 4, 4.5); gg.add(ghost); gg.position.z = zc; gg.visible = false; parent.add(gg); out.ghosts.moon = gg;
+    const gg = new THREE.Group(); ghost.position.set(0, tipR - 4, zArm + 1.5); gg.add(ghost); gg.position.z = zc; gg.visible = false; parent.add(gg); out.ghosts.moon = gg;
   }
   // Drachenzeiger (spekulativ), flach hinter den Ringen
   {
@@ -656,8 +679,8 @@ function buildBack(mat, add, parent) {
   return out;
 }
 
-// Gehäuse: hinten 4 mm hinter der Rückplatte, vorn 10 mm vor der Frontplatte (Platz für Zeiger und Mondkugel)
-export const CASE_Z = [PLATE.zBack - PLATE.t - 4, PLATE.zFront + PLATE.t + 10];
+// Gehäuse: hinten 4 mm hinter der Rückplatte, vorn 18 mm vor der Frontplatte (Platz für Zeiger und Mondphasen-Getriebe)
+export const CASE_Z = [PLATE.zBack - PLATE.t - 4, PLATE.zFront + PLATE.t + 18];
 function buildCase(mat, add, parent) {
   const { w, yMin, yMax } = PLATE; const H = yMax - yMin, cy = (yMax + yMin) / 2;
   const t = 6, z0 = CASE_Z[0], z1 = CASE_Z[1], D = z1 - z0, cz = (z0 + z1) / 2;

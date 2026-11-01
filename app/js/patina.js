@@ -25,35 +25,44 @@ const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const mix = (a, b, t) => a + (b - a) * t;
 
 // ---------------------------------------------------------------- Bronze-Patina (kachelbar)
-let patinaCache = null;
-export function patinaTiles(S = 512) {
-  if (patinaCache) return patinaCache;
+// Varianten: 'gear' = blankere Bronze mit wenig Grünspan (Zahnräder), 'plate' = dunkles, gehämmertes Blech mit
+// feinen Dellen und mehr Patina (Platten). So heben sich die Räder in der realistischen Ansicht von den Platten ab.
+const VARIANT = {
+  gear: { BR: [204, 156, 88], DK: [128, 92, 50], verd: 0.55, pits: 0.35, ham: 0 },
+  plate: { BR: [118, 96, 66], DK: [62, 50, 36], verd: 1.15, pits: 0.8, ham: 1 },
+  dial: { BR: [158, 124, 80], DK: [96, 74, 48], verd: 0.9, pits: 0.6, ham: 0.6 }, // beschriftete Platten: etwas heller, damit die Schrift lesbar bleibt
+};
+const patinaCache = {};
+export function patinaTiles(S = 512, variant = 'gear') {
+  if (patinaCache[variant]) return patinaCache[variant];
+  const V = VARIANT[variant];
   const col = document.createElement('canvas'); col.width = col.height = S;
   const mr = document.createElement('canvas'); mr.width = mr.height = S;
   const gc = col.getContext('2d'), gm = mr.getContext('2d');
   const ic = gc.createImageData(S, S), im = gm.createImageData(S, S);
-  const BR = [178, 134, 76], DK = [104, 74, 42], VG = [96, 146, 118], VG2 = [58, 102, 84];
+  const BR = V.BR, DK = V.DK, VG = [96, 146, 118], VG2 = [58, 102, 84];
   for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
     const u = x / S * 8, v = y / S * 8;
     const base = noise(u, v, 5, 8);
     const verd = clamp((noise(u + 3.1, v + 1.7, 3, 8) * 0.85 + noise(u * 4 + 1.3, v * 4 + 7.7, 3, 32) * 0.45 + 0.0) * 2.8);
     const pits = clamp((noise(u * 4 + 9, v * 4 + 2, 2, 32) - 0.3) * 5);
-    const t = clamp(0.55 + base * 0.8);
+    const ham = V.ham ? Math.abs(noise(u * 6 + 4, v * 6 + 1, 2, 48)) * 0.9 * V.ham : 0; // Hammerschläge
+    const t = clamp(0.55 + base * 0.8 - ham * 0.5);
     let r = mix(DK[0], BR[0], t), g = mix(DK[1], BR[1], t), b = mix(DK[2], BR[2], t);
-    const vg = Math.pow(verd, 1.6) * 0.8;
+    const vg = clamp(Math.pow(verd, 1.6) * 0.8 * V.verd);
     r = mix(r, mix(VG2[0], VG[0], t), vg); g = mix(g, mix(VG2[1], VG[1], t), vg); b = mix(b, mix(VG2[2], VG[2], t), vg);
-    r = mix(r, 52, pits * 0.55); g = mix(g, 42, pits * 0.55); b = mix(b, 30, pits * 0.55);
+    r = mix(r, 52, pits * 0.55 * V.pits); g = mix(g, 42, pits * 0.55 * V.pits); b = mix(b, 30, pits * 0.55 * V.pits);
     const i = (y * S + x) * 4;
     ic.data[i] = r; ic.data[i + 1] = g; ic.data[i + 2] = b; ic.data[i + 3] = 255;
     // Rauheit (G) und Metallizität (B): Patina ist matt und nicht metallisch
     im.data[i] = 0; im.data[i + 1] = 255 * clamp(0.42 + vg * 0.5 + pits * 0.3 - base * 0.15); im.data[i + 2] = 255 * clamp(0.85 - vg * 0.8 - pits * 0.4); im.data[i + 3] = 255;
   }
   gc.putImageData(ic, 0, 0); gm.putImageData(im, 0, 0);
-  patinaCache = { col, mr };
-  return patinaCache;
+  patinaCache[variant] = { col, mr };
+  return patinaCache[variant];
 }
-export function patinaTextures(repeat = 1 / 60) {
-  const { col, mr } = patinaTiles();
+export function patinaTextures(repeat = 1 / 60, variant = 'gear') {
+  const { col, mr } = patinaTiles(512, variant);
   const map = new THREE.CanvasTexture(col); map.colorSpace = THREE.SRGBColorSpace;
   const mrt = new THREE.CanvasTexture(mr);
   for (const t of [map, mrt]) { t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(repeat, repeat); t.anisotropy = 4; }
@@ -99,7 +108,7 @@ export function engravedTexture(W, H, draw) {
     const c = document.createElement('canvas'); c.width = W; c.height = H;
     const g = c.getContext('2d');
     if (mode === 'color') {
-      const pat = g.createPattern(patinaTiles().col, 'repeat');
+      const pat = g.createPattern(patinaTiles(512, 'dial').col, 'repeat');
       g.save(); g.scale(W / 2400, W / 2400); g.fillStyle = pat; g.fillRect(0, 0, 2400 * (1 + H / W) + 2400, 2400 * (1 + H / W) + 2400); g.restore();
       // leichter Glanz (abgegriffene Bronze) in der Mitte
       const grd = g.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, Math.max(W, H) * 0.7);

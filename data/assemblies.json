@@ -26,6 +26,12 @@
    "evidence": "E1"
   },
   {
+   "id": "AM-760",
+   "parent": "AM-120",
+   "name": "Parapegma-Platten",
+   "evidence": "E1"
+  },
+  {
    "id": "AM-130",
    "parent": "AM-100",
    "name": "Rückplatte",
@@ -228,12 +234,6 @@
    "parent": "AM-700",
    "name": "Datumszeiger",
    "evidence": "E3"
-  },
-  {
-   "id": "AM-760",
-   "parent": "AM-700",
-   "name": "Parapegma-Platten",
-   "evidence": "E1"
   },
   {
    "id": "AM-800",

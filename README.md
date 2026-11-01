@@ -16,6 +16,7 @@ Live: https://silverapplications.com/apps/antikythera/ · Languages: Deutsch · 
 - **Real-sky comparison** with [astronomy-engine](https://github.com/cosinekitty/astronomy): see how well the device computed around 205 BC and how the error grows over the centuries.
 - **Supporting structure after Freeth et al. 2021:** main plate with retainers and spacer strips, pillars on b1 carrying the rotating Strap and circular plate, 9 + 5 gear layers in the cosmological order, nested output tubes, sub-plate, D-plate, slotted followers for Mercury and Venus. Gears with equilateral triangular teeth and square hubs; only b1 has spokes.
 - **Covers:** removable front cover (inscription outside) and back cover (inscription inside, sliding catch) – hidden by default, switch them on in the assembly tree (AM-140).
+- **Technical colours:** one switch turns the bronze into a schematic view – meshing gears share a colour, gears on one arbor differ, plates become transparent.
 - **Tools:** views, disassembly, section plane, assembly tree, colour-by-evidence, crank (1 turn ≈ 78 days), date input.
 - **Content:** map (zoom & pan), timeline, research summaries for non-experts, sources.
 - **Intro:** re-enacted scene – the wreck in 1900, the sponge diver, the museum in 1902, morphing into the model.
