@@ -109,9 +109,9 @@ export const PLACE = {
   // Ebenen zwischen b1 und Strap (Freeth 2021): mittlere Sonne, Knoten, Merkur, Venus
   // Festrad 51 (Merkur + Venus) mit 72 (Speiche A) und 44 (Speiche C)
   fixed('V-51', 2.5);
-  const vC = polar(B, BEARING.C, SPOKE.C); put('V-44', vC, 2.5); put('V-34', vC, 10.3);
+  const vC = polar(B, BEARING.C, SPOKE.C); put('V-44', vC, 2.5); put('V-34', vC, 9.9);
   const vR = polar(B, 27.8, SPOKE.D);                          // Venus-Epizykel 63 über Speiche D (Tabelle S9)
-  put('V-26', circ(vC, d('V-34', 'V-26'), vR, d('V-26', 'r1'), -1), 10.3); put('r1', vR, 10.3);
+  put('V-26', circ(vC, d('V-34', 'V-26'), vR, d('V-26', 'r1'), -1), 9.9); put('r1', vR, 9.9);
   const mA = polar(B, BEARING.A, SPOKE.A); put('Me-72', mA, 2.5); put('Me-89', mA, 8.5);
   const mE = polar(B, 36.0, -20);                              // Merkur-Epizykel 20, 36 mm von der Mitte, nahe Speiche B
   put('Me-40', circ(mA, d('Me-89', 'Me-40'), mE, d('Me-40', 'Me-20'), 1), 8.5); put('Me-20', mE, 8.5);

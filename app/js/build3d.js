@@ -165,7 +165,7 @@ export function buildMechanism(mat) {
   // Kreisplatte (Träger der äußeren Planetenräder) auf b1
   {
     const ring = new THREE.Mesh(new THREE.RingGeometry(34, 58, 64), mat.bronzeDark);
-    const h = new THREE.Group(); h.add(ring); h.position.z = 10;
+    const h = new THREE.Group(); h.add(ring); h.position.z = 11.0; // zwischen Venus (9,9) und den vorderen CP-Rädern (12)
     add(carrier, h, { kind: 'part', id: 'CP', assembly: 'AM-150', evidence: 'E3', label: 'Kreisplatte (CP)', func: 'Trägt die Epizykelräder für Sonne, Mars, Jupiter, Saturn (Freeth 2021).' });
   }
 
