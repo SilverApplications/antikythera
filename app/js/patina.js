@@ -89,7 +89,7 @@ export function oliveWood(W = 512, H = 512) {
 // ---------------------------------------------------------------- Gravuren
 // draw(g, mode) wird zweimal aufgerufen: 'color' (Patina, Schmutz in den Vertiefungen) und 'bump' (Höhenkarte).
 export const ENGRAVE = {
-  // textHalo: Patina-Saum um Buchstaben (Farbe) – entfernt, Schrift nur schwarz; Relief (bump) bleibt
+  // Schrift: schwarz mit feinem Patina-Saum (textHalo=false → schmaler Saum statt des breiten); Relief (bump) bleibt
   color: { bgPattern: true, halo: 'rgba(58,92,72,0.95)', fill: '#1b1611', haloW: 1.0, textHalo: false, textFill: '#000000' },
   bump: { bgPattern: false, halo: '#5a5a5a', fill: '#000000', haloW: 0.4, textHalo: true, textFill: '#000000' },
 };
@@ -112,7 +112,7 @@ export function engravedTexture(W, H, draw) {
   }
   return out;
 }
-// Gravierte Linie mit Schmutz-Halo; Text ohne Halo in Schwarz
+// Gravierte Linie mit Schmutz-Halo; Text schwarz mit feinem Saum
 export function engraveStroke(g, st, path, width) {
   g.save(); g.lineCap = 'round'; g.lineJoin = 'round';
   g.strokeStyle = st.halo; g.lineWidth = width * (1 + 1.6 * st.haloW); path(); g.stroke();
@@ -122,6 +122,9 @@ export function engraveText(g, st, text, x, y, px, font = '"IBM Plex Sans", "Not
   g.font = `600 ${px}px ${font}`; g.textAlign = 'center'; g.textBaseline = 'middle';
   g.lineJoin = 'round';
   if (st.textHalo) { g.strokeStyle = st.halo; g.lineWidth = px * 0.22 * (0.5 + st.haloW); g.strokeText(text, x, y); }
-  else { g.strokeStyle = st.textFill; g.lineWidth = px * 0.05; g.strokeText(text, x, y); } // nur schwarz, minimal kräftiger
+  else { // feiner Patina-Saum wie bei den Linien (ca. 0,13 × Schriftgröße je Seite), darauf schwarze Schrift
+    g.strokeStyle = st.halo; g.lineWidth = px * 0.26; g.strokeText(text, x, y);
+    g.strokeStyle = st.textFill; g.lineWidth = px * 0.05; g.strokeText(text, x, y);
+  }
   g.fillStyle = st.textFill; g.fillText(text, x, y);
 }
