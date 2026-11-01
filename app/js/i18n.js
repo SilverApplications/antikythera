@@ -17,7 +17,7 @@ export function setDeviceLang(l) { deviceLang = l; store.set('ak-device', l); li
 
 const UI = {
   de: {
-    version: 'Rekonstruktion v1.0 · Forschungsstand 11/2026', siteLang: 'Sprache', deviceLang: 'Beschriftung am Gerät',
+    appName: 'Antikythera-Mechanismus', version: 'Rekonstruktion v1.0 · Forschungsstand 11/2026', siteLang: 'Sprache', deviceLang: 'Beschriftung am Gerät',
     'view.front': 'Front', 'view.back': 'Rückseite', 'view.gears': 'Getriebe', 'view.explode': 'Explosion',
     definite: 'eindeutig', measured: 'Zähne laut CT (Freeth et al. 2006): {count} (Grenzen: {lim}).', measured21: 'Gemessen (Freeth et al. 2021, Tab. S8): Teilkreis {pitch} mm, Stärke {thick} mm, Modul {mod}. Im Modell: {model} mm.',
     schematic: 'Achslagen schematisch', schematicTitle: 'Radgrößen und Achsabstände nach CT-Messung (Freeth et al. 2021, Tab. S8), Kosmos-Lager nach den Speichen von b1; Richtungen zwischen den Achsen hinter b1 schematisch',
@@ -48,7 +48,7 @@ const UI = {
     'lvl.belegt': 'belegt', 'lvl.modell': 'Modell', 'lvl.hypothese': 'Hypothese', 'lvl.historisch': 'historisch',
   },
   en: {
-    version: 'Reconstruction v1.0 · research as of 11/2026', siteLang: 'Language', deviceLang: 'Lettering on the device',
+    appName: 'Antikythera Mechanism', version: 'Reconstruction v1.0 · research as of 11/2026', siteLang: 'Language', deviceLang: 'Lettering on the device',
     'view.front': 'Front', 'view.back': 'Back', 'view.gears': 'Gearing', 'view.explode': 'Exploded',
     definite: 'unambiguous', measured: 'Teeth from CT (Freeth et al. 2006): {count} (limits: {lim}).', measured21: 'Measured (Freeth et al. 2021, Table S8): pitch radius {pitch} mm, thickness {thick} mm, module {mod}. In the model: {model} mm.',
     schematic: 'Axle positions schematic', schematicTitle: 'Gear sizes and centre distances from CT measurements (Freeth et al. 2021, Table S8), cosmos bearings from the spokes of b1; directions between the axles behind b1 schematic',
@@ -79,7 +79,7 @@ const UI = {
     'lvl.belegt': 'established', 'lvl.modell': 'model', 'lvl.hypothese': 'hypothesis', 'lvl.historisch': 'historical',
   },
   el: {
-    version: 'Ανακατασκευή v1.0 · ερευνητικά δεδομένα 11/2026', siteLang: 'Γλώσσα', deviceLang: 'Επιγραφές στη συσκευή',
+    appName: 'Μηχανισμός των Αντικυθήρων', version: 'Ανακατασκευή v1.0 · ερευνητικά δεδομένα 11/2026', siteLang: 'Γλώσσα', deviceLang: 'Επιγραφές στη συσκευή',
     'view.front': 'Εμπρός', 'view.back': 'Πίσω', 'view.gears': 'Γρανάζια', 'view.explode': 'Ανάπτυξη',
     definite: 'σαφής', measured: 'Δόντια κατά CT (Freeth et al. 2006): {count} (όρια: {lim}).', measured21: 'Μέτρηση (Freeth et al. 2021, πίν. S8): ακτίνα αρχικού κύκλου {pitch} mm, πάχος {thick} mm, μέτρο {mod}. Στο μοντέλο: {model} mm.',
     schematic: 'Θέσεις αξόνων σχηματικές', schematicTitle: 'Μεγέθη τροχών και αποστάσεις αξόνων από μετρήσεις CT (Freeth et al. 2021, πίν. S8), έδρανα του Κόσμου από τις ακτίνες του b1· οι κατευθύνσεις μεταξύ των αξόνων πίσω από τον b1 σχηματικές',
