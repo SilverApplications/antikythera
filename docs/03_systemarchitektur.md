@@ -12,11 +12,17 @@ AM-000  Antikythera-Mechanismus (Gesamtsystem)
 │   ├─ AM-110  Holzkasten mit Rahmen                       E4 (Form) / E1 (Holzreste belegt)
 │   ├─ AM-120  Frontplatte (Bronze)                         E1 Reste
 │   ├─ AM-130  Rückplatte (Bronze)                          E1 Reste
-│   ├─ AM-140  Front- und Rückdeckel mit Inschriften (FCI/BCI) E1 Reste
-│   ├─ AM-150  Mittelplatte, Säulen, Lagerbrücken, Kreisplatte (CP), Strap  E1/E3
-│   └─ AM-160  Verbindungselemente (Stifte, Keile, Splinte)  E1/E4
+│   ├─ AM-140  Front- und Rückdeckel mit Inschriften (FCI außen / BCI innen); vorn wohl abnehmbar, Scharniere unbelegt  E1/E4
+│   ├─ AM-150  Tragstruktur (Details: docs/12)
+│   │   ├─ AM-151  Hauptplatte + 4 Halter (genietet) + 5 Abstandsstreifen  E1
+│   │   ├─ AM-152  4 kurze Säulen (20,4 mm) + Strap (11° schräg, mitdrehend)  E1/E3
+│   │   ├─ AM-153  4 lange Säulen (32,0 mm) + Kreisplatte CP (mitdrehend)  E1/E3
+│   │   ├─ AM-154  D-Platte (an Strap gelötet), Halter Speiche C  E1/E3
+│   │   ├─ AM-155  Unterplatte (fest) mit Festrad 56, Lager des Rohrbündels  E3
+│   │   └─ AM-156  Festrohr durch b1 (Festräder 51, 49) an der Hauptplatte  E1/E3
+│   └─ AM-160  Verbindungselemente: Vierkant-Naben, Nieten, Querstifte, Lötstellen, Daumenriegel  E1
 ├─ AM-200  Antrieb
-│   ├─ AM-210  Handkurbel + Welle                           E4
+│   ├─ AM-210  Kurbel/Schlüssel, aufsteckbar (Aussparung in a1)  E4 (Form) / E1 (Aussparung)
 │   ├─ AM-220  Kronrad a1 (48)                              E1
 │   └─ AM-230  Hauptantriebsrad b1 (223) + b2 (64)          E1
 ├─ AM-300  Kosmos-Getriebe (Front, auf b1)
@@ -52,7 +58,7 @@ AM-000  Antikythera-Mechanismus (Gesamtsystem)
 │   ├─ AM-810  Metonische Spirale (5 Windungen, 235 Zellen) E1
 │   ├─ AM-820  Saros-Spirale (4 Windungen, 223 Zellen)      E1
 │   ├─ AM-830  Nebenzifferblätter Spiele/Kallipp/Exeligmos  E1/E2
-│   └─ AM-840  Spiralzeiger mit Läufer                      E3
+│   └─ AM-840  Spiralzeiger als Schiebezeiger (Stift in der Spiralnut)  E1/E2
 └─ AM-900  Dokumentation am Gerät („Bedienungsanleitung“)
     ├─ AM-910  Parapegma
     ├─ AM-920  Frontdeckel-Inschrift (Planetenperioden 462, 442)

@@ -14,6 +14,8 @@ Hier liegt das Wissen aus den Originalquellen (Supplements 2006/2008/2021 und di
 | 6 | Freeth 2019, *Revising the eclipse prediction scheme in the Antikythera mechanism*, Palgrave Communications 5 | 12 S. | Open Access (CC BY): <https://doi.org/10.1057/s41599-018-0210-9> | [docs/11](../11_finsternis_glyphen.md) | Indexbuchstaben-Gruppen |
 | 7 | Iversen & Jones 2019, *The Back Plate Inscription and eclipse scheme of the Antikythera Mechanism revisited*, Archive for History of Exact Sciences 73, 469–511 | 43 S. | NYU-Archiv: <https://archive.nyu.edu/bitstream/2451/48012/2/Iversen%20and%20Jones%202019%20BPI%20AHES.pdf> | [docs/11](../11_finsternis_glyphen.md) | `data/saros_glyphs.json` (Tabelle 3) |
 
+Thematische Auswertung über alle Quellen: **Systemarchitektur** (Zeiger, Front, Tragstruktur, Gehäuseöffnung, Zahnradgestalt) in [docs/12](../12_systemarchitektur_befunde.md).
+
 ## Kurzinhalt
 
 **2006 – Rückseite entschlüsselt.** Fragmente: Flächen und Gewichte (A: 369,1 g). Glyphen und Inschriften mit vorläufiger Übersetzung; die Schrift datiert auf ca. 150–100 v. Chr. Zahnräder: Zähnezahlen im Vergleich zu Price, Karakalos und Wright mit gemessenen Radien. Methode der Zahnzählung. Herleitung aller Übersetzungen aus Metonischem und Saros-Zyklus. Beweis, dass Stift-Schlitz auf e3 Hipparchs Mondtheorie entspricht.
