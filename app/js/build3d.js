@@ -89,6 +89,14 @@ function spurGeometry(z, m, t = 1.4, o = {}) {
 
 // Ausgangsrohre (koaxial, Freeth 2021 S6.2.3): Radius in mm, innen der Mond, außen das Datumsrohr
 const TUBE_MOON = 0.7;
+// Höhen der Frontanzeige (Rehm 1905/06, von Freeth 2021 übernommen): Die Ausgangsrohre enden gestaffelt, das
+// innerste am weitesten vorn. Von jedem Rohrende führt ein gebogener Arm in einer eigenen Ebene unter den
+// inneren Ringen hindurch zu seinem Ring; alle Ringe liegen in einer Ebene ZR. Darüber Drachenzeiger, b0, Mond.
+const ZS = PLATE.zFront + PLATE.t;          // Oberfläche der Frontplatte
+const ZR = ZS + 4.0;                        // Ebene der Ringe (Oberkante)
+const ARM_Z = (k) => ZR - 0.9 - 0.6 * k;    // Ebene des Arms von Ring k (0 = Merkur … 6 = Datum)
+const ZDR = ZR + 3.5;                       // Drachenzeiger
+const ZPH = ZR + 4.4;                       // b0 (Mondphase)
 export const TUBE = { moon: 0.7, fixed: 1.5, sunMean: 1.05, Dr: 1.4, Me: 1.75, Ve: 2.1, sunTrue: 2.45, Ma: 2.8, Ju: 3.15, Sa: 3.5, date: 3.85 };
 function gearOpts(id, pl) {
   if (id === 'b1') return { spokes: true, round: 2.2, hub: STRUCT.disc.r, ringIn: STRUCT.ringIn, sw: 5.5 };
@@ -302,13 +310,12 @@ export function buildMechanism(mat) {
     for (let i = 0; i < 4; i++) { const a = i * TAU / 4 + 0.785; geos.push(cylZ(0.5, Ly.CPF.c, sp.z0 + sp.t + 0.2, 8).translate(Math.cos(a) * 5.4, Math.sin(a) * 5.4, 0)); }
     part(fixed, geos, mat.plate, { id: 'subplate', assembly: 'AM-155', evidence: 'E3' });
   }
-  const zc = PLATE.zFront + PLATE.t + 0.2;   // Ebene der Ringe
-  const ZB0 = zc + 0.6;               // Ebene von b0 (Mondphase)
+  const ZB0 = ZPH;
   {
-    const T = TUBE, ring = (i) => zc + i * 0.05;
+    const T = TUBE, ring = (i) => ARM_Z(i) + 0.25;
     const tubes = [
       ['tube-moon', T.moon, PLACE.b3.z, ZB0 + 0.6, 'AM-430'], ['tube-sunMean', T.sunMean, Ly.L3.z0, ZB0 - 0.5, 'AM-340'],
-      ['tube-Dr', T.Dr, Ly.L4.z0, zc - 0.6, 'AM-340'], ['tube-Me', T.Me, Ly.L5.z0, ring(0), 'AM-340'], ['tube-Ve', T.Ve, Ly.L6.z0, ring(1), 'AM-340'],
+      ['tube-Dr', T.Dr, Ly.L4.z0, ZDR, 'AM-340'], ['tube-Me', T.Me, Ly.L5.z0, ring(0), 'AM-340'], ['tube-Ve', T.Ve, Ly.L6.z0, ring(1), 'AM-340'],
       ['tube-sunTrue', T.sunTrue, S.strap.z0 + S.strap.t, ring(2), 'AM-340'], ['tube-Ma', T.Ma, Ly.s1.z0, ring(3), 'AM-340'],
       ['tube-Ju', T.Ju, Ly.s3.z0, ring(4), 'AM-340'], ['tube-Sa', T.Sa, Ly.s4.z0, ring(5), 'AM-340'], ['tube-date', T.date, S.cp.z0 + S.cp.t, ring(6), 'AM-340'],
     ];
@@ -562,13 +569,30 @@ function buildFront(mat, add, parent, texts) {
     }
   }
 
-  // Kosmos-Ringe (Freeth 2021), von innen nach außen
-  const rings = [['mercury', 21], ['venus', 25.5], ['sun', 30], ['mars', 34.5], ['jupiter', 39], ['saturn', 43.5], ['date', 48]];
+  // Kosmos-Ringe (Freeth 2021), von innen nach außen. Jeder Ring hängt über einen gebogenen Arm an seinem
+  // Ausgangsrohr (Ring-System nach Rehm 1905/06, Freeth 2021 Suppl. Fig. S17b): Mercur am innersten, Datum am
+  // äußersten Rohr. Die Arme liegen in getrennten Ebenen unter dem Ring-Niveau und können sich nicht berühren.
+  const rings = [['mercury', 21, 'Me'], ['venus', 25.5, 'Ve'], ['sun', 30, 'sunTrue'], ['mars', 34.5, 'Ma'], ['jupiter', 39, 'Ju'], ['saturn', 43.5, 'Sa'], ['date', 48, 'date']];
   out.rings = {}; out.ghosts = {};
-  const zc = zs + 0.2;
-  rings.forEach(([key, r], i) => {
+  const zc = ZR;
+  const ringArm = (r0, r1, h, w = 2.2, t = 0.45) => {
+    const sh = new THREE.Shape(), c = r1 - h, N = 16;
+    sh.moveTo(r0, -h - t / 2); sh.lineTo(c, -h - t / 2);
+    for (let i = 1; i <= N; i++) { const a = -Math.PI / 2 + (i / N) * Math.PI / 2; sh.lineTo(c + Math.cos(a) * (h + t / 2), Math.sin(a) * (h + t / 2)); }
+    sh.lineTo(r1 - t / 2, 0);
+    for (let i = N - 1; i >= 0; i--) { const a = -Math.PI / 2 + (i / N) * Math.PI / 2; sh.lineTo(c + Math.cos(a) * (h - t / 2), Math.sin(a) * (h - t / 2)); }
+    sh.lineTo(r0, -h + t / 2); sh.closePath();
+    const g = new THREE.ExtrudeGeometry(sh, { depth: w, bevelEnabled: false });
+    g.applyMatrix4(new THREE.Matrix4().set(0, 0, 1, -w / 2, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1)); // radial → −y, Höhe → z
+    g.computeVertexNormals(); return g;
+  };
+  rings.forEach(([key, r, tube], i) => {
     const grp = new THREE.Group();
-    grp.add(new THREE.Mesh(new THREE.RingGeometry(r - 1.6, r + 1.6, 128), mat.bronze));
+    grp.add(new THREE.Mesh(disc(r + 1.6, 0.5, r - 1.6, 128).translate(0, 0, -0.5), mat.bronze));
+    // Arm: am Rohrende angesetzt, gebogen zum Ring; Nabe als kurzer Kragen um das Rohr
+    const h = zc - ARM_Z(i), rt = TUBE[tube];
+    grp.add(new THREE.Mesh(ringArm(rt + 0.2, r, h), mat.bronze));
+    grp.add(new THREE.Mesh(disc(rt + 0.9, 0.6, rt, 24).translate(0, 0, -h - 0.3), mat.bronze));
     const ev = key === 'date' ? 'E3' : ['mars', 'jupiter', 'saturn'].includes(key) ? 'E4' : 'E3';
     if (key === 'sun') {
       const ball = new THREE.Mesh(new THREE.SphereGeometry(2.0, 24, 16), mat.gold); ball.position.set(0, r, 1.2); grp.add(ball);
@@ -579,7 +603,7 @@ function buildFront(mat, add, parent, texts) {
     } else {
       const bead = new THREE.Mesh(new THREE.SphereGeometry(1.7, 20, 14), mat.stones[key]); bead.position.set(0, r, 1.2); grp.add(bead);
     }
-    grp.position.z = zc + i * 0.05;
+    grp.position.z = zc;
     add(parent, grp, { kind: 'dial', id: `ring-${key}`, assembly: key === 'date' ? 'AM-750' : 'AM-730', evidence: ev });
     out.rings[key] = grp;
     if (key !== 'date') {
@@ -594,7 +618,7 @@ function buildFront(mat, add, parent, texts) {
   // auf b0 ab. Seine radiale Welle dreht die Kugel (6 mm, halb hell/halb dunkel) einmal pro synodischem Monat.
   // Der Zeiger hängt am Zylinder um Kronrad und Kugel und reicht bis zur Tierkreisskala.
   {
-    const mPh = 0.53, rP = 20 * mPh / 2, zB0 = zc + 0.6;
+    const mPh = 0.53, rP = 20 * mPh / 2, zB0 = ZPH;
     // b0 auf dem Rohr der mittleren Sonne (dreht mit der mittleren Sonne)
     const b0 = new THREE.Group(); b0.add(new THREE.Mesh(spurGeometry(20, mPh, 1.0, { round: TUBE_MOON + 0.2 }), mat.bronze)); b0.position.z = zB0;
     add(parent, b0, { kind: 'gear', id: 'b0', teeth: 20, assembly: GEAR.b0?.assembly ?? 'AM-400', evidence: GEAR.b0?.evidence ?? 'E3', label: 'b0 · 20 Zähne', func: GEAR.b0?.function, note: GEAR.b0?.note, frame: 'fixed' });
@@ -636,7 +660,7 @@ function buildFront(mat, add, parent, texts) {
     grp.add(new THREE.Mesh(new THREE.BoxGeometry(1.0, 112, 0.4), mat.bronzeDark));
     const head = new THREE.Mesh(new THREE.ConeGeometry(1.8, 4, 3), mat.bronzeDark); head.position.set(0, 57, 0); head.scale.z = 0.2; grp.add(head);
     const tail = new THREE.Mesh(new THREE.SphereGeometry(1.4, 10, 8), mat.bronzeDark); tail.position.set(0, -57, 0); tail.scale.z = 0.25; grp.add(tail);
-    grp.position.z = zc - 0.6;
+    grp.position.z = ZDR;
     add(parent, grp, { kind: 'dial', id: 'dragon', assembly: 'AM-330', evidence: 'E4' });
     out.dragon = grp;
   }
@@ -679,8 +703,8 @@ function buildBack(mat, add, parent) {
   return out;
 }
 
-// Gehäuse: hinten 4 mm hinter der Rückplatte, vorn 18 mm vor der Frontplatte (Platz für Zeiger und Mondphasen-Getriebe)
-export const CASE_Z = [PLATE.zBack - PLATE.t - 4, PLATE.zFront + PLATE.t + 18];
+// Gehäuse: hinten 4 mm hinter der Rückplatte, vorn 25 mm vor der Frontplatte (Ringe mit Armen, Zeiger, Mondphasen-Getriebe)
+export const CASE_Z = [PLATE.zBack - PLATE.t - 4, PLATE.zFront + PLATE.t + 25];
 function buildCase(mat, add, parent) {
   const { w, yMin, yMax } = PLATE; const H = yMax - yMin, cy = (yMax + yMin) / 2;
   const t = 6, z0 = CASE_Z[0], z1 = CASE_Z[1], D = z1 - z0, cz = (z0 + z1) / 2;

@@ -93,7 +93,7 @@ Umgesetzt wurde alles, was sich nicht widerspricht (Entscheidung November 2026).
 | D-Platte, Scheiben, Folger | fehlten | D-Platte am Strap; Venus-Scheibe (r 21,5 mm) an 63 genietet, Merkur-Scheibe an 20; Stifte laufen in Schlitz-Folgern auf der Mittelachse | D-Platte, Venus-Scheibe E1, Rest E3 |
 | Steg, Halter Speiche C | fehlten | Steg vom Block auf Speiche D zur Mitte; Halter der Welle 44 + 34 auf Speiche C (46,2 mm) | Block, Fläche E1, Form E3 |
 | Unterplatte, Festrohr, Rohrbündel | 56 schwebte | Unterplatte (als Steg) mit genietetem 56 und Lager; Festrohr durch b1 an der Hauptplatte; 10 koaxiale Rohre | E3 |
-| Front | z = 30 mm, Gehäuse ca. 77 mm tief | Front bei z = 35 mm, Gehäuse ca. 96 mm tief (Platz für das Mondphasen-Getriebe) | E3 |
+| Front | z = 30 mm, Gehäuse ca. 77 mm tief | Front bei z = 35 mm, Gehäuse ca. 103 mm tief (Ring-Arme, Mondphasen-Getriebe) | E3 |
 | Spiralzeiger | fester Zeiger mit Läufer | Schiebezeiger: Stift an der Spitze in der Nut, Stange gleitet durch die Nabe | E2 |
 | Daumenriegel, Einstellmarke, Parapegma | fehlten | 4 Daumenriegel (Lage schematisch); radiale Marke bei Waage 17,7°; 2 Parapegma-Platten mit je 2 Spalten (Tierkreis-Viertel, Text angedeutet) | E1 (Lage teils E3) |
 | Kurbel | fest montiert | Vierkant-Aussparung in a1, Kurbel mit Vierkant aufgesteckt; wandert beim Zerlegen nach außen | Aussparung E1, Form E4 |
@@ -102,5 +102,7 @@ Umgesetzt wurde alles, was sich nicht widerspricht (Entscheidung November 2026).
 | Deckel | Baugruppe leer | Vorderdeckel 128,8 mm mit Zierrahmen, Inschrift außen (Planeten in CCO, Zahlen 462/442), Stützen E4; Rückdeckel über die ganze Rückseite, Inschrift innen, Schieberiegel unten rechts. **Standardmäßig ausgeblendet** (AM-140) | E1/E3 |
 
 Darstellung (v0.8.1): Platten mit eigener, dunkler gehämmerter Patina, Zahnräder blanker; Schalter „Technische Farben“ (ineinandergreifende Räder gleiche Farbe, Räder auf einer Welle verschiedene Farben, Platten durchsichtig); Parapegma-Platten gehören zur Frontplatte (AM-760 unter AM-120).
+
+Ringe mit Rohren verbunden (v0.8.2): Ring-System nach Rehm 1905/06, das Freeth 2021 ausdrücklich übernimmt (Suppl. S6.1, Fig. S17b). Die Rohre enden gestaffelt (innen am weitesten vorn), von jedem Rohrende führt ein gebogener Arm in einer eigenen Ebene unter den inneren Ringen hindurch zu seinem Ring; alle Ringe liegen in einer Ebene. Darüber Drachenzeiger, b0 und Mondzeiger. Gehäuse dadurch ca. 10 cm tief (passt zu Freeth 2008: ca. 33 × 18 × 10 cm). Der gerade Koaxial-Zeiger (Wright 2002, Rehm Fig. S17a) wurde nicht gewählt.
 
 Offen bzw. bewusst nicht umgesetzt: Folger der wahren Sonne, Oppositions-Steinchen auf den Planetenringen, genauer Wortlaut von Parapegma und Deckelinschriften, echte Achskoordinaten hinter b1.
